@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview — i-AM Talent · Traffic Light & Vacancy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6FA;--card:#FFFFFF;--border:#E6E9EF;--div:#ECECEC;--th:#F2F3F5;
+  --text:#212121;--text2:#616161;--text3:#8A8F98;
+  --pri:#2E6BEA;--pri-d:#1F56C3;--pri-soft:#EAF1FD;
+  --info-bg:#E8F1FD;--info-tx:#2E8CE6;--warn-bg:#FFF6E5;--warn-tx:#8A5A00;
+  --merah:#D93B3B;--merah-bg:#FCEAEA;--kuning:#F2A71B;--kuning-bg:#FEF4E1;--kuning-tx:#8A5A00;
+  --hijau:#2E9E5B;--hijau-bg:#E6F5EC;--undef:#8FB8F0;--undef-bg:#EAF2FD;--undef-tx:#2A5A9E;
+  --vac:#B0B7C3;--vac-bg:#EEF0F3;--vac-tx:#5A6270;--adj:#7C4DDB;--adj-bg:#F3EEFF;
+  --h1:#FFF4E5;--h2:#FFE0B8;--h3:#FDBA74;--h4:#F97316;--h5:#C2410C;--hx:#F3F4F6;
+  --olive:#7A8B2C;--red-logo:#D32F2F;--overlay:rgba(20,24,33,.45);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#11141A;--card:#1A1E26;--border:#2A303B;--div:#262B35;--th:#222731;
+    --text:#ECEEF2;--text2:#A9AFBB;--text3:#7D8492;
+    --pri:#5B8DF2;--pri-d:#7BA3F5;--pri-soft:#1E2A44;
+    --info-bg:#172538;--info-tx:#7DB7F2;--warn-bg:#2E2412;--warn-tx:#F2C36B;
+    --merah-bg:#3A1E1E;--kuning-bg:#3A2D12;--kuning-tx:#F2C36B;--hijau-bg:#16301F;
+    --undef-bg:#18273C;--undef-tx:#9EC3F3;--vac-bg:#262B35;--vac-tx:#B4BAC6;--adj-bg:#2A2140;
+    --hx:#222731;--olive:#A9BC4F;--overlay:rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px}
+button{font-family:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:100vh}
+.side{background:var(--card);border-right:1px solid var(--border);padding:20px 0;display:flex;flex-direction:column}
+.logo{text-align:center;margin-bottom:28px;line-height:1}
+.logo b{font-size:34px;font-style:italic;color:var(--olive);font-weight:500;font-family:Georgia,serif}
+.logo small{display:block;color:var(--red-logo);font-weight:600;font-size:12px;margin-top:2px;letter-spacing:.5px}
+.nav a{display:flex;align-items:center;gap:14px;padding:13px 24px;color:var(--text);text-decoration:none;font-size:15px}
+.nav a i{font-style:normal;width:20px;text-align:center;color:var(--text2)}
+.nav .sub{padding-left:62px;font-size:14px;color:var(--text);position:relative}
+.nav .sub::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--text3);position:absolute;left:44px;top:19px}
+.nav .act{background:var(--pri);color:#fff;border-radius:0 30px 30px 0;margin-right:22px}
+.nav .act::before{background:#fff}
+.chip-new{background:#fff;color:var(--pri);font-size:11px;padding:2px 7px;border-radius:10px;font-weight:600;margin-left:auto}
+.side-foot{margin-top:auto;display:flex;justify-content:space-between;gap:8px;padding:16px 24px 0;font-size:12px;color:var(--text2)}
+.top{height:72px;background:var(--card);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:22px;color:var(--text2);font-size:18px}
+.top .sp{flex:1}
+.ph{background:var(--card);padding:22px 32px 0;border-bottom:1px solid var(--border)}
+.ph-row{display:flex;align-items:center;gap:14px}
+.ph h1{font-size:28px;font-weight:600;margin:0;flex:1}
+.bc{font-size:13px;color:var(--text2);margin-bottom:6px}
+.btn-t{background:none;border:0;color:var(--pri);font-weight:600;letter-spacing:.5px;font-size:14px;text-transform:uppercase;padding:10px 8px}
+.btn-o{background:none;border:1px solid var(--pri);color:var(--pri);font-weight:600;letter-spacing:.5px;font-size:14px;text-transform:uppercase;padding:10px 18px;border-radius:6px}
+.btn-p{background:var(--pri);border:1px solid var(--pri);color:#fff;font-weight:600;letter-spacing:.5px;font-size:14px;text-transform:uppercase;padding:10px 18px;border-radius:6px}
+.btn-p[disabled]{background:var(--vac);border-color:var(--vac);cursor:not-allowed}
+.btn-sm{padding:6px 12px;font-size:12px}
+.tabs{display:flex;gap:4px;margin-top:18px}
+.tab{background:none;border:0;border-bottom:3px solid transparent;padding:14px 22px;color:#757575;text-transform:uppercase;letter-spacing:1px;font-size:13px;font-weight:500}
+.tab.on{color:var(--pri);border-bottom-color:var(--pri)}
+.badge{background:var(--merah);color:#fff;border-radius:10px;font-size:11px;padding:1px 7px;margin-left:6px;letter-spacing:0}
+.main{padding:24px 32px 48px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:18px}
+.card-h{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--div)}
+.card-h h2{font-size:20px;font-weight:600;margin:0;flex:1}
+.card-h h3{font-size:16px;font-weight:600;margin:0;flex:1}
+.card-b{padding:18px 22px}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:13px}
+.seg button{background:var(--card);border:0;padding:8px 14px;color:var(--text2)}
+.seg button.on{background:var(--pri-soft);color:var(--pri);font-weight:600}
+.seg-l{font-size:12px;color:var(--text2);margin-right:8px}
+.scope{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:16px 22px}
+.scope label{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
+.scope div{font-size:15px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--pri);border-radius:0;padding:14px 16px}
+.kpi label{font-size:12px;color:var(--text2)}
+.kpi .v{font-size:26px;font-weight:600;margin-top:4px}
+.kpi .v small{font-size:14px;font-weight:500;color:var(--text2);margin-left:6px}
+.kpi .s{font-size:12px;color:var(--text3);margin-top:2px}
+.kpi a{font-size:12px;color:var(--merah);text-decoration:underline;cursor:pointer}
+.banner{display:flex;align-items:center;gap:12px;background:var(--info-bg);color:var(--info-tx);border-radius:8px;padding:12px 16px;margin-bottom:18px;font-size:14px}
+.banner.warn{background:var(--warn-bg);color:var(--warn-tx)}
+.banner .sp{flex:1}
+.lock{background:var(--card);color:var(--merah);border:1px solid var(--merah);border-radius:12px;font-size:11px;font-weight:600;padding:3px 10px;white-space:nowrap}
+.legend{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 22px;font-size:13px;color:var(--text2)}
+.legend .f{flex:1 1 380px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:14px;padding:3px 10px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.p-m{background:var(--merah-bg);color:var(--merah)}
+.p-k{background:var(--kuning-bg);color:var(--kuning-tx)}
+.p-h{background:var(--hijau-bg);color:var(--hijau)}
+.p-u{background:var(--undef-bg);color:var(--undef-tx)}
+.p-v{background:var(--vac-bg);color:var(--vac-tx)}
+.adj{background:var(--adj-bg);color:var(--adj);font-size:11px;border-radius:10px;padding:2px 8px;font-weight:600;margin-left:6px}
+.tool{display:flex;gap:10px;align-items:center;padding:14px 22px;flex-wrap:wrap}
+.inp,.sel{border:1px solid var(--border);border-radius:6px;padding:9px 12px;font-size:13px;color:var(--text2);background:var(--card)}
+.inp{min-width:240px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{background:var(--th);text-transform:uppercase;font-size:11.5px;color:#555;letter-spacing:.5px;text-align:left;padding:12px 12px;font-weight:600;white-space:nowrap}
+@media (prefers-color-scheme: dark){th{color:var(--text2)}}
+td{padding:12px;border-bottom:1px solid var(--div);vertical-align:top}
+td .sub{display:block;font-size:11.5px;color:var(--text3);margin-top:3px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.lnk{color:var(--pri)}
+.miss{color:var(--merah);text-decoration:underline;font-size:12px;cursor:pointer}
+.muted{color:var(--text3);font-style:italic}
+.kebab{background:none;border:0;color:var(--text2);font-size:18px;padding:0 6px}
+.pag{display:flex;justify-content:flex-end;gap:20px;padding:14px 22px;font-size:13px;color:var(--text2)}
+.overlay{position:fixed;inset:0;background:var(--overlay);display:none;z-index:20}
+.overlay.on{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:520px;background:var(--card);z-index:21;transform:translateX(100%);transition:transform .25s,visibility .25s;visibility:hidden;display:flex;flex-direction:column;border-left:1px solid var(--border)}
+.drawer.on{transform:none;visibility:visible}
+@media (prefers-reduced-motion: reduce){.drawer{transition:none}}
+.dh{padding:20px 24px;border-bottom:1px solid var(--div)}
+.dh h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center}
+.dh h3 span{flex:1}
+.db{padding:18px 24px;overflow:auto;flex:1}
+.df{padding:14px 24px;border-top:1px solid var(--div);display:flex;gap:10px;align-items:center}
+.df .sp{flex:1}
+.comp{display:grid;grid-template-columns:1.4fr 1fr .6fr .7fr .9fr;gap:8px;align-items:center;padding:10px 8px;border-bottom:1px solid var(--div);font-size:13px}
+.comp.hd{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.comp.hl{background:var(--adj-bg)}
+.ro{background:var(--th);border-radius:4px;padding:4px 8px;text-align:center;color:var(--text2)}
+.cmp{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;margin:18px 0;border:1px solid var(--border);border-radius:8px;padding:14px}
+.cmp div label{font-size:12px;color:var(--text2);display:block;margin-bottom:6px}
+.cmp b{font-size:22px;margin-right:8px}
+textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10px;font-family:inherit;font-size:13px;background:var(--card);color:var(--text);min-height:90px}
+.err{color:var(--merah);font-size:12px;margin-top:4px;display:none}
+.help{font-size:12px;color:var(--text3);margin-top:6px}
+.tl{border-left:2px solid var(--border);margin-left:14px;padding-left:20px}
+.tl .e{position:relative;margin-bottom:20px}
+.tl .e::before{content:"";position:absolute;left:-27px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--pri)}
+.tl s{color:var(--text3)}
+.q{background:var(--th);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--text2);margin-top:6px}
+.grid2{display:grid;grid-template-columns:3fr 2fr;gap:18px}
+.hbar{display:grid;grid-template-columns:200px 1fr 60px;gap:10px;align-items:center;margin:10px 0;font-size:13px}
+.hbar .tr{display:flex;height:22px;background:var(--th);border-radius:3px;overflow:hidden}
+.hbar .tr span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px}
+.lg{display:flex;gap:16px;font-size:12px;color:var(--text2);margin-top:10px}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.heat{border-collapse:separate;border-spacing:3px;font-size:12px}
+.heat th{background:none;text-align:center;text-transform:none;font-size:12px;letter-spacing:0;padding:6px}
+.heat td{border:0;text-align:center;padding:7px 4px;border-radius:3px;min-width:96px;cursor:default}
+.heat td small{display:block;font-size:10.5px;opacity:.8}
+.heat td.rl{background:none;text-align:right;font-weight:600;min-width:70px;color:var(--text2)}
+.inbar{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.inbar span{display:inline-block;height:6px;background:var(--vac);border-radius:3px}
+.cols{display:flex;align-items:flex-end;gap:28px;height:320px;padding:10px 10px 0 40px;border-bottom:1px solid var(--div);position:relative}
+.col{flex:1;display:flex;flex-direction:column-reverse;height:100%;cursor:pointer;max-width:120px}
+.col span{display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600}
+.col:hover{outline:2px solid var(--pri);outline-offset:2px}
+.collbl{display:flex;gap:28px;padding:8px 10px 0 40px;font-size:12px;color:var(--text2)}
+.collbl div{flex:1;text-align:center;max-width:120px}
+.modal-wrap{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:22}
+.modal-wrap.on{display:flex}
+.modal{background:var(--card);border-radius:10px;width:760px;max-width:94vw;border:1px solid var(--border);max-height:90vh;overflow:auto}
+.vtabs{display:grid;grid-template-columns:230px 1fr}
+.vtabs .vl{border-right:1px solid var(--div);padding:10px 0}
+.vtabs .vl button{display:block;width:100%;text-align:left;background:none;border:0;padding:12px 20px;font-size:14px;color:var(--text2);border-left:3px solid transparent}
+.vtabs .vl button.on{color:var(--pri);border-left-color:var(--pri);background:var(--pri-soft);font-weight:600}
+.fld{border:1px solid var(--border);border-radius:5px;padding:6px 8px;font-size:12.5px;background:var(--card);color:var(--text);width:100%}
+.mx td{text-align:center}
+.mx td:first-child{color:#fff;font-weight:600}
+.scale{display:flex;height:26px;border-radius:4px;overflow:hidden;margin-top:12px;font-size:11px;color:#fff;font-weight:600}
+.scale span{display:flex;align-items:center;justify-content:center}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1F2937;color:#fff;padding:12px 18px;border-radius:8px;display:none;gap:14px;align-items:center;z-index:30;font-size:13px}
+.toast.on{display:flex}
+.toast button{background:none;border:0;color:#9EC3F3;font-weight:600;text-transform:uppercase}
+.prog{height:6px;background:var(--th);border-radius:3px;overflow:hidden;margin:14px 0}
+.prog span{display:block;height:100%;width:64%;background:var(--pri)}
+.steps div{padding:6px 0;font-size:13px}
+.hidden{display:none}
+.note{font-size:12px;color:var(--text3);padding:0 22px 16px}
+:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.nav .sub:not(.act){border-radius:0 30px 30px 0;margin-right:22px}
+.nav .sub[data-nav]:not(.act) .chip-new{background:var(--pri-soft)}
+.nav .dis{color:var(--text3)}
+.soon{font-size:10.5px;color:var(--text3);border:1px solid var(--border);border-radius:10px;padding:1px 6px;margin-left:auto}
+.p-tb{background:#E1F5EE;color:#0F6E56}.p-im{background:#EEEDFE;color:#534AB7}
+@media (prefers-color-scheme: dark){.p-tb{background:#0E3B30;color:#9FE1CB}.p-im{background:#2B2760;color:#CECBF6}}
+.p-ok{background:var(--hijau-bg);color:var(--hijau)}
+.flag{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600}
+.per{min-width:170px}.per .bar{height:6px;background:var(--th);border-radius:3px;overflow:hidden;margin:6px 0 3px}.per .bar span{display:block;height:100%;background:var(--pri)}
+.ret{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.ret .m{border:1px solid var(--border);border-radius:8px;padding:10px;min-height:118px}
+.ret .m label{font-size:12px;color:var(--text2)}.ret .m b{display:block;font-size:22px;margin:2px 0 6px}
+.ret .m div{font-size:11.5px;color:var(--text2);line-height:1.5}
+.ret .m.od{border-color:var(--merah);background:var(--merah-bg)}.ret .m.od b{color:var(--merah)}
+.ret .m.hot{border-color:var(--kuning);background:var(--kuning-bg)}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:8px 12px;font-size:13px;margin-bottom:16px}.kv span:nth-child(odd){color:var(--text2)}
+.chk label{display:inline-flex;gap:6px;align-items:center;margin:0 16px 8px 0;font-size:13px}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><b>i-AM</b><small>TALENT</small></div>
+    <nav class="nav">
+      <a><i>⌂</i>Home</a>
+      <a><i>◉</i>My Profile</a>
+      <a><i>⋔</i>Position</a>
+      <a><i>☺</i>Employee</a>
+      <a><i>↥</i>Succession</a>
+      <a class="sub act" data-nav="main" href="#" onclick="goPage('main');return false">Traffic Light &amp; Vacancy <span class="chip-new">Baru</span></a>
+      <a class="sub">Materi TRM</a>
+      <a class="sub">Succession Specialist</a>
+      <a class="sub">Succession Expert</a>
+      <a><i>★</i>Aspiration</a>
+      <a><i>▣</i>Talent Marketplace</a>
+      <a><i>▤</i>Internal Job Posting</a>
+      <a><i>✎</i>Masa Evaluasi Pekerja</a>
+      <a><i>◷</i>Monitoring Pekerja <span class="chip-new" style="background:var(--pri-soft)">Baru</span></a>
+      <a class="sub" data-nav="mon" href="#" onclick="goPage('mon');return false">IMPTU &amp; Tugas Belajar <span class="chip-new">Baru</span></a>
+      <a class="sub dis">Pekerja MEP &amp; Lepas Pj <span class="soon">Segera</span></a>
+      <a class="sub dis">Data Material HR HSH <span class="soon">Segera</span></a>
+      <a><i>◐</i>Non SAP</a>
+      <a><i>▥</i>Dashboard Analytics</a>
+    </nav>
+    <div class="side-foot"><span>powered by Enterprise IT</span><span>Version 6.0.0</span></div>
+  </aside>
+
+  <div>
+    <div class="top"><span>⊟</span><span class="sp"></span><span title="Unduh">⤓</span><span title="Tasklist">☑</span><span title="Notifikasi">🔔︎</span></div>
+
+    <!-- ================= MAIN PAGE ================= -->
+    <section id="pg-main">
+      <div class="ph">
+        <div class="ph-row">
+          <h1>Traffic Light &amp; Vacancy</h1>
+          <button class="btn-t">Riwayat Generate</button>
+          <button class="btn-o" onclick="goPage('param')">⚙ Pengaturan Parameter</button>
+          <button class="btn-p" onclick="openGen()">↻ Generate Ulang</button>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-t="tl">Traffic Light</button>
+          <button class="tab" data-t="vr">Vacancy Rate &amp; Heatmap</button>
+          <button class="tab" data-t="rk">Rekap Talent Mobility</button>
+          <button class="tab" data-t="ex">Exception<span class="badge">1</span></button>
+        </div>
+      </div>
+
+      <div class="main">
+        <!-- Scope card (shared, values swap per tab) -->
+        <div class="card">
+          <div class="card-h">
+            <h2>Cakupan Analisis</h2>
+            <span class="seg-l">Sudut Pandang</span>
+            <div class="seg" id="pov"><button class="on" data-p="org">Struktur Organisasi</button><button data-p="fp">Fungsi Pembina</button></div>
+            <button class="btn-t">↻ Change Search</button>
+          </div>
+          <div class="scope" id="scope"></div>
+        </div>
+
+        <!-- ===== TAB TRAFFIC LIGHT ===== -->
+        <div id="t-tl">
+          <div class="kpis">
+            <div class="kpi"><label>Formasi</label><div class="v">15</div><div class="s">Posisi dummy dikecualikan</div></div>
+            <div class="kpi" style="border-left-color:var(--merah)"><label>P1 · High (Merah)</label><div class="v">4<small>26.7%</small></div><div class="s">Prioritas 1 mobilitas</div></div>
+            <div class="kpi" style="border-left-color:var(--kuning)"><label>P2 · Moderate (Kuning)</label><div class="v">5<small>33.3%</small></div><div class="s">Prioritas 2 mobilitas</div></div>
+            <div class="kpi" style="border-left-color:var(--hijau)"><label>P3 · Low (Hijau)</label><div class="v">3<small>20.0%</small></div><div class="s">Prioritas 3 mobilitas</div></div>
+            <div class="kpi" style="border-left-color:var(--vac)"><label>Vacant</label><div class="v">2<small>13.3%</small></div><a onclick="showTab('ex')">1 record Undefined, lengkapi di tab Exception</a></div>
+          </div>
+          <div class="banner"><span>ⓘ</span><span class="sp">Data ZHRPA044 ditarik otomatis pada 03 November 2026, 06:00 WIB berdasarkan ID post yang ditetapkan. Traffic light dihitung ulang setiap generate.</span><span class="lock">🔒︎ Sangat Rahasia</span></div>
+          <div class="card legend">
+            <span class="f">Total Poin = 25% Lama di Jabatan + 25% Lama di Lokasi + 25% Lama di Cost Center + 25% Performance (SMK × Lama di PRL BS). Skala 1.00–3.00.</span>
+            <span class="pill p-m">Merah P1 · ≥ 2.10</span><span class="pill p-k">Kuning P2 · 1.50–2.09</span><span class="pill p-h">Hijau P3 · &lt; 1.50</span>
+          </div>
+          <div class="card">
+            <div class="tool">
+              <span class="inp">⌕ Cari nama, nopek, ID post</span>
+              <span class="sel">Traffic Light ▾</span><span class="sel">Department ▾</span><span class="sel">Eligibility Promosi ▾</span><span class="sel">Status Posisi ▾</span>
+              <label style="font-size:13px;color:var(--text2);display:flex;gap:6px;align-items:center"><input type="checkbox"> Hanya yang disesuaikan</label>
+              <span style="flex:1"></span><button class="btn-o btn-sm">Export</button>
+            </div>
+            <div class="tw"><table id="tlTable"><thead><tr>
+              <th>ID Post</th><th>Posisi</th><th>Department</th><th>Nopek</th><th>Nama</th><th>Lama di Jabatan</th><th>Lama di Lokasi</th><th>Lama di CC</th><th>SMK</th><th>Lama di PRL BS</th><th>Total Poin</th><th>Traffic Light</th><th>Eligibility Promosi</th><th>Aksi</th>
+            </tr></thead><tbody></tbody></table></div>
+            <div class="pag"><span>Rows per page: 10 ▾</span><span>Menampilkan 1–8 dari 15</span><span>‹ ›</span></div>
+          </div>
+        </div>
+
+        <!-- ===== TAB VACANCY ===== -->
+        <div id="t-vr" class="hidden">
+          <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+            <div class="kpi"><label>Total Formasi</label><div class="v">582</div><div class="s">Posisi dummy dikecualikan</div></div>
+            <div class="kpi" style="border-left-color:var(--pri)"><label>Terisi</label><div class="v">444</div></div>
+            <div class="kpi" style="border-left-color:var(--vac)"><label>Lowong</label><div class="v">138</div></div>
+            <div class="kpi" style="border-left-color:var(--pri)"><label>Vacancy Rate</label><div class="v">23.7%</div><div class="s">Fill rate 76.3%</div></div>
+          </div>
+          <div style="margin-bottom:14px"><span class="seg-l">Rekap per</span><div class="seg"><button class="on">Subholding</button><button>Grup Pembina Holding</button><button>PRL</button></div></div>
+          <div class="grid2">
+            <div class="card"><div class="card-h"><h3>Formasi Terisi vs Lowong per Entitas</h3><button class="kebab" onclick="openIns('Formasi Terisi vs Lowong per Entitas')" aria-label="Menu">⋮</button></div><div class="card-b" id="hbars"></div></div>
+            <div class="card"><div class="card-h"><h3>Rincian Vacancy Rate</h3><button class="kebab" onclick="openIns('Rincian Vacancy Rate')" aria-label="Menu">⋮</button></div>
+              <table id="vrTable"><thead><tr><th>Entitas</th><th style="text-align:right">Formasi</th><th style="text-align:right">Terisi</th><th style="text-align:right">Lowong</th><th style="text-align:right">Vacancy</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+          <div class="card"><div class="card-h"><h3>Heatmap Vacancy Rate per PRL</h3><span id="htip" style="font-size:12px;color:var(--text2)">Arahkan kursor ke sel untuk detail</span><button class="kebab" onclick="openIns('Heatmap Vacancy Rate per PRL')" aria-label="Menu">⋮</button></div>
+            <div class="card-b tw"><table class="heat" id="heat"></table>
+              <div class="lg"><span><i style="background:var(--h1)"></i>0–5%</span><span><i style="background:var(--h2)"></i>5–10%</span><span><i style="background:var(--h3)"></i>10–20%</span><span><i style="background:var(--h4)"></i>20–30%</span><span><i style="background:var(--h5)"></i>≥ 30%</span><span><i style="background:var(--hx)"></i>Tidak ada formasi</span><span style="margin-left:auto">Ambang batas dapat dikonfigurasi admin</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== TAB REKAP ===== -->
+        <div id="t-rk" class="hidden">
+          <div class="banner hidden" id="fpBanner"><span>ⓘ</span><span>Mapping posisi ke fungsi pembina dikelola admin. 312 posisi ter-mapping ke Internal Audit.</span></div>
+          <div class="grid2">
+            <div class="card"><div class="card-h"><h3 id="rkTitle">Komposisi Traffic Light per Divisi</h3><div class="seg"><button class="on">Persentase</button><button>Jumlah</button></div><button class="kebab" onclick="openIns('Komposisi Traffic Light')" aria-label="Menu">⋮</button></div>
+              <div class="card-b"><div class="cols" id="cols"></div><div class="collbl" id="collbl"></div>
+                <div class="lg" style="justify-content:center"><span><i style="background:var(--hijau)"></i>Hijau</span><span><i style="background:var(--kuning)"></i>Kuning</span><span><i style="background:var(--merah)"></i>Merah</span><span><i style="background:var(--undef)"></i>Undefined</span><span><i style="background:var(--vac)"></i>Vacant</span></div>
+                <div class="help" style="text-align:center">Klik segmen untuk drill-down ke daftar posisi</div>
+              </div></div>
+            <div class="card"><div class="card-h"><h3>Rekap Pivot</h3></div><table id="pv"></table></div>
+          </div>
+        </div>
+
+        <!-- ===== TAB EXCEPTION ===== -->
+        <div id="t-ex" class="hidden">
+          <div class="banner warn"><span>⚠</span><span>1 record memiliki status kosong atau tidak valid dari ZHRPA044. Perhitungan record lain tetap berjalan. Lengkapi untuk menyertakan record ini dalam traffic light.</span></div>
+          <div class="card"><div class="tw"><table><thead><tr><th>ID Post</th><th>Posisi</th><th>Nopek</th><th>Nama</th><th>Status dari ZHRPA044</th><th>Masalah</th><th>Lengkapi Status</th><th>Aksi</th></tr></thead>
+            <tbody>
+              <tr id="exRow"><td>30331404</td><td>Analyst Asset Reliability</td><td>7100104</td><td>Yoga Pratama</td><td class="muted">kosong</td><td>Kolom status tidak terisi</td><td><select class="sel" id="exSel"><option>Filled</option><option>Vacant</option><option>Dummy</option></select></td><td><button class="btn-p btn-sm" onclick="saveEx()">Simpan</button></td></tr>
+              <tr style="opacity:.6"><td>30331399</td><td>Sr Analyst Asset Strategy</td><td>7100099</td><td>Rizky Hidayat</td><td class="muted">kosong</td><td>Kolom status tidak terisi</td><td><s>kosong</s> → Filled<span class="sub">Hendra W., 02 Nov 2026</span></td><td style="color:var(--hijau);font-weight:600">✓ Sudah dilengkapi</td></tr>
+            </tbody></table></div>
+            <div class="pag" style="justify-content:space-between"><span>Setiap perubahan tercatat: user, waktu, nilai lama dan nilai baru.</span><button class="btn-t btn-sm">Lihat Log Perubahan</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PARAM PAGE ================= -->
+    <section id="pg-param" class="hidden">
+      <div class="ph" style="padding-bottom:20px">
+        <div class="bc"><span class="lnk" style="cursor:pointer" onclick="goPage('main')">Traffic Light &amp; Vacancy</span> / Pengaturan Parameter</div>
+        <div class="ph-row"><h1>Pengaturan Parameter</h1><span class="pill p-v" style="margin-right:8px">Admin I-AM Talent (HCISA)</span><button class="btn-t">Batalkan Perubahan</button><button class="btn-p" onclick="toast('Parameter v1.3 disimpan, berlaku untuk generate berikutnya')">Simpan &amp; Terapkan</button></div>
+      </div>
+      <div class="main">
+        <div class="banner"><span>ⓘ</span><span>Perubahan parameter berlaku untuk generate berikutnya. Versi aktif: v1.2 sejak 01 Okt 2026.</span></div>
+        <div class="card vtabs">
+          <div class="vl" id="vl">
+            <button class="on" data-v="kb">Komponen &amp; Bobot</button><button data-v="mx">Matriks Performance</button><button data-v="at">Ambang Traffic Light</button><button data-v="ah">Ambang Heatmap Vacancy</button><button data-v="rv">Riwayat Versi</button>
+          </div>
+          <div>
+            <div id="v-kb" class="card-b"><table><thead><tr><th>Komponen</th><th>Bobot (%)</th><th>Batas Poin 3</th><th>Batas Poin 2</th><th>Batas Poin 1</th><th>Aktif</th></tr></thead><tbody>
+              <tr><td>Lama di Jabatan</td><td><input class="fld" value="25"></td><td><input class="fld" value="≥ 3 th 0 bl"></td><td><input class="fld" value="2 th 0 bl – < 3 th 0 bl"></td><td><input class="fld" value="< 2 th 0 bl"></td><td>●━</td></tr>
+              <tr><td>Lama di Lokasi</td><td><input class="fld" value="25"></td><td><input class="fld" value="≥ 3 th 0 bl"></td><td><input class="fld" value="2 th 0 bl – < 3 th 0 bl"></td><td><input class="fld" value="< 2 th 0 bl"></td><td>●━</td></tr>
+              <tr><td>Lama di Cost Center</td><td><input class="fld" value="25"></td><td><input class="fld" value="≥ 3 th 0 bl"></td><td><input class="fld" value="2 th 0 bl – < 3 th 0 bl"></td><td><input class="fld" value="< 2 th 0 bl"></td><td>●━</td></tr>
+              <tr><td>Performance</td><td><input class="fld" value="25"></td><td colspan="3"><span class="lnk" style="cursor:pointer" onclick="vt('mx')">Lihat Matriks Performance</span></td><td>●━</td></tr>
+            </tbody></table>
+            <div class="help" style="color:var(--hijau)">✓ Total bobot 100%</div>
+            <div class="help">Format masa kerja: tahun dan bulan (contoh 3 th 11 bl), bukan desimal.</div></div>
+            <div id="v-mx" class="card-b hidden"><table class="mx"><thead><tr><th>Poin \ SMK</th><th>5</th><th>5.5</th><th>6</th><th>6.5</th><th>7</th></tr></thead><tbody>
+              <tr><td style="background:var(--merah)">Poin 3</td><td><input class="fld" value="≥ 4 th 0 bl"></td><td><input class="fld" value="≥ 3 th 9 bl"></td><td><input class="fld" value="≥ 3 th 6 bl"></td><td><input class="fld" value="≥ 3 th 3 bl"></td><td><input class="fld" value="≥ 3 th 0 bl"></td></tr>
+              <tr><td style="background:var(--kuning)">Poin 2</td><td><input class="fld" value="2 th 7 bl – 3 th 11 bl"></td><td><input class="fld" value="2 th 4 bl – 3 th 8 bl"></td><td><input class="fld" value="2 th 1 bl – 3 th 5 bl"></td><td><input class="fld" value="2 th 0 bl – 3 th 2 bl"></td><td><input class="fld" value="1 th 7 bl – 2 th 11 bl"></td></tr>
+              <tr><td style="background:var(--hijau)">Poin 1</td><td><input class="fld" value="≤ 2 th 6 bl"></td><td><input class="fld" value="≤ 2 th 3 bl"></td><td><input class="fld" value="≤ 2 th 0 bl"></td><td><input class="fld" value="≤ 1 th 9 bl"></td><td><input class="fld" value="≤ 1 th 6 bl"></td></tr>
+            </tbody></table><div class="help">Nilai Lama di PRL BS; SMK mengacu periode terakhir yang telah final.</div></div>
+            <div id="v-at" class="card-b hidden">
+              <table><tbody>
+                <tr><td><span class="pill p-m">Merah · P1 High</span></td><td>Total Poin</td><td><input class="fld" value="≥ 2.10"></td></tr>
+                <tr><td><span class="pill p-k">Kuning · P2 Moderate</span></td><td>Total Poin</td><td><input class="fld" value="≥ 1.50 dan < 2.10"></td></tr>
+                <tr><td><span class="pill p-h">Hijau · P3 Low</span></td><td>Total Poin</td><td><input class="fld" value="< 1.50"></td></tr>
+              </tbody></table>
+              <div class="scale"><span style="flex:25;background:var(--hijau)">1.00 – 1.49</span><span style="flex:30;background:var(--kuning)">1.50 – 2.09</span><span style="flex:45;background:var(--merah)">2.10 – 3.00</span></div>
+            </div>
+            <div id="v-ah" class="card-b hidden"><div class="scale"><span style="flex:1;background:var(--h1);color:#8A3A00">0–5%</span><span style="flex:1;background:var(--h2);color:#8A3A00">5–10%</span><span style="flex:1;background:var(--h3);color:#7A2E00">10–20%</span><span style="flex:1;background:var(--h4)">20–30%</span><span style="flex:1;background:var(--h5)">≥ 30%</span></div><div class="help">Lima band, batas dapat diubah per band.</div></div>
+            <div id="v-rv" class="card-b hidden"><div class="tl"><div class="e"><b>v1.2</b> · 01 Okt 2026 · Admin HCISA<div class="q">Penyesuaian matriks performance SMK 7.</div></div><div class="e"><b>v1.1</b> · 15 Jul 2026 · Admin HCISA<div class="q">Baseline dari ketentuan traffic light talent mobility.</div></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MONITORING IMPTU & TB ================= -->
+    <section id="pg-mon" class="hidden">
+      <div class="ph" style="padding-bottom:20px">
+        <div class="bc">Monitoring Pekerja / IMPTU &amp; Tugas Belajar</div>
+        <div class="ph-row"><h1>Monitoring IMPTU &amp; Tugas Belajar</h1>
+          <span class="pill p-v" style="margin-right:6px">Akses Anda: HCBP Holding · seluruh entitas</span>
+          <button class="btn-t">Atur Penanda</button>
+          <button class="btn-p" onclick="open('mDl')">⤓ Unduh Data</button></div>
+      </div>
+      <div class="main">
+        <div class="card">
+          <div class="card-h"><h2>Filter</h2><span class="seg-l">Jenis</span>
+            <div class="seg" id="mJenis"><button class="on" data-j="all">Semua</button><button data-j="TB">Tugas Belajar</button><button data-j="IM">IMPTU</button></div>
+            <button class="btn-t" onclick="resetMon()">Reset Filter</button></div>
+          <div class="tool" style="padding:16px 22px">
+            <input class="inp" id="mQ" placeholder="Cari nama, nopek, posisi" style="color:var(--text)">
+            <select class="sel" id="mEnt"><option value="">Semua entitas</option></select>
+            <select class="sel" id="mFn"><option value="">Semua fungsi</option></select>
+            <select class="sel" id="mSt"><option value="">Semua status</option><option>Berjalan</option><option>Akan segera kembali</option><option>Lewat tanggal berakhir</option></select>
+            <select class="sel" id="mEnd"><option value="">Tanggal berakhir: semua</option><option value="90">≤ 90 hari ke depan</option><option value="180">≤ 180 hari ke depan</option></select>
+          </div>
+        </div>
+        <div class="banner"><span>ⓘ</span><span class="sp">Data HRIS+ (SAP HCM) per 04 November 2026, 06:00 WIB. Penanda "akan segera kembali" = tanggal berakhir ≤ 90 hari ke depan (dapat dikonfigurasi admin).</span><span class="lock" style="color:var(--text2);border-color:var(--border)">Terbatas</span></div>
+        <div class="kpis" id="mKpi"></div>
+
+        <div class="card"><div class="card-h"><h3>Jadwal Kembali Bertugas</h3><span style="font-size:12px;color:var(--text2)">Berdasarkan tanggal berakhir penugasan/tugas belajar</span></div><div class="card-b"><div class="ret" id="mRet"></div></div></div>
+
+        <div class="grid2">
+          <div class="card"><div class="card-h"><h3>Rekap per Entitas</h3><button class="kebab" aria-label="Menu">⋮</button></div><div class="card-b" id="mEntBars"></div></div>
+          <div class="card"><div class="card-h"><h3>Rekap per Fungsi</h3><button class="kebab" aria-label="Menu">⋮</button></div><table id="mFnTbl"></table></div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>Daftar Pekerja</h3><span id="mCount" style="font-size:13px;color:var(--text2)"></span><button class="btn-o btn-sm" onclick="open('mDl')">Unduh</button></div>
+          <div class="tw"><table id="mTbl"><thead><tr><th>Nopek</th><th>Nama</th><th>Jenis</th><th>Entitas</th><th>Fungsi</th><th>Keterangan</th><th>Periode</th><th>Sisa</th><th>Status</th><th>Penempatan Kembali</th><th>Aksi</th></tr></thead><tbody></tbody></table></div>
+          <div class="note" style="padding-top:12px">Alasan pengajuan IMPTU tidak ditampilkan di dashboard. Detail mengikuti hak akses dokumen sumber.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Overlay + drawers -->
+<div class="overlay" id="ov" onclick="closeAll()"></div>
+
+<aside class="drawer" id="dAdj" aria-label="Adjust poin">
+  <div class="dh"><h3><span>Adjust Poin Talent Mobility</span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3>
+    <div style="font-size:13px;color:var(--text2)">Dimas Prasetyo · 7100103 · Analyst Asset Operation · ID Post 30331403</div>
+    <div style="margin-top:8px"><span class="lock">🔒︎ Sangat Rahasia</span></div></div>
+  <div class="db">
+    <div class="comp hd"><span>Komponen</span><span>Nilai</span><span>Bobot</span><span>Sistem</span><span>Adjust</span></div>
+    <div class="comp"><span>Lama di Jabatan</span><span>2 th 2 bl</span><span>25%</span><span class="ro">2</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
+    <div class="comp hl"><span>Lama di Lokasi</span><span>6 th 0 bl</span><span>25%</span><span class="ro">3</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
+    <div class="comp"><span>Lama di Cost Center</span><span>2 th 2 bl</span><span>25%</span><span class="ro">2</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
+    <div class="comp"><span>Performance</span><span>SMK 6.5 × 2 th 4 bl</span><span>25%</span><span class="ro">2</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
+    <div class="cmp"><div><label>Hasil Sistem</label><b>2.25</b><span class="pill p-m">Merah P1</span></div><div style="text-align:center;color:var(--text3)">→</div><div><label>Setelah Adjust</label><b id="adjVal">2.00</b><span id="adjPill" class="pill p-k">Kuning P2</span></div></div>
+    <label style="font-size:13px;font-weight:600">Justifikasi <span style="color:var(--merah)">*</span></label>
+    <textarea id="just">Pekerja baru kembali dari Tugas Belajar 2 tahun; lama di lokasi dihitung sejak penempatan kembali sesuai kebijakan HCBP.</textarea>
+    <div class="err" id="justErr">Isi justifikasi sebelum menyimpan</div>
+    <div class="help">Poin hasil sistem tetap tersimpan sebagai pembanding.</div>
+    <div style="margin-top:16px;border:1px dashed var(--border);border-radius:6px;padding:14px;text-align:center;font-size:13px;color:var(--text2)">⤒ Dokumen pendukung (opsional)</div>
+  </div>
+  <div class="df"><button class="btn-t btn-sm" onclick="resetAdj()">Reset ke Sistem</button><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="saveAdj()">Simpan Adjustment</button></div>
+</aside>
+
+<aside class="drawer" id="dLog" aria-label="Riwayat perubahan">
+  <div class="dh"><h3><span>Riwayat Perubahan</span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3><div style="font-size:13px;color:var(--text2)">Dimas Prasetyo · ID Post 30331403</div></div>
+  <div class="db"><div class="tl">
+    <div class="e"><b>Hendra W.</b> <span style="color:var(--text2)">(Sr Analyst HCBP)</span><div class="help">03 Nov 2026 14:12 WIB</div>
+      <div style="margin-top:6px;font-size:13px">Poin Lama di Lokasi <s>3</s> → 2; Total Poin <s>2.25</s> → 2.00; Traffic Light <s>Merah P1</s> → Kuning P2</div>
+      <div class="q">“Pekerja baru kembali dari Tugas Belajar 2 tahun; lama di lokasi dihitung sejak penempatan kembali sesuai kebijakan HCBP.”</div></div>
+    <div class="e"><b>Sistem</b><div class="help">03 Nov 2026 06:00 WIB</div><div style="margin-top:6px;font-size:13px">Generate dari ZHRPA044: Total Poin 2.25 · Merah P1</div></div>
+  </div></div>
+</aside>
+
+<!-- Drill-down modal -->
+<div class="modal-wrap" id="mDrill"><div class="modal">
+  <div class="card-h"><h3 id="drillT">Legal Litigation · Merah P1</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <table><thead><tr><th>ID Post</th><th>Posisi</th><th>Nama</th><th style="text-align:right">Total Poin</th><th>Eligibility Promosi</th></tr></thead><tbody id="drillB"></tbody></table>
+  <div class="pag" style="justify-content:space-between"><span class="lnk" style="cursor:pointer" onclick="closeAll();showTab('tl')">Buka di tab Traffic Light</span><span>1–5 · ‹ ›</span></div>
+</div></div>
+
+<!-- Insert to materi modal -->
+<div class="modal-wrap" id="mIns"><div class="modal" style="width:640px">
+  <div class="card-h"><h3>Sisipkan ke Materi Pra-TRM</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <div class="card-b">
+    <div style="background:var(--th);border-radius:8px;padding:22px;text-align:center;color:var(--text2);font-size:13px;margin-bottom:16px">Preview: <b id="insName" style="color:var(--text)"></b></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">Pilih materi tujuan</div>
+    <label style="display:block;padding:6px 0"><input type="radio" name="m" checked> Draft Materi Pra-TRM Legal – Nov 2026 <span class="help">(v3, diubah 02 Nov)</span></label>
+    <label style="display:block;padding:6px 0"><input type="radio" name="m"> Draft Materi Pra-TRM Asset Management – Nov 2026 <span class="help">(v1)</span></label>
+    <label style="display:block;padding:6px 0" class="lnk"><input type="radio" name="m"> + Buat materi baru</label>
+    <div style="font-size:13px;font-weight:600;margin:14px 0 8px">Komponen yang disisipkan</div>
+    <label style="margin-right:16px"><input type="checkbox" checked> Grafik</label><label style="margin-right:16px"><input type="checkbox" checked> Tabel rincian</label><label><input type="checkbox" checked> Catatan cakupan dan tanggal data</label>
+    <div class="help">Data disisipkan sebagai snapshot per 03 Nov 2026 dan dapat diperbarui dari materi.</div>
+  </div>
+  <div class="df"><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="closeAll();toast('Grafik berhasil disisipkan ke Draft Materi Pra-TRM Legal – Nov 2026','Buka Materi')">Sisipkan</button></div>
+</div></div>
+
+<!-- Generate progress -->
+<div class="modal-wrap" id="mGen"><div class="modal" style="width:460px"><div class="card-b">
+  <h3 style="margin:0">Menarik data ZHRPA044 dan menghitung traffic light</h3>
+  <div class="prog"><span id="pbar"></span></div>
+  <div class="steps"><div>✓ Tarik data posisi</div><div>✓ Validasi status</div><div style="color:var(--pri)">◌ Hitung poin per pekerja</div><div style="color:var(--text3)">○ Tandai exception</div></div>
+  <div class="help">Estimasi 3–8 detik</div>
+</div></div></div>
+
+
+<aside class="drawer" id="dMon" aria-label="Detail pekerja">
+  <div class="dh"><h3><span id="dmName"></span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3><div id="dmSub" style="font-size:13px;color:var(--text2)"></div><div id="dmPills" style="margin-top:8px;display:flex;gap:6px"></div></div>
+  <div class="db">
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Penugasan</div>
+    <div class="kv" id="dmKv"></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Riwayat periode</div>
+    <div class="tl" id="dmTl"></div>
+    <div style="font-size:13px;font-weight:600;margin:6px 0 10px">Rencana penempatan kembali</div>
+    <div class="kv" id="dmPlan"></div>
+  </div>
+  <div class="df"><button class="btn-t btn-sm">Lihat di Traffic Light</button><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Tutup</button></div>
+</aside>
+
+<div class="modal-wrap" id="mDl"><div class="modal" style="width:600px">
+  <div class="card-h"><h3>Unduh Data IMPTU &amp; Tugas Belajar</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <div class="card-b">
+    <div class="banner" style="margin-bottom:14px"><span>ⓘ</span><span>Cakupan unduhan mengikuti hak akses Anda: HCBP Holding · seluruh entitas. Filter aktif ikut diterapkan.</span></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">Format</div>
+    <div class="chk"><label><input type="radio" name="fmt" checked> Excel (.xlsx)</label><label><input type="radio" name="fmt"> CSV</label></div>
+    <div style="font-size:13px;font-weight:600;margin:8px 0">Kolom</div>
+    <div class="chk" id="dlCols"><label><input type="checkbox" checked> Data pekerja</label><label><input type="checkbox" checked> Jenis dan keterangan</label><label><input type="checkbox" checked> Periode dan sisa hari</label><label><input type="checkbox" checked> Status dan penanda</label><label><input type="checkbox"> Rencana penempatan</label></div>
+    <div class="err" id="dlErr">Pilih minimal satu kolom</div>
+    <div class="help">Setiap unduhan tercatat di audit log (user, waktu, cakupan, filter).</div>
+  </div>
+  <div class="df"><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="doDl()">Unduh</button></div>
+</div></div>
+
+<div class="toast" id="toast"><span>✓</span><span id="toastT"></span><button id="toastB"></button></div>
+
+<script>
+const rows=[
+ ['30331401','Manager Asset Operation','Asset Operation','7100101','Budi Santoso',['4 th 2 bl',3],['7 th 1 bl',3],['4 th 2 bl',3],'6',['3 th 8 bl',3],'3.00','m','Eligible'],
+ ['30331402','Sr Analyst Asset Operation','Asset Operation','7100102','Rina Kartika',['3 th 1 bl',3],['5 th 0 bl',3],['3 th 1 bl',3],'5',['3 th 1 bl',2],'2.75','m','Eligible'],
+ ['30331403','Analyst Asset Operation','Asset Operation','7100103','Dimas Prasetyo',['2 th 2 bl',2],['6 th 0 bl',3],['2 th 2 bl',2],'6.5',['2 th 4 bl',2],'2.25','m','Not Eligible',true],
+ ['30331410','Sr Analyst Project Control','Asset Project Management Office','7100110','Sari Wulandari',['2 th 5 bl',2],['2 th 5 bl',2],['1 th 3 bl',1],'5.5',['2 th 6 bl',2],'1.75','k','Eligible'],
+ ['30331411','Analyst Project Control','Asset Project Management Office','7100111','Fajar Nugroho',['1 th 8 bl',1],['2 th 1 bl',2],['1 th 8 bl',1],'6',['2 th 3 bl',2],'1.50','k','Eligible'],
+ ['30331412','Analyst PMO Reporting','Asset Project Management Office','7100112','Ayu Lestari',['0 th 10 bl',1],['1 th 0 bl',1],['0 th 10 bl',1],'7',['1 th 2 bl',1],'1.00','h','Not Eligible'],
+ ['30331413','Jr Analyst PMO','Asset Project Management Office','—','vacant',null,null,null,'—',null,'—','v','—'],
+ ['30331404','Analyst Asset Reliability','Asset Operation','7100104','Yoga Pratama',null,null,null,'—',null,'—','u','—']
+];
+const PL={m:['p-m','Merah · P1'],k:['p-k','Kuning · P2'],h:['p-h','Hijau · P3'],v:['p-v','Vacant'],u:['p-u','Undefined']};
+const ten=t=>t?`${t[0]}<span class="sub">Poin ${t[1]} · ${(t[1]*0.25).toFixed(2)}</span>`:'<span class="muted">—</span>';
+function renderTL(){
+  document.querySelector('#tlTable tbody').innerHTML=rows.map((r,i)=>{
+    const pl=PL[r[11]];
+    const tlCell=`<span class="pill ${pl[0]}">${pl[1]}</span>${r[13]?'<span class="adj">Disesuaikan</span>':''}${r[11]==='u'?'<span class="sub miss" onclick="showTab(\'ex\')">Lengkapi status</span>':''}`;
+    const nama=r[4]==='vacant'?'<span class="muted">vacant</span>':`<span class="lnk">${r[4]}</span>`;
+    return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${nama}</td><td>${ten(r[5])}</td><td>${ten(r[6])}</td><td>${ten(r[7])}</td><td>${r[8]}</td><td>${ten(r[9])}</td><td class="num"><b>${r[10]}</b>${r[13]?'<span class="sub">Sistem 2.25</span>':''}</td><td>${tlCell}</td><td>${r[12]}</td><td>${r[11]==='v'||r[11]==='u'?'':`<button class="kebab" onclick="openDrawer('${r[13]?'dLog':'dAdj'}')" aria-label="Aksi" title="${r[13]?'Riwayat Perubahan':'Adjust Poin'}">⋮</button>`}</td></tr>`;
+  }).join('');
+}
+renderTL();
+
+const scopes={
+ tl:[['Business Group','Holding'],['Company','PT Pertamina (Persero)'],['Directorate','Penunjang Bisnis'],['Function','Asset Management'],['Division','Asset Infrastructure'],['PRL','Semua PRL']],
+ vr:[['Business Group','Holding & Subholding'],['Company','Semua'],['Periode','November 2026'],['PRL','10–25'],['',''],['','']],
+ rk:[['Business Group','Holding'],['Company','PT Pertamina (Persero)'],['Directorate','Legal'],['Function','Semua'],['Division','Semua'],['PRL','Semua PRL']],
+ fp:[['Fungsi Pembina','Internal Audit'],['Cakupan','Holding & seluruh Subholding'],['PRL','Semua PRL'],['',''],['',''],['','']]
+};
+let cur='tl',pov='org';
+function renderScope(){const k=(cur==='rk'&&pov==='fp')?'fp':(cur==='ex'?'tl':cur);document.getElementById('scope').innerHTML=scopes[k].map(s=>s[0]?`<div><label>${s[0]}</label><div>${s[1]}</div></div>`:'<div></div>').join('');}
+function showTab(t){cur=t;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));['tl','vr','rk','ex'].forEach(x=>document.getElementById('t-'+x).classList.toggle('hidden',x!==t));renderScope();if(t==='rk')renderRk();window.scrollTo(0,0);}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.t));
+document.querySelectorAll('#pov button').forEach(b=>b.onclick=()=>{pov=b.dataset.p;document.querySelectorAll('#pov button').forEach(x=>x.classList.toggle('on',x===b));if(cur!=='rk')showTab('rk');else{renderScope();renderRk();}});
+renderScope();
+
+const ent=[['Subholding Downstream',122,23],['Subholding Upstream',95,22],['Anak Perusahaan Services',75,59],['Holding',78,8],['Subholding Gas',48,23],['Integrated Marine & Logistic',12,3],['Subholding PNRE',14,0]];
+const mx=Math.max(...ent.map(e=>e[1]+e[2]));
+document.getElementById('hbars').innerHTML=ent.map(e=>{const t=e[1]+e[2];return `<div class="hbar"><span>${e[0]}</span><div class="tr" style="width:${t/mx*100}%"><span style="flex:${e[1]};background:var(--pri)">${e[1]}</span>${e[2]?`<span style="flex:${e[2]};background:var(--vac);color:var(--vac-tx)">${e[2]}</span>`:''}</div><b>${(e[2]/t*100).toFixed(1)}%</b></div>`}).join('')+'<div class="lg"><span><i style="background:var(--pri)"></i>Terisi</span><span><i style="background:var(--vac)"></i>Lowong</span></div>';
+document.querySelector('#vrTable tbody').innerHTML=ent.map(e=>{const t=e[1]+e[2],v=e[2]/t*100;return `<tr><td>${e[0]}</td><td class="num">${t}</td><td class="num">${e[1]}</td><td class="num">${e[2]}</td><td class="num"><div class="inbar"><span style="width:${v*1.2}px"></span>${v.toFixed(1)}%</div></td></tr>`}).join('')+'<tr style="font-weight:600"><td>Total</td><td class="num">582</td><td class="num">444</td><td class="num">138</td><td class="num">23.7%</td></tr>';
+
+const hc=['Holding','SH Upstream','SH Downstream','SH Gas','SH PNRE','IML','APS'];
+const band=v=>v===null?['var(--hx)','var(--text3)']:v<5?['var(--h1)','#8A3A00']:v<10?['var(--h2)','#8A3A00']:v<20?['var(--h3)','#7A2E00']:v<30?['var(--h4)','#fff']:['var(--h5)','#fff'];
+let hh='<tr><th></th>'+hc.map(c=>`<th>${c}</th>`).join('')+'</tr>';
+const prls=[];for(let p=25;p>=10;p--)prls.push('PRL '+p);prls.push('Tidak Diketahui');
+prls.forEach((p,i)=>{hh+=`<tr><td class="rl">${p}</td>`;hc.forEach((c,j)=>{
+  const n=parseInt(p.slice(4))||0;let f=Math.max(0,Math.round(((i*7+j*13)%17)+(n>=14&&n<=18?14:2)-(n>22?10:0)));
+  if(c==='SH PNRE'&&n>20)f=0;
+  let v=null;if(f>0){const hot=(n>=14&&n<=18)&&(c==='APS'||c==='SH Downstream');v=hot?30+((i*5+j)%12):((i*11+j*7)%22);}
+  const vac=v===null?0:Math.round(f*v/100);const rt=v===null?null:vac/f*100;const b=band(rt);
+  hh+=`<td style="background:${b[0]};color:${b[1]}" data-t="${p} · ${c} · Formasi ${f} · Terisi ${f-vac} · Lowong ${vac} · Vacancy ${v===null?'—':(vac/f*100).toFixed(1)+'%'}">${v===null?'—':(f?(vac/f*100).toFixed(1):'0.0')+'%'}<small>${f?'F '+f:''}</small></td>`;});hh+='</tr>';});
+const heat=document.getElementById('heat');heat.innerHTML=hh;
+heat.addEventListener('mouseover',e=>{const t=e.target.closest('td[data-t]');if(t)document.getElementById('htip').textContent=t.dataset.t;});
+
+const rkOrg=[['VP Legal',2,7,1,0,9],['Compliance',4,4,2,0,4],['Legal Advocacy',4,3,0,0,2],['Legal Contracting',11,3,3,1,4],['Legal Litigation',0,1,18,0,9]];
+const rkFp=[['Holding',9,12,6,1,8],['SH Upstream',14,10,9,0,11],['SH Downstream',11,15,13,2,10],['SH Gas',6,8,3,0,7],['SH PNRE',4,3,1,0,2],['IML',3,4,2,1,3],['APS',8,10,14,0,13]];
+const segc=['var(--hijau)','var(--kuning)','var(--merah)','var(--undef)','var(--vac)'],segn=['Hijau','Kuning','Merah P1','Undefined','Vacant'];
+function renderRk(){
+  const d=pov==='fp'?rkFp:rkOrg;
+  document.getElementById('rkTitle').textContent=pov==='fp'?'Komposisi Traffic Light · Internal Audit per Entitas':'Komposisi Traffic Light per Divisi';
+  document.getElementById('fpBanner').classList.toggle('hidden',pov!=='fp');
+  document.getElementById('cols').innerHTML=d.map((r,ri)=>{const t=r.slice(1).reduce((a,b)=>a+b,0);return `<div class="col">${r.slice(1).map((v,k)=>v?`<span style="height:${v/t*100}%;background:${segc[k]};${k===1||k===3||k===4?'color:#2a2a2a':''}" onclick="drill('${r[0]}',${k},${v})" title="${segn[k]}: ${v}">${v/t>=.06?Math.round(v/t*100)+'%':''}</span>`:'').join('')}</div>`}).join('');
+  document.getElementById('collbl').innerHTML=d.map(r=>`<div>${r[0]}</div>`).join('');
+  const tot=[0,0,0,0,0];d.forEach(r=>r.slice(1).forEach((v,k)=>tot[k]+=v));
+  document.getElementById('pv').innerHTML='<thead><tr><th>'+(pov==='fp'?'Entitas':'Divisi')+'</th><th>Hijau</th><th>Kuning</th><th>Merah</th><th>Undef</th><th>Vacant</th><th>Total</th></tr></thead><tbody>'+d.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td class="num">${v||''}</td>`).join('')}<td class="num"><b>${r.slice(1).reduce((a,b)=>a+b,0)}</b></td></tr>`).join('')+`<tr style="font-weight:600;background:var(--pri-soft)"><td>Grand Total</td>${tot.map(v=>`<td class="num">${v}</td>`).join('')}<td class="num">${tot.reduce((a,b)=>a+b,0)}</td></tr></tbody>`;
+}
+const nm=['Andi Saputra','Maya Putri','Teguh Wibowo','Lina Marlina','Arif Rahman'];
+function drill(dv,k,v){document.getElementById('drillT').textContent=`${dv} · ${segn[k]} · ${v} posisi`;
+  document.getElementById('drillB').innerHTML=nm.slice(0,Math.min(5,v)).map((n,i)=>`<tr><td>3034${k}${i}2${i}</td><td>${['Sr Analyst','Analyst','Jr Analyst','Analyst','Sr Analyst'][i]} ${dv}</td><td>${k===4?'<span class="muted">vacant</span>':n}</td><td class="num">${k===4?'—':[2.75,2.50,2.25,2.10,2.50][i].toFixed(2)}</td><td>${k===4?'—':(i%2?'Not Eligible':'Eligible')}</td></tr>`).join('');
+  open('mDrill');}
+
+function open(id){document.getElementById('ov').classList.add('on');document.getElementById(id).classList.add('on');}
+function openDrawer(id){open(id);}
+function closeAll(){document.querySelectorAll('.overlay,.drawer,.modal-wrap').forEach(e=>e.classList.remove('on'));}
+function openIns(n){document.getElementById('insName').textContent=n;open('mIns');}
+function openGen(){open('mGen');let p=10;const b=document.getElementById('pbar');b.style.width='10%';const iv=setInterval(()=>{p+=18;b.style.width=Math.min(p,100)+'%';if(p>=100){clearInterval(iv);closeAll();toast('Traffic light diperbarui · 15 posisi, 1 exception');}},350);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
+
+const sysPts=[2,3,2,2];
+function calcAdj(){const v=[...document.querySelectorAll('.adjSel')].map(s=>+s.value);const t=v.reduce((a,b)=>a+b,0)*0.25;document.getElementById('adjVal').textContent=t.toFixed(2);const p=document.getElementById('adjPill');const c=t>=2.1?['p-m','Merah P1']:t>=1.5?['p-k','Kuning P2']:['p-h','Hijau P3'];p.className='pill '+c[0];p.textContent=c[1];document.querySelectorAll('#dAdj .comp:not(.hd)').forEach((r,i)=>r.classList.toggle('hl',v[i]!==sysPts[i]));}
+document.querySelectorAll('.adjSel').forEach(s=>s.onchange=calcAdj);
+function resetAdj(){document.querySelectorAll('.adjSel').forEach((s,i)=>s.value=sysPts[i]);calcAdj();}
+const just=document.getElementById('just');just.oninput=()=>document.getElementById('justErr').style.display='none';
+function saveAdj(){if(!just.value.trim()){document.getElementById('justErr').style.display='block';return;}closeAll();toast('Adjustment disimpan dan tercatat di riwayat perubahan');}
+function saveEx(){const r=document.getElementById('exRow');r.style.opacity=.6;r.lastElementChild.innerHTML='<span style="color:var(--hijau);font-weight:600">✓ Sudah dilengkapi</span>';r.children[6].innerHTML='<s>kosong</s> → '+document.getElementById('exSel').value+'<span class="sub">Anda, baru saja</span>';document.querySelector('.tab[data-t=ex] .badge').remove();toast('Status dilengkapi · traffic light record ini dihitung pada generate berikutnya');}
+
+function goPage(p){['main','param','mon'].forEach(x=>document.getElementById('pg-'+x).classList.toggle('hidden',x!==p));document.querySelectorAll('.nav [data-nav]').forEach(a=>a.classList.toggle('act',a.dataset.nav===(p==='param'?'main':p)));window.scrollTo(0,0);}
+function vt(v){document.querySelectorAll('#vl button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));['kb','mx','at','ah','rv'].forEach(x=>document.getElementById('v-'+x).classList.toggle('hidden',x!==v));}
+document.querySelectorAll('#vl button').forEach(b=>b.onclick=()=>vt(b.dataset.v));
+
+let tt;function toast(t,btn){const e=document.getElementById('toast');document.getElementById('toastT').textContent=t;const b=document.getElementById('toastB');b.textContent=btn||'';b.style.display=btn?'':'none';e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),3200);}
+
+const TODAY=new Date('2026-11-04');
+const MON=[
+ ['7200101','Andika Pratama','TB','Holding','Internal Audit','Sr Analyst Audit','PRL 16','2024-09-01','2026-12-20','S2 · Universitas Indonesia (DN)',0,'Belum'],
+ ['7200102','Nadia Rahma','TB','SH Upstream','Keuangan','Analyst Treasury','PRL 15','2025-01-06','2027-01-31','S2 · University of Melbourne (LN)',0,'Disiapkan'],
+ ['7200103','Reza Mahendra','IM','SH Downstream','Operasi','Supervisor Operasi Kilang','PRL 17','2025-11-01','2026-10-31','—',0,'Belum'],
+ ['7200104','Siti Anggraini','IM','Holding','Legal','Analyst Legal Contracting','PRL 14','2026-03-01','2027-02-28','—',0,'Belum'],
+ ['7200105','Bagus Wicaksono','TB','SH Gas','Engineering','Sr Engineer Pipeline','PRL 17','2023-08-28','2027-08-31','S3 · TU Delft (LN)',1,'Belum'],
+ ['7200106','Putri Ramadhani','TB','APS','Human Capital','Analyst HC','PRL 13','2025-08-25','2027-07-31','S2 · ITB (DN)',0,'Belum'],
+ ['7200107','Hendri Gunawan','IM','SH Upstream','Drilling','Drilling Engineer','PRL 16','2026-01-15','2027-01-14','—',0,'Disiapkan'],
+ ['7200108','Wulan Sari','TB','Holding','Asset Management','Analyst Asset Operation','PRL 14','2024-08-26','2026-11-30','S2 · Universitas Gadjah Mada (DN)',0,'Belum'],
+ ['7200109','Fikri Alamsyah','IM','IML','Marine','Chief Officer','PRL 15','2025-06-01','2026-11-15','—',1,'Belum'],
+ ['7200110','Dewi Kusuma','TB','SH Downstream','Pemasaran','Sr Analyst Marketing','PRL 16','2025-09-01','2027-09-30','S2 · NUS (LN)',0,'Belum'],
+ ['7200111','Galih Saputro','TB','SH PNRE','Keuangan','Analyst Budget','PRL 14','2024-02-01','2026-10-20','S2 · Universitas Indonesia (DN)',0,'Belum'],
+ ['7200112','Intan Permata','IM','APS','Pengadaan','Analyst Procurement','PRL 13','2026-06-01','2027-05-31','—',0,'Belum']
+].map(r=>{const st=new Date(r[7]),en=new Date(r[8]);const sisa=Math.round((en-TODAY)/864e5);const prog=Math.max(0,Math.min(100,(TODAY-st)/(en-st)*100));
+ const status=sisa<0?'Lewat tanggal berakhir':sisa<=90?'Akan segera kembali':'Berjalan';
+ return {nopek:r[0],nama:r[1],jenis:r[2],ent:r[3],fn:r[4],pos:r[5],prl:r[6],mulai:r[7],akhir:r[8],ket:r[9],ext:r[10],plan:r[11],sisa,prog,status};});
+const fmtD=d=>new Date(d).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+const JN={TB:['p-tb','Tugas Belajar'],IM:['p-im','IMPTU']};
+const STP={'Berjalan':'p-v','Akan segera kembali':'p-k','Lewat tanggal berakhir':'p-m'};
+let mj='all';
+[...new Set(MON.map(m=>m.ent))].forEach(e=>mEnt.add(new Option(e,e)));
+[...new Set(MON.map(m=>m.fn))].sort().forEach(e=>mFn.add(new Option(e,e)));
+function monFilt(){const q=mQ.value.toLowerCase();return MON.filter(m=>(mj==='all'||m.jenis===mj)&&(!mEnt.value||m.ent===mEnt.value)&&(!mFn.value||m.fn===mFn.value)&&(!mSt.value||m.status===mSt.value)&&(!mEnd.value||(m.sisa>=0&&m.sisa<=+mEnd.value))&&(!q||(m.nama+m.nopek+m.pos).toLowerCase().includes(q)));}
+function renderMon(){
+ const d=monFilt();
+ const c=(f)=>d.filter(f).length;
+ mKpi.innerHTML=[
+  ['Total pekerja',d.length,'var(--pri)','Sesuai filter'],
+  ['Tugas Belajar aktif',c(m=>m.jenis==='TB'),'#1D9E75','DN dan LN'],
+  ['IMPTU aktif',c(m=>m.jenis==='IM'),'#7F77DD',''],
+  ['Akan segera kembali',c(m=>m.status==='Akan segera kembali'),'var(--kuning)','≤ 90 hari ke depan'],
+  ['Lewat tanggal berakhir',c(m=>m.status==='Lewat tanggal berakhir'),'var(--merah)','Belum tercatat aktif kembali']
+ ].map(k=>`<div class="kpi" style="border-left-color:${k[2]}"><label>${k[0]}</label><div class="v">${k[1]}</div><div class="s">${k[3]}</div></div>`).join('');
+ const months=[];for(let i=0;i<6;i++){const dt=new Date(2026,10+i,1);months.push(dt);}
+ const od=d.filter(m=>m.sisa<0);
+ mRet.innerHTML=`<div class="m od"><label>Lewat tanggal berakhir</label><b>${od.length}</b><div>${od.map(m=>m.nama).join('<br>')||'—'}</div></div>`+months.map((mo,i)=>{const L=d.filter(m=>{const e=new Date(m.akhir);return m.sisa>=0&&e.getMonth()===mo.getMonth()&&e.getFullYear()===mo.getFullYear();});return `<div class="m ${i<3&&L.length?'hot':''}"><label>${mo.toLocaleDateString('id-ID',{month:'long',year:'numeric'})}</label><b>${L.length}</b><div>${L.map(m=>m.nama+' · '+(m.jenis==='TB'?'TB':'IMPTU')).join('<br>')||'—'}</div></div>`}).join('');
+ const ents=[...new Set(MON.map(m=>m.ent))];const mx=Math.max(1,...ents.map(e=>d.filter(m=>m.ent===e).length));
+ mEntBars.innerHTML=ents.map(e=>{const tb=d.filter(m=>m.ent===e&&m.jenis==='TB').length,im=d.filter(m=>m.ent===e&&m.jenis==='IM').length;const t=tb+im;return `<div class="hbar" style="grid-template-columns:150px 1fr 30px"><span>${e}</span><div class="tr" style="width:${t/mx*100}%;min-width:${t?0:2}px">${tb?`<span style="flex:${tb};background:#1D9E75">${tb}</span>`:''}${im?`<span style="flex:${im};background:#7F77DD">${im}</span>`:''}</div><b>${t}</b></div>`}).join('')+'<div class="lg"><span><i style="background:#1D9E75"></i>Tugas Belajar</span><span><i style="background:#7F77DD"></i>IMPTU</span></div>';
+ const fns=[...new Set(d.map(m=>m.fn))].sort();
+ mFnTbl.innerHTML='<thead><tr><th>Fungsi</th><th style="text-align:right">TB</th><th style="text-align:right">IMPTU</th><th style="text-align:right">Akan kembali</th><th style="text-align:right">Total</th></tr></thead><tbody>'+fns.map(f=>{const r=d.filter(m=>m.fn===f);return `<tr><td>${f}</td><td class="num">${r.filter(m=>m.jenis==='TB').length}</td><td class="num">${r.filter(m=>m.jenis==='IM').length}</td><td class="num">${r.filter(m=>m.status!=='Berjalan').length||''}</td><td class="num"><b>${r.length}</b></td></tr>`}).join('')+'</tbody>';
+ mCount.textContent=`Menampilkan ${d.length} dari ${MON.length} pekerja`;
+ document.querySelector('#mTbl tbody').innerHTML=d.sort((a,b)=>a.sisa-b.sisa).map(m=>`<tr><td>${m.nopek}</td><td class="lnk" style="cursor:pointer" onclick="monDet('${m.nopek}')">${m.nama}<span class="sub">${m.pos} · ${m.prl}</span></td><td><span class="pill ${JN[m.jenis][0]}">${JN[m.jenis][1]}</span></td><td>${m.ent}</td><td>${m.fn}</td><td>${m.ket}${m.ext?`<span class="sub">Diperpanjang ${m.ext}x</span>`:''}</td><td class="per">${fmtD(m.mulai)} – ${fmtD(m.akhir)}<div class="bar"><span style="width:${m.prog}%;background:${m.sisa<0?'var(--merah)':m.sisa<=90?'var(--kuning)':'var(--pri)'}"></span></div><span class="sub">${Math.round(m.prog)}% berjalan</span></td><td class="num" style="color:${m.sisa<0?'var(--merah)':'inherit'}">${m.sisa<0?'+'+(-m.sisa)+' hari lewat':m.sisa+' hari'}</td><td><span class="pill ${STP[m.status]}">${m.status}</span></td><td>${m.status==='Berjalan'?'<span class="muted">—</span>':m.plan==='Disiapkan'?'<span class="pill p-ok">Disiapkan</span>':'<span class="pill p-m">Belum disiapkan</span>'}</td><td><button class="kebab" onclick="monDet('${m.nopek}')" aria-label="Detail">⋮</button></td></tr>`).join('')||'<tr><td colspan="11" style="text-align:center;color:var(--text2);padding:30px">Tidak ada pekerja yang sesuai filter. Ubah atau reset filter.</td></tr>';
+}
+function monDet(n){const m=MON.find(x=>x.nopek===n);dmName.textContent=m.nama;dmSub.textContent=`${m.nopek} · ${m.pos} · ${m.ent} · ${m.prl}`;
+ dmPills.innerHTML=`<span class="pill ${JN[m.jenis][0]}">${JN[m.jenis][1]}</span><span class="pill ${STP[m.status]}">${m.status}</span>`;
+ dmKv.innerHTML=`<span>Fungsi</span><span>${m.fn}</span><span>Keterangan</span><span>${m.ket}</span><span>Mulai</span><span>${fmtD(m.mulai)}</span><span>Berakhir</span><span>${fmtD(m.akhir)}</span><span>Sisa</span><span>${m.sisa<0?(-m.sisa)+' hari lewat tanggal berakhir':m.sisa+' hari'}</span>`;
+ dmTl.innerHTML=(m.ext?`<div class="e"><b>Perpanjangan 1</b><div class="help">Berakhir diubah menjadi ${fmtD(m.akhir)}</div></div>`:'')+`<div class="e"><b>Penugasan awal</b><div class="help">${fmtD(m.mulai)} · SK/Surat persetujuan tercatat di HRIS+</div></div>`;
+ dmPlan.innerHTML=`<span>Status</span><span>${m.plan==='Disiapkan'?'<span class="pill p-ok">Disiapkan</span>':'<span class="pill p-m">Belum disiapkan</span>'}</span><span>Posisi asal</span><span>${m.pos}</span><span>Posisi rencana</span><span>${m.plan==='Disiapkan'?'Sr '+m.pos.replace(/^Sr /,'')+' · usulan TRM Nov 2026':'<span class="muted">Belum ada usulan di Materi TRM</span>'}</span>`;
+ open('dMon');}
+function resetMon(){mQ.value='';mEnt.value='';mFn.value='';mSt.value='';mEnd.value='';mj='all';document.querySelectorAll('#mJenis button').forEach(b=>b.classList.toggle('on',b.dataset.j==='all'));renderMon();}
+document.querySelectorAll('#mJenis button').forEach(b=>b.onclick=()=>{mj=b.dataset.j;document.querySelectorAll('#mJenis button').forEach(x=>x.classList.toggle('on',x===b));renderMon();});
+[mQ,mEnt,mFn,mSt,mEnd].forEach(e=>e.addEventListener('input',renderMon));
+document.querySelectorAll('#dlCols input').forEach(i=>i.onchange=()=>dlErr.style.display='none');
+function doDl(){if(![...document.querySelectorAll('#dlCols input')].some(i=>i.checked)){dlErr.style.display='block';return;}closeAll();toast(`File disiapkan · ${monFilt().length} pekerja · tercatat di audit log`);}
+renderMon();
+</script>
+</body>
+</html>
