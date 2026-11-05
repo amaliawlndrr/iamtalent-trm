@@ -173,7 +173,7 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
 .prog{height:6px;background:var(--th);border-radius:3px;overflow:hidden;margin:14px 0}
 .prog span{display:block;height:100%;width:64%;background:var(--pri)}
 .steps div{padding:6px 0;font-size:13px}
-.hidden{display:none}
+.hidden{display:none!important}
 .note{font-size:12px;color:var(--text3);padding:0 22px 16px}
 :focus-visible{outline:2px solid var(--pri);outline-offset:2px}
 .nav .sub:not(.act){border-radius:0 30px 30px 0;margin-right:22px}
@@ -193,44 +193,244 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
 .ret .m.hot{border-color:var(--kuning);background:var(--kuning-bg)}
 .kv{display:grid;grid-template-columns:150px 1fr;gap:8px 12px;font-size:13px;margin-bottom:16px}.kv span:nth-child(odd){color:var(--text2)}
 .chk label{display:inline-flex;gap:6px;align-items:center;margin:0 16px 8px 0;font-size:13px}
+.fgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:16px 22px 8px}
+.fgrid label{font-size:12px;color:var(--text2);display:block;margin-bottom:4px}
+.fsel{width:100%;border:1px solid var(--border);border-radius:6px;padding:9px 10px;font-size:14px;background:var(--card);color:var(--text);font-family:inherit}
+.fsel:disabled{background:var(--th);color:var(--text3);cursor:not-allowed}
+.fsel.chg{border-color:var(--kuning);box-shadow:0 0 0 1px var(--kuning)}
+.crumb{padding:0 22px 14px;font-size:12.5px;color:var(--text2)}.crumb b{color:var(--text);font-weight:500}
+.empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:48px 20px;text-align:center;color:var(--text2);font-size:13px}.empty b{color:var(--text);font-size:15px}
+.fnote{font-size:12px;color:var(--text2);margin-left:-6px;flex:1}
+.card-h h2+.fnote{flex:1}.card-h:has(.fnote) h2{flex:0 0 auto}
+.fgrid2{padding-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 22px 14px}.chips:empty{display:none}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--pri-soft);color:var(--pri);border-radius:14px;padding:4px 6px 4px 12px;font-size:12px;font-weight:500}
+.chip button{background:none;border:0;color:var(--pri);font-size:13px;padding:0 4px;line-height:1}
+.tabbar{margin:0 0 18px;border-bottom:1px solid var(--border)}.tabbar .tab{padding:12px 22px}
+.mp-title{font-size:30px;font-weight:500;margin:0}
+.enh{background:#EEEAFB;color:#5B3FC4;border-radius:12px;padding:4px 12px;font-size:13px;font-weight:500}
+@media (prefers-color-scheme: dark){.enh{background:#2B2350;color:#C9BDF5}}
+.kcs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.kc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px;text-align:left;color:var(--text);font-family:inherit}
+.kc.on{border:2px solid var(--pri);padding:15px 17px}
+.kc label{font-size:14px;color:var(--text2);display:block;cursor:pointer}.kc .v{font-size:32px;font-weight:600;margin:2px 0}.kc .s{font-size:12.5px;color:var(--text3)}
+.kc.warn .v{color:var(--merah)}.kc.amb .v{color:#B26B00}
+.tag{display:inline-block;border-radius:14px;padding:4px 12px;font-size:12.5px;font-weight:500;white-space:nowrap}
+.t-blue{background:#E8F0FE;color:#1F56C3}.t-amb{background:#FDF1DC;color:#9A5B00}.t-grn{background:#E6F4EA;color:#2E7D32}.t-red{background:#FDE7E7;color:#C62828}.t-gry{background:var(--th);color:var(--text2)}
+@media (prefers-color-scheme: dark){.t-blue{background:#1E2A44;color:#9EC3F3}.t-amb{background:#3A2D12;color:#F2C36B}.t-grn{background:#16301F;color:#8FD3A3}.t-red{background:#3A1E1E;color:#F3A3A3}}
+.stp{display:flex;gap:4px;margin-top:7px}.stp i{width:22px;height:6px;border-radius:3px;background:var(--th)}.stp i.b{background:var(--pri)}.stp i.g{background:#3E7D2E}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:10px}
+.tcard .tabs{margin:0;padding:0 14px;border-bottom:1px solid var(--div)}
+.rk3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px}
+.pcol{display:flex;align-items:flex-end;gap:22px;height:190px;padding:8px 8px 0;border-bottom:1px solid var(--div)}
+.pcol .c{flex:1;display:flex;flex-direction:column-reverse;height:100%;cursor:pointer}.pcol .c span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600}
+.pcol .c:hover{outline:2px solid var(--pri);outline-offset:2px}
+.plbl{display:flex;gap:22px;padding:6px 8px 0;font-size:12px;color:var(--text2)}.plbl div{flex:1;text-align:center}
+.over{color:var(--merah);font-weight:600}
+#mpTbl th,#mpTbl td{padding:12px 8px}#mpTbl th:first-child,#mpTbl td:first-child{padding-left:16px}
+.chev{margin-left:auto;color:var(--text3);font-size:12px}.nav .par{font-weight:500}
+.nbadge{position:absolute;top:-10px;right:-16px;background:var(--pri);color:#fff;font-size:10px;border-radius:10px;padding:1px 5px}
+.usr{display:flex;align-items:center;gap:12px;border-left:1px solid var(--border);padding-left:20px;margin-left:10px}.usr span:first-child{text-align:right;line-height:1.3}.usr b{display:block;font-size:14px;color:var(--text)}.usr small{font-size:11px;color:var(--text2)}
+.ava{width:36px;height:36px;border-radius:50%;background:var(--pri-soft);color:var(--pri);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+.gen{max-width:460px;margin:48px auto;text-align:center}.gen h2{font-size:20px;margin:0 0 6px}.gen p{color:var(--text2);margin:0 0 24px;font-size:14px;line-height:1.5}
+.gen .fsel{margin-bottom:18px;height:46px;font-size:14px;background:var(--card)}.gen .fsel:disabled{background:#E4E6EA}
+@media (prefers-color-scheme: dark){.gen .fsel:disabled{background:#2A303B}}
+.prlbox{position:relative;text-align:left}.prlbox .lbl{position:absolute;top:-8px;left:10px;background:var(--bg);font-size:11px;color:var(--text2);padding:0 4px}
+.prlbtn{width:100%;height:46px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:14px;text-align:left;padding:0 12px;display:flex;align-items:center;justify-content:space-between}
+.prlpop{position:absolute;left:0;right:0;top:50px;background:var(--card);border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:12px;z-index:5;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:13px}
+.genbtn{width:100%;margin-top:14px;background:#1F4E8C;border:0;color:#fff;font-weight:600;letter-spacing:.5px;padding:12px;border-radius:4px;font-size:14px}
+.stat3{display:flex;gap:18px;align-items:flex-start;font-size:12px;color:var(--text2)}.stat3 b{display:block;font-size:15px;margin-top:2px}
+.sbox{background:var(--th);border-radius:8px;padding:12px 16px}.sbox h4{margin:0 0 10px;font-size:15px;display:flex}.sbox h4 a{margin-left:auto;font-size:13px;color:var(--pri);cursor:pointer;font-weight:600}
+.sgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;font-size:13px}.sgrid label{display:block;font-size:12px;color:var(--text2);margin-bottom:3px}
+.donut{width:46px;height:46px;border-radius:50%;position:relative;flex:none}.donut::after{content:"";position:absolute;inset:11px;background:var(--card);border-radius:50%}
+.dcard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.dtop{display:flex;align-items:center;gap:14px}.dtop .t{flex:1}.dtop label{font-size:12.5px;color:var(--text2)}.dtop b{display:block;font-size:20px;font-weight:500;margin-top:2px}
+.lgl{display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-top:12px}.lgl i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:10px;vertical-align:-1px}
+.ico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.sec-h{display:flex;align-items:center;margin:26px 0 6px}.sec-h h3{font-size:19px;font-weight:500;margin:0;flex:1}.sec-s{color:var(--text2);font-size:14px;margin-bottom:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.g2>div,.g3>div{min-width:0}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.emp{display:flex;align-items:center;gap:10px}.emp .ava{width:34px;height:34px;font-size:12px}.emp b{display:block;font-weight:600;font-size:13px}.emp small{color:var(--text2);font-size:12px}
+.bigt{font-size:20px;margin:2px 0 4px}
+.drop{border:2px dashed var(--border);border-radius:10px;padding:40px;text-align:center;color:var(--text2)}
+.gchip{display:inline-flex;align-items:center;gap:6px;background:var(--pri-soft);color:var(--pri);border-radius:14px;padding:4px 6px 4px 12px;font-size:12px;font-weight:500}.gchip button{background:none;border:0;color:var(--pri)}
+.grp .subs{overflow:hidden}.grp.closed .subs{display:none}.grp .chev{transition:transform .2s;transform:rotate(180deg)}.grp.closed .chev{transform:none}
+.grp.hasact>.par{color:var(--pri)}
+.app{transition:grid-template-columns .2s}.app.rail{grid-template-columns:72px minmax(0,1fr)}
+.rail .nav .t,.rail .nav .chev,.rail .nav .chip-new,.rail .subs,.rail .logo small,.rail .side-foot{display:none}
+.rail .nav a{justify-content:center;padding:14px 0}.rail .nav a i{width:auto;font-size:17px}.rail .logo b{font-size:20px}
+.rail .nav [data-nav].act{border-radius:0;margin-right:0}
+.rail .grp.hasact>.par{background:var(--pri-soft)}
+.colbtn{background:none;border:0;color:var(--text2);font-size:15px;padding:2px 6px;border-radius:4px;transition:transform .2s}.colbtn:hover{background:var(--th)}
+.card.cc>:not(.card-h){display:none!important}.card.cc>.card-h{border-bottom:0}.card.cc .colbtn,.sec-h.cc .colbtn{transform:rotate(-90deg)}
+.sec-h .colbtn{margin-right:6px}
+@media (prefers-reduced-motion: reduce){.app,.grp .chev,.colbtn{transition:none}}
+.stepbar{display:flex;align-items:center;background:var(--card);border-bottom:1px solid var(--border);padding:14px 32px;gap:10px}
+.stepbar .st{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);white-space:nowrap}.stepbar .st b{font-size:18px;color:var(--text3)}
+.stepbar .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text3)}
+.stepbar .st.done .dot{background:var(--pri);border-color:var(--pri);color:#fff}.stepbar .st.done b,.stepbar .st.cur b{color:var(--text)}
+.stepbar .st.cur .dot{border-color:var(--pri);color:var(--pri);box-shadow:0 0 0 4px var(--pri-soft)}.stepbar .st.red .dot{background:var(--merah);border-color:var(--merah);color:#fff}
+.stepbar .ln{flex:1;height:2px;background:var(--border)}.stepbar .ln.done{background:var(--pri)}.stepbar .st.x{opacity:.5}
+.trmbox{display:grid;grid-template-columns:220px 1fr;gap:20px;border:1px solid var(--border);border-radius:8px;padding:16px}.trmbox>div:first-child{border-right:1px solid var(--div)}
+.filechip{display:inline-flex;align-items:center;gap:8px;background:var(--th);border-radius:8px;padding:8px 12px;font-size:13px}
+.cand{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--th);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px}
+.cand .cw{width:210px}.cand .emp small{display:block}
+.cbox{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:14px}.cbox label{font-size:12px;color:var(--text2)}
+.jb{width:250px;border-radius:8px;padding:10px 12px;color:#fff;background:linear-gradient(90deg,#2F5FC8,#5B8DEF);line-height:1.4}.jb.dark{background:#3A3A3A}.jb small{display:block;font-size:11.5px;opacity:.9}.jb b{font-weight:500;font-size:14px}
+.chevbtn{width:56px;height:36px;border:1px solid var(--text2);border-radius:4px;background:var(--card);color:var(--text);font-size:16px}
+.cand .cdet{display:none;flex-basis:100%;background:var(--card);border-radius:8px;padding:12px 16px;font-size:13px}.cand.open .cdet{display:block}.cand.open .chevbtn{transform:rotate(180deg)}
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.cn{background:var(--pri-soft);color:var(--pri);border-radius:14px;padding:5px 12px;font-size:13px;font-weight:500}.arr{color:var(--text3)}
+.mrow{display:flex;align-items:center;background:var(--th);border-radius:8px;padding:10px 14px;margin-bottom:8px}
+.apcard{background:linear-gradient(180deg,#EEF7F0,var(--card) 220px)}@media (prefers-color-scheme: dark){.apcard{background:var(--card)}}
+.aflow{position:relative;display:flex;align-items:flex-start;padding:8px 10px 64px}
+.an{width:190px;text-align:center;position:relative;z-index:1;flex:none}.an b{display:block;font-size:13.5px;margin-top:4px}.an small{display:block;font-size:11.5px;color:var(--text2)}
+.ab{width:56px;height:56px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;background:#D5D9DF;color:#fff;border:3px solid #fff;box-shadow:0 0 0 1px var(--border)}
+.an.ok .ab{background:#2E9E5B}.an.cur .ab{background:var(--card);color:var(--pri);box-shadow:0 0 0 3px var(--pri),0 0 0 8px var(--pri-soft)}.an.no .ab{background:var(--merah)}.an.x .ab{background:#9AA1AC}
+.ar{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--text3)}.as{font-size:11.5px;margin-top:4px;color:var(--text2)}.an.cur .as{color:var(--pri);font-weight:600}.an.no .as{color:var(--merah);font-weight:600}.an.ok .as{color:var(--hijau)}
+.al{flex:1;height:3px;background:#D5D9DF;margin-top:28px;border-radius:2px}.al.on{background:#2E9E5B}
+.loop{position:absolute;left:95px;right:95px;bottom:22px;height:40px;width:calc(100% - 190px);color:var(--text3)}.looptxt{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:11.5px;color:var(--text3)}
+.stamp{display:inline-block;margin-top:8px;border:3px solid #2E9E5B;color:#2E9E5B;font-weight:800;letter-spacing:2px;padding:2px 10px;transform:rotate(-4deg);font-size:13px}
+.apgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;border-top:1px solid var(--div);padding-top:16px}.h4{margin:0 0 12px;font-size:14px}
+.actbox{background:var(--th);border-radius:8px;padding:14px}
+.tl .e.tr-ok::before{background:#2E9E5B}.tl .e.tr-no::before,.tl .e.tr-ret::before{background:var(--merah)}.tl .e.tr-x::before{background:#9AA1AC}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="side">
     <div class="logo"><b>i-AM</b><small>TALENT</small></div>
-    <nav class="nav">
-      <a><i>⌂</i>Home</a>
-      <a><i>◉</i>My Profile</a>
-      <a><i>⋔</i>Position</a>
-      <a><i>☺</i>Employee</a>
-      <a><i>↥</i>Succession</a>
-      <a class="sub act" data-nav="main" href="#" onclick="goPage('main');return false">Traffic Light &amp; Vacancy <span class="chip-new">Baru</span></a>
-      <a class="sub">Materi TRM</a>
-      <a class="sub">Succession Specialist</a>
-      <a class="sub">Succession Expert</a>
-      <a><i>★</i>Aspiration</a>
-      <a><i>▣</i>Talent Marketplace</a>
-      <a><i>▤</i>Internal Job Posting</a>
-      <a><i>✎</i>Masa Evaluasi Pekerja</a>
-      <a><i>◷</i>Monitoring Pekerja <span class="chip-new" style="background:var(--pri-soft)">Baru</span></a>
-      <a class="sub" data-nav="mon" href="#" onclick="goPage('mon');return false">IMPTU &amp; Tugas Belajar <span class="chip-new">Baru</span></a>
-      <a class="sub dis">Pekerja MEP &amp; Lepas Pj <span class="soon">Segera</span></a>
-      <a class="sub dis">Data Material HR HSH <span class="soon">Segera</span></a>
-      <a><i>◐</i>Non SAP</a>
-      <a><i>▥</i>Dashboard Analytics</a>
-    </nav>
+    <nav class="nav"><a href="#" onclick="soon(this);return false" title="Home"><i>⌂</i><span class="t">Home</span></a><div class="grp closed" data-g="prof"><a class="par" href="#" onclick="tg('prof');return false" title="My Profile"><i>◉</i><span class="t">My Profile</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Data Pribadi</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Riwayat Jabatan</span></a></div></div><a href="#" onclick="soon(this);return false" title="Position"><i>⋔</i><span class="t">Position</span></a><a href="#" onclick="soon(this);return false" title="Organization Chart"><i>⊞</i><span class="t">Organization Chart</span></a><a href="#" onclick="soon(this);return false" title="Skill Group"><i>▥</i><span class="t">Skill Group</span></a><a href="#" onclick="soon(this);return false" title="Employee"><i>☺</i><span class="t">Employee</span></a><div class="grp" data-g="succ"><a class="par" href="#" onclick="tg('succ');return false" title="Succession"><i>↥</i><span class="t">Succession</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" data-nav="trm" href="#" onclick="goPage('trm');return false"><span class="t">Materi TRM</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">TRM Management</span></a><a class="sub" data-nav="nr" href="#" onclick="goPage('nr');return false"><span class="t">Notulensi Rapat</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Fit &amp; Proper Test</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Rencana Mutasi Jabatan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Surat Ket. Mutasi Jabatan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Succession Specialist</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Succession Expert</span></a></div></div><div class="grp" data-g="dash"><a class="par" href="#" onclick="tg('dash');return false" title="Dashboard Monitoring"><i>◷</i><span class="t">Dashboard Monitoring</span><span class="chip-new" style="background:var(--pri-soft)">Baru</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" data-nav="dtl" href="#" onclick="goPage('dtl');return false"><span class="t">Traffic Light</span></a><a class="sub" data-nav="dvr" href="#" onclick="goPage('dvr');return false"><span class="t">Vacancy Rate &amp; Heatmap</span></a><a class="sub" data-nav="mon" href="#" onclick="goPage('mon');return false"><span class="t">IMPTU &amp; Tugas Belajar</span></a></div></div><a data-nav="mep" href="#" onclick="goPage('mep');return false" title="Masa Evaluasi Pekerja"><i>✎</i><span class="t">Masa Evaluasi Pekerja</span><span class="chip-new" style="background:var(--pri-soft)">Baru</span></a><div class="grp closed" data-g="asp"><a class="par" href="#" onclick="tg('asp');return false" title="Aspiration"><i>★</i><span class="t">Aspiration</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Aspirasi Karier</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Aspirasi Lokasi</span></a></div></div><div class="grp closed" data-g="tm"><a class="par" href="#" onclick="tg('tm');return false" title="Talent Marketplace"><i>▣</i><span class="t">Talent Marketplace</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Project Marketplace</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Mentoring</span></a></div></div><div class="grp closed" data-g="ijp"><a class="par" href="#" onclick="tg('ijp');return false" title="Internal Job Posting"><i>▤</i><span class="t">Internal Job Posting</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Lowongan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Lamaran Saya</span></a></div></div><div class="grp closed" data-g="bc"><a class="par" href="#" onclick="tg('bc');return false" title="Background Check"><i>⌕</i><span class="t">Background Check</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Request</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Hasil</span></a></div></div></nav>
     <div class="side-foot"><span>powered by Enterprise IT</span><span>Version 6.0.0</span></div>
   </aside>
 
   <div>
-    <div class="top"><span>⊟</span><span class="sp"></span><span title="Unduh">⤓</span><span title="Tasklist">☑</span><span title="Notifikasi">🔔︎</span></div>
+    <div class="top"><button class="kebab" id="railBtn" onclick="toggleRail()" title="Collapse sidebar" aria-label="Collapse sidebar" style="font-size:18px">⊟</button><span class="sp"></span><span title="Unduh">⤓</span><span title="Tasklist">☑</span><span title="Notifikasi" style="position:relative">🔔︎<span class="nbadge">99+</span></span><span class="usr"><span><b>Rizky Ananda</b><small>Sr Analyst I HC Integration System &amp; Analytics</small></span><span class="ava">RA</span></span></div>
 
+
+    <!-- ================= MATERI TRM ================= -->
+    <section id="pg-trm">
+      <div class="ph">
+        <div class="ph-row"><h1>Materi TRM</h1>
+          <button class="btn-t hidden" id="xReset" onclick="trmResetAll()">Reset All</button>
+          <button class="btn-o" onclick="openList()">List of Setting Materi</button>
+          <button class="btn-p" id="xSave" onclick="trmSave()" disabled>💾 Save</button></div>
+        <div class="tabs" id="xTabs"><button class="tab on" data-x="sys">Manpower Strength by System</button><button class="tab" data-x="upl">Manpower Strength by Upload</button><button class="tab" data-x="pos">Materi Posisi</button></div>
+      </div>
+      <div class="main">
+        <!-- Generate form -->
+        <div id="xForm" class="gen">
+          <h2>Generate Data</h2><p id="xFormSub">To display Manpower Strength by System data,<br>please fill the information below first</p>
+          <select class="fsel" id="gBG"></select>
+          <select class="fsel" id="gCO" disabled></select>
+          <select class="fsel" id="gDIR" disabled></select>
+          <select class="fsel" id="gFN" disabled></select>
+          <select class="fsel" id="gDIV" disabled></select>
+          <div class="prlbox"><span class="lbl">PRL</span><button class="prlbtn" id="gPRLb" onclick="prlPop.classList.toggle('hidden')"><span id="gPRLt">0 PRL has been selected</span><span>⌕</span></button>
+            <div class="prlpop hidden" id="prlPop"></div></div>
+          <div class="err" id="gErr" style="text-align:left">Pilih Business Group dan Company terlebih dulu</div>
+          <button class="genbtn" onclick="trmGenerate()">GENERATE MATERI</button>
+        </div>
+
+        <!-- Manpower by system -->
+        <div id="xSys" class="hidden">
+          <div class="card">
+            <div class="card-h"><h2>Manpower Strength by System</h2>
+              <div class="stat3" id="xStat"></div>
+              <button class="btn-t" onclick="trmChange()">↻ Change Search</button></div>
+            <div class="scope" id="xScope"></div>
+          </div>
+          <div class="card"><div class="card-b">
+            <div class="banner" style="margin-bottom:14px"><span>ⓘ</span><span>Data taken on 04 November 2026. Traffic light dihitung dari data ZHRPA044 untuk company yang disubmit saat generate.</span></div>
+            <div style="display:flex;align-items:center;margin-bottom:10px"><h3 id="xChT" style="margin:0;font-size:16px;flex:1"></h3><div class="seg" id="xMode"><button class="on" data-m="pct">Persentase</button><button data-m="n">Jumlah</button></div></div>
+            <div class="cols" id="xCols"></div><div class="collbl" id="xColL"></div>
+            <div class="lg" style="justify-content:center"><span><i style="background:var(--hijau)"></i>Hijau</span><span><i style="background:var(--kuning)"></i>Kuning</span><span><i style="background:var(--merah)"></i>Merah</span><span><i style="background:var(--undef)"></i>Undefined</span><span><i style="background:var(--vac)"></i>Vacant</span></div>
+            <div class="help" style="text-align:center">Klik segmen untuk drill-down ke tabel di bawah</div>
+          </div></div>
+          <div class="card" id="xTblCard">
+            <div class="tool">
+              <input class="inp" id="xQ" placeholder="Cari nama, nopek, ID post" style="color:var(--text)">
+              <select class="sel" id="xTL"><option value="">Traffic light: semua</option><option value="m">Merah · P1</option><option value="k">Kuning · P2</option><option value="h">Hijau · P3</option><option value="v">Vacant</option><option value="u">Undefined</option></select>
+              <select class="sel" id="xDept"></select>
+              <select class="sel" id="xEl"><option value="">Eligibility: semua</option><option>Eligible</option><option>Not Eligible</option></select>
+              <label style="font-size:13px;color:var(--text2);display:flex;gap:6px;align-items:center"><input type="checkbox" id="xAdj"> Hanya yang disesuaikan</label>
+              <span id="xGrp"></span>
+              <button class="btn-t btn-sm" onclick="xResetTool()">Reset</button>
+              <span style="flex:1"></span><button class="btn-o btn-sm" onclick="toast('Export disiapkan · '+xFilt().length+' baris')">Export</button>
+            </div>
+            <div class="tw"><table id="xTbl"><thead><tr><th>ID Post</th><th>Posisi</th><th>Department</th><th>Nopek</th><th>Nama</th><th>Lama di Jabatan</th><th>Lama di Lokasi</th><th>Lama di CC</th><th>SMK</th><th>Lama di PRL BS</th><th>Total Poin</th><th>Traffic Light</th><th>Eligibility Promosi</th><th>Aksi</th></tr></thead><tbody></tbody></table></div>
+            <div class="empty hidden" id="xNo"><b>Tidak ada posisi yang sesuai filter tabel</b></div>
+            <div class="pag"><span>Rows per page <select class="sel" id="xPer" style="padding:4px 6px"><option>10</option><option>25</option><option>50</option></select></span><span id="xPgT"></span><span><button class="kebab" id="xPrev">‹</button><button class="kebab" id="xNext">›</button></span></div>
+          </div>
+        </div>
+
+        <!-- Manpower by upload -->
+        <div id="xUpl" class="hidden">
+          <div class="card"><div class="card-h"><h2>Manpower Strength by Upload</h2><button class="btn-t" onclick="toast('Template formasi (.xlsx) diunduh')">⤓ Download Template</button></div>
+            <div class="card-b">
+              <div class="drop" id="xDrop"><div style="font-size:28px">⤒</div><b style="color:var(--text)">Upload file formasi tambahan (.xlsx)</b><div class="help">Formasi yang belum tercatat di SAP, misalnya posisi baru hasil reorganisasi</div><button class="btn-o btn-sm" style="margin-top:12px" onclick="trmUpload()">Pilih File</button></div>
+              <div id="xUpRes" class="hidden"></div>
+            </div></div>
+        </div>
+
+        <!-- Materi posisi -->
+        <div id="xPos" class="hidden">
+          <div class="card">
+            <div class="card-h"><h2>Materi Posisi</h2><div class="stat3" id="xStat2"></div></div>
+            <div class="card-b"><div class="help" style="margin:-6px 0 8px">Analyze manpower strength by system &amp; upload</div>
+              <div style="display:grid;grid-template-columns:3fr 1fr;gap:16px">
+                <div class="sbox"><h4>By System<a onclick="trmChange()">Change Search</a></h4><div class="sgrid" id="xSg"></div></div>
+                <div class="sbox"><h4>By Upload</h4><div style="font-size:12px;color:var(--text2)">Formasi</div><div id="xUpF">-</div></div>
+              </div></div>
+          </div>
+          <div class="g2" id="xTot"></div>
+          <div class="sec-h"><h3>Vacant Positions</h3></div><div class="sec-s">These positions below are based on the PRL PC category</div>
+          <div class="g3" id="xVac"></div>
+          <div class="card" style="margin-top:18px"><div class="card-h"><h3>Heatmap Vacancy Rate per PRL</h3><span id="xHtip" style="font-size:12px;color:var(--text2)">Arahkan kursor ke sel untuk detail</span></div>
+            <div class="card-b tw"><table class="heat" id="xHeat"></table>
+              <div class="lg"><span><i style="background:var(--h1)"></i>0–5%</span><span><i style="background:var(--h2)"></i>5–10%</span><span><i style="background:var(--h3)"></i>10–20%</span><span><i style="background:var(--h4)"></i>20–30%</span><span><i style="background:var(--h5)"></i>≥ 30%</span><span><i style="background:var(--hx)"></i>Tidak ada formasi</span><span style="margin-left:auto" id="xHnote"></span></div></div></div>
+          <div class="card"><div class="tool"><input class="inp" id="vQ" placeholder="Search" style="color:var(--text)"><select class="sel" id="vCat"><option value="">Semua kategori</option><option>VP Up Setara</option><option>Manager Setara</option><option>Below Manager</option></select><select class="sel" id="vSrc"><option value="">Semua sumber</option><option>System</option><option>Upload</option></select></div>
+            <div class="tw"><table id="vTbl"><thead><tr><th>Vacant Position</th><th>PRL Jab</th><th>Kategori</th><th>Tanggal Vacant</th><th>Sumber</th><th>Company</th><th>Directorate</th><th>Function</th><th>Division</th></tr></thead><tbody></tbody></table></div>
+            <div class="pag"><span id="vPgT"></span><span><button class="kebab" id="vPrev">‹</button><button class="kebab" id="vNext">›</button></span></div></div>
+          <div class="g2" style="margin-top:8px">
+            <div><div class="sec-h"><h3>Eligibility Promosi Below Manager</h3></div>
+              <div class="dcard"><div class="help" style="margin:0">Total Promotion Employees</div><div class="bigt" id="ePT">Adjust to View Total</div><div class="help" style="margin:0">Number of employees that can be promoted</div><div class="help" style="margin:0" id="ePC"></div></div>
+              <div class="card" style="margin-top:14px"><div class="tool"><input class="inp" id="eQ1" placeholder="Search" style="color:var(--text);min-width:200px"><span style="flex:1"></span><button class="btn-t btn-sm" onclick="openAdjE('pro')">⏷ Adjust</button></div>
+                <div class="tw"><table id="eT1"></table></div><div class="pag"><span id="eP1"></span></div></div></div>
+            <div><div class="sec-h"><h3>Eligibility Exposure Below Manager</h3></div>
+              <div class="dcard"><div class="help" style="margin:0">Total Exposure Employees</div><div class="bigt" id="eXT">Adjust to View Total</div><div class="help" style="margin:0">Number of employees that can be moved to exposure position</div><div class="help" style="margin:0" id="eXC"></div></div>
+              <div class="card" style="margin-top:14px"><div class="tool"><input class="inp" id="eQ2" placeholder="Search" style="color:var(--text);min-width:200px"><span style="flex:1"></span><button class="btn-t btn-sm" onclick="openAdjE('exp')">⏷ Filter</button></div>
+                <div class="tw"><table id="eT2"></table></div><div class="pag"><span id="eP2"></span></div></div></div>
+          </div>
+          <div class="sec-h"><h3>Retired Employees</h3></div>
+          <div class="dcard"><div class="help" style="margin:0">Total Retired Employees</div><div class="bigt" id="rT"></div><div class="help" style="margin:0">Number of employee that will be retired in 2 years from date of generate in TRM.</div></div>
+          <div class="card" style="margin-top:14px"><div class="tool"><input class="inp" id="rQ" placeholder="Search" style="color:var(--text)"></div><div class="tw"><table id="rTbl"><thead><tr><th>Retired Employees</th><th>Retired In</th><th>Position</th><th>MPPK Date</th><th>PHK Date</th><th>Company</th><th>Directorate</th><th>Function</th></tr></thead><tbody></tbody></table></div></div>
+          <div class="sec-h"><h3>Dummy Positions</h3><span class="help" style="margin:0">Posisi dummy untuk pekerja IMPTU dan Tugas Belajar pada cakupan materi</span></div>
+          <div class="card" style="margin-top:8px"><div class="card-h"><h3>Daftar Pekerja</h3><span id="dCnt" style="font-size:13px;color:var(--text2)"></span><select class="sel" id="dJ"><option value="">Semua jenis</option><option value="TB">Tugas Belajar</option><option value="IM">IMPTU</option></select><button class="btn-o btn-sm" onclick="toast('Data dummy positions diunduh')">Unduh</button></div>
+            <div class="tw"><table id="dTbl"><thead><tr><th>Nopek</th><th>Nama</th><th>Jenis</th><th>Entitas</th><th>Fungsi</th><th>Keterangan</th><th>Periode</th><th>Sisa</th><th>Status</th><th>Penempatan Kembali</th><th>Aksi</th></tr></thead><tbody></tbody></table></div>
+            <div class="empty hidden" id="dNo"><b>No matching records found</b><span>Tidak ada pekerja IMPTU atau Tugas Belajar pada cakupan ini.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NOTULENSI RAPAT ================= -->
+    <section id="pg-nr" class="hidden">
+      <div id="nrL">
+        <div class="ph" style="padding-bottom:0"><div class="ph-row"><h1 style="font-weight:400">Notulensi Rapat</h1><input class="inp" id="nrQ" placeholder="Search  ⌕" style="color:var(--text)"><button class="kebab" style="font-size:20px;color:var(--pri)" onclick="toast('Daftar notulensi rapat diunduh (.xlsx)')" aria-label="Unduh">⤓</button></div>
+          <div class="tabs" id="nrTabs"><button class="tab on" data-s="">All</button><button class="tab" data-s="D">Draft</button><button class="tab" data-s="A">On Approval</button><button class="tab" data-s="R">Rejected</button><button class="tab" data-s="C">Completed</button><button class="tab" data-s="X">Canceled</button></div></div>
+        <div class="main"><div class="card"><div class="help" id="nrCnt" style="margin:0;padding:10px 16px"></div><span id="NRK" class="hidden"></span>
+          <div class="tw"><table id="nrTbl"><thead><tr><th>NR ID</th><th>Status</th><th>TRM Title</th><th>TRM ID</th><th>TRM Date</th><th>TRM Type</th><th>Location</th><th>Creator</th><th>Position Creator</th><th>Company</th></tr></thead><tbody></tbody></table></div>
+          <div class="pag"><span>Rows per page: <select class="sel" id="nrPer" style="padding:4px 6px"><option>10</option><option>25</option><option>50</option></select></span><span id="nrPgT"></span><span><button class="kebab" id="nrFirst" aria-label="Pertama">|‹</button><button class="kebab" id="nrPrev" aria-label="Sebelumnya">‹</button><button class="kebab" id="nrNext" aria-label="Berikutnya">›</button><button class="kebab" id="nrLast" aria-label="Terakhir">›|</button></span></div></div></div>
+      </div>
+      <div id="nrD" class="hidden">
+        <div class="ph" style="padding:16px 32px"><div class="ph-row" id="nrH"></div></div>
+        <div class="stepbar" id="nrStep"></div>
+        <div class="main" id="nrBody"></div>
+      </div>
+    </section>
     <!-- ================= MAIN PAGE ================= -->
-    <section id="pg-main">
+    <section id="pg-main" class="hidden">
       <div class="ph">
         <div class="ph-row">
-          <h1>Traffic Light &amp; Vacancy</h1>
+          <h1 id="dashTitle">Traffic Light</h1>
           <button class="btn-t">Riwayat Generate</button>
           <button class="btn-o" onclick="goPage('param')">⚙ Pengaturan Parameter</button>
           <button class="btn-p" onclick="openGen()">↻ Generate Ulang</button>
@@ -239,31 +439,41 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
           <button class="tab on" data-t="tl">Traffic Light</button>
           <button class="tab" data-t="vr">Vacancy Rate &amp; Heatmap</button>
           <button class="tab" data-t="rk">Rekap Talent Mobility</button>
-          <button class="tab" data-t="ex">Exception<span class="badge">1</span></button>
+          <span class="hidden"><span id="exBadge"></span></span>
         </div>
+
       </div>
 
       <div class="main">
-        <!-- Scope card (shared, values swap per tab) -->
+        <!-- Scope card: cascading dropdown filters -->
         <div class="card">
           <div class="card-h">
             <h2>Cakupan Analisis</h2>
-            <span class="seg-l">Sudut Pandang</span>
+            <span id="dirty" class="pill p-k hidden">Filter belum diterapkan</span>
+            <span class="seg-l" id="povL">Sudut Pandang</span>
             <div class="seg" id="pov"><button class="on" data-p="org">Struktur Organisasi</button><button data-p="fp">Fungsi Pembina</button></div>
-            <button class="btn-t">↻ Change Search</button>
+            <button class="btn-t" onclick="resetScope()">Reset</button>
+            <button class="btn-p btn-sm" onclick="applyScope()">Terapkan</button>
           </div>
-          <div class="scope" id="scope"></div>
+          <div class="fgrid">
+            <div><label for="fBG">Business Group</label><select class="fsel" id="fBG"></select></div>
+            <div class="fo"><label for="fCO">Company</label><select class="fsel" id="fCO"></select></div>
+            <div class="fo"><label for="fDIR">Directorate</label><select class="fsel" id="fDIR"></select></div>
+            <div class="fo"><label for="fFN">Function</label><select class="fsel" id="fFN"></select></div>
+            <div class="fo"><label for="fDIV">Division</label><select class="fsel" id="fDIV"></select></div>
+            <div class="ff hidden"><label for="fFP">Fungsi Pembina</label><select class="fsel" id="fFP"></select></div>
+            <div><label for="fPRL">PRL</label><select class="fsel" id="fPRL"><option value="">Semua PRL</option><option value="10-13">PRL 10–13</option><option value="14-18">PRL 14–18</option><option value="19-25">PRL 19–25</option></select></div>
+          </div>
+          <div class="crumb" id="crumb"></div>
         </div>
+
+
+
+        <div class="banner hidden" id="fpAll"><span>ⓘ</span><span></span></div>
 
         <!-- ===== TAB TRAFFIC LIGHT ===== -->
         <div id="t-tl">
-          <div class="kpis">
-            <div class="kpi"><label>Formasi</label><div class="v">15</div><div class="s">Posisi dummy dikecualikan</div></div>
-            <div class="kpi" style="border-left-color:var(--merah)"><label>P1 · High (Merah)</label><div class="v">4<small>26.7%</small></div><div class="s">Prioritas 1 mobilitas</div></div>
-            <div class="kpi" style="border-left-color:var(--kuning)"><label>P2 · Moderate (Kuning)</label><div class="v">5<small>33.3%</small></div><div class="s">Prioritas 2 mobilitas</div></div>
-            <div class="kpi" style="border-left-color:var(--hijau)"><label>P3 · Low (Hijau)</label><div class="v">3<small>20.0%</small></div><div class="s">Prioritas 3 mobilitas</div></div>
-            <div class="kpi" style="border-left-color:var(--vac)"><label>Vacant</label><div class="v">2<small>13.3%</small></div><a onclick="showTab('ex')">1 record Undefined, lengkapi di tab Exception</a></div>
-          </div>
+          <div class="kpis" id="tlKpi"></div>
           <div class="banner"><span>ⓘ</span><span class="sp">Data ZHRPA044 ditarik otomatis pada 03 November 2026, 06:00 WIB berdasarkan ID post yang ditetapkan. Traffic light dihitung ulang setiap generate.</span><span class="lock">🔒︎ Sangat Rahasia</span></div>
           <div class="card legend">
             <span class="f">Total Poin = 25% Lama di Jabatan + 25% Lama di Lokasi + 25% Lama di Cost Center + 25% Performance (SMK × Lama di PRL BS). Skala 1.00–3.00.</span>
@@ -271,31 +481,32 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
           </div>
           <div class="card">
             <div class="tool">
-              <span class="inp">⌕ Cari nama, nopek, ID post</span>
-              <span class="sel">Traffic Light ▾</span><span class="sel">Department ▾</span><span class="sel">Eligibility Promosi ▾</span><span class="sel">Status Posisi ▾</span>
-              <label style="font-size:13px;color:var(--text2);display:flex;gap:6px;align-items:center"><input type="checkbox"> Hanya yang disesuaikan</label>
-              <span style="flex:1"></span><button class="btn-o btn-sm">Export</button>
+              <input class="inp" id="tQ" placeholder="Cari nama, nopek, ID post" style="color:var(--text)">
+              <select class="sel" id="tTL"><option value="">Traffic light: semua</option><option value="m">Merah · P1</option><option value="k">Kuning · P2</option><option value="h">Hijau · P3</option><option value="v">Vacant</option><option value="u">Undefined</option></select>
+              <select class="sel" id="tDept"></select>
+              <select class="sel" id="tEl"><option value="">Eligibility: semua</option><option>Eligible</option><option>Not Eligible</option></select>
+              <select class="sel" id="tSt"><option value="">Status posisi: semua</option><option value="F">Filled</option><option value="V">Vacant</option><option value="U">Undefined</option></select>
+              <label style="font-size:13px;color:var(--text2);display:flex;gap:6px;align-items:center"><input type="checkbox" id="tAdj"> Hanya yang disesuaikan</label>
+              <button class="btn-t btn-sm" onclick="resetTool()">Reset</button>
+              <span style="flex:1"></span><button class="btn-o btn-sm" onclick="exportTL()">Export</button>
             </div>
-            <div class="tw"><table id="tlTable"><thead><tr>
+            <div class="empty hidden" id="tlEmpty"><b>Traffic light untuk cakupan ini belum di-generate</b><span>Generate untuk menarik data ZHRPA044 dan menghitung poin talent mobility.</span><button class="btn-p btn-sm" onclick="openGen()">Generate traffic light</button></div>
+            <div class="tw" id="tlTw"><table id="tlTable"><thead><tr>
               <th>ID Post</th><th>Posisi</th><th>Department</th><th>Nopek</th><th>Nama</th><th>Lama di Jabatan</th><th>Lama di Lokasi</th><th>Lama di CC</th><th>SMK</th><th>Lama di PRL BS</th><th>Total Poin</th><th>Traffic Light</th><th>Eligibility Promosi</th><th>Aksi</th>
             </tr></thead><tbody></tbody></table></div>
-            <div class="pag"><span>Rows per page: 10 ▾</span><span>Menampilkan 1–8 dari 15</span><span>‹ ›</span></div>
+            <div class="empty hidden" id="tlNo"><b>Tidak ada posisi yang sesuai filter tabel</b><span>Ubah atau reset filter tabel.</span></div>
+            <div class="pag" id="tlPagBar"><span>Rows per page <select class="sel" id="tPer" style="padding:4px 6px"><option>10</option><option>25</option><option>50</option></select></span><span id="tlPag"></span><span><button class="kebab" id="pPrev" aria-label="Sebelumnya">‹</button><button class="kebab" id="pNext" aria-label="Berikutnya">›</button></span></div>
           </div>
         </div>
 
         <!-- ===== TAB VACANCY ===== -->
         <div id="t-vr" class="hidden">
-          <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
-            <div class="kpi"><label>Total Formasi</label><div class="v">582</div><div class="s">Posisi dummy dikecualikan</div></div>
-            <div class="kpi" style="border-left-color:var(--pri)"><label>Terisi</label><div class="v">444</div></div>
-            <div class="kpi" style="border-left-color:var(--vac)"><label>Lowong</label><div class="v">138</div></div>
-            <div class="kpi" style="border-left-color:var(--pri)"><label>Vacancy Rate</label><div class="v">23.7%</div><div class="s">Fill rate 76.3%</div></div>
-          </div>
-          <div style="margin-bottom:14px"><span class="seg-l">Rekap per</span><div class="seg"><button class="on">Subholding</button><button>Grup Pembina Holding</button><button>PRL</button></div></div>
+          <div class="kpis" id="vrKpi" style="grid-template-columns:repeat(4,1fr)"></div>
+          <div class="help" id="vrLvl" style="margin:-4px 0 14px"></div>
           <div class="grid2">
-            <div class="card"><div class="card-h"><h3>Formasi Terisi vs Lowong per Entitas</h3><button class="kebab" onclick="openIns('Formasi Terisi vs Lowong per Entitas')" aria-label="Menu">⋮</button></div><div class="card-b" id="hbars"></div></div>
+            <div class="card"><div class="card-h"><h3 id="vrBarT">Formasi Terisi vs Lowong per Entitas</h3><button class="kebab" onclick="openIns('Formasi Terisi vs Lowong per Entitas')" aria-label="Menu">⋮</button></div><div class="card-b" id="hbars"></div></div>
             <div class="card"><div class="card-h"><h3>Rincian Vacancy Rate</h3><button class="kebab" onclick="openIns('Rincian Vacancy Rate')" aria-label="Menu">⋮</button></div>
-              <table id="vrTable"><thead><tr><th>Entitas</th><th style="text-align:right">Formasi</th><th style="text-align:right">Terisi</th><th style="text-align:right">Lowong</th><th style="text-align:right">Vacancy</th></tr></thead><tbody></tbody></table>
+              <table id="vrTable"><thead><tr><th id="vrTh">Entitas</th><th style="text-align:right">Formasi</th><th style="text-align:right">Terisi</th><th style="text-align:right">Lowong</th><th style="text-align:right">Vacancy</th></tr></thead><tbody></tbody></table>
             </div>
           </div>
           <div class="card"><div class="card-h"><h3>Heatmap Vacancy Rate per PRL</h3><span id="htip" style="font-size:12px;color:var(--text2)">Arahkan kursor ke sel untuk detail</span><button class="kebab" onclick="openIns('Heatmap Vacancy Rate per PRL')" aria-label="Menu">⋮</button></div>
@@ -309,7 +520,7 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
         <div id="t-rk" class="hidden">
           <div class="banner hidden" id="fpBanner"><span>ⓘ</span><span>Mapping posisi ke fungsi pembina dikelola admin. 312 posisi ter-mapping ke Internal Audit.</span></div>
           <div class="grid2">
-            <div class="card"><div class="card-h"><h3 id="rkTitle">Komposisi Traffic Light per Divisi</h3><div class="seg"><button class="on">Persentase</button><button>Jumlah</button></div><button class="kebab" onclick="openIns('Komposisi Traffic Light')" aria-label="Menu">⋮</button></div>
+            <div class="card"><div class="card-h"><h3 id="rkTitle">Komposisi Traffic Light per Divisi</h3><div class="seg" id="rkMode"><button class="on" data-m="pct">Persentase</button><button data-m="n">Jumlah</button></div><button class="kebab" onclick="openIns('Komposisi Traffic Light')" aria-label="Menu">⋮</button></div>
               <div class="card-b"><div class="cols" id="cols"></div><div class="collbl" id="collbl"></div>
                 <div class="lg" style="justify-content:center"><span><i style="background:var(--hijau)"></i>Hijau</span><span><i style="background:var(--kuning)"></i>Kuning</span><span><i style="background:var(--merah)"></i>Merah</span><span><i style="background:var(--undef)"></i>Undefined</span><span><i style="background:var(--vac)"></i>Vacant</span></div>
                 <div class="help" style="text-align:center">Klik segmen untuk drill-down ke daftar posisi</div>
@@ -320,12 +531,14 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
 
         <!-- ===== TAB EXCEPTION ===== -->
         <div id="t-ex" class="hidden">
-          <div class="banner warn"><span>⚠</span><span>1 record memiliki status kosong atau tidak valid dari ZHRPA044. Perhitungan record lain tetap berjalan. Lengkapi untuk menyertakan record ini dalam traffic light.</span></div>
-          <div class="card"><div class="tw"><table><thead><tr><th>ID Post</th><th>Posisi</th><th>Nopek</th><th>Nama</th><th>Status dari ZHRPA044</th><th>Masalah</th><th>Lengkapi Status</th><th>Aksi</th></tr></thead>
-            <tbody>
-              <tr id="exRow"><td>30331404</td><td>Analyst Asset Reliability</td><td>7100104</td><td>Yoga Pratama</td><td class="muted">kosong</td><td>Kolom status tidak terisi</td><td><select class="sel" id="exSel"><option>Filled</option><option>Vacant</option><option>Dummy</option></select></td><td><button class="btn-p btn-sm" onclick="saveEx()">Simpan</button></td></tr>
-              <tr style="opacity:.6"><td>30331399</td><td>Sr Analyst Asset Strategy</td><td>7100099</td><td>Rizky Hidayat</td><td class="muted">kosong</td><td>Kolom status tidak terisi</td><td><s>kosong</s> → Filled<span class="sub">Hendra W., 02 Nov 2026</span></td><td style="color:var(--hijau);font-weight:600">✓ Sudah dilengkapi</td></tr>
-            </tbody></table></div>
+          <div class="banner warn" id="exBanner"></div>
+          <div class="card">
+            <div class="tool"><input class="inp" id="eQ" placeholder="Cari nama, nopek, ID post" style="color:var(--text)">
+              <select class="sel" id="eSt"><option value="">Semua record</option><option value="open">Perlu dilengkapi</option><option value="done">Sudah dilengkapi</option></select>
+              <select class="sel" id="eMs"><option value="">Semua masalah</option></select>
+              <span style="flex:1"></span><span id="exCount" style="font-size:13px;color:var(--text2)"></span></div>
+            <div class="tw" id="exTw"><table><thead><tr><th>ID Post</th><th>Posisi</th><th>Unit</th><th>Nopek</th><th>Nama</th><th>Status dari ZHRPA044</th><th>Masalah</th><th>Lengkapi Status</th><th>Aksi</th></tr></thead><tbody id="exB"></tbody></table></div>
+            <div class="empty hidden" id="exNo"><b>Tidak ada exception pada cakupan ini</b><span>Semua record ZHRPA044 memiliki status valid.</span></div>
             <div class="pag" style="justify-content:space-between"><span>Setiap perubahan tercatat: user, waktu, nilai lama dan nilai baru.</span><button class="btn-t btn-sm">Lihat Log Perubahan</button></div>
           </div>
         </div>
@@ -335,7 +548,7 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
     <!-- ================= PARAM PAGE ================= -->
     <section id="pg-param" class="hidden">
       <div class="ph" style="padding-bottom:20px">
-        <div class="bc"><span class="lnk" style="cursor:pointer" onclick="goPage('main')">Traffic Light &amp; Vacancy</span> / Pengaturan Parameter</div>
+        <div class="bc">Dashboard Monitoring / <span class="lnk" style="cursor:pointer" onclick="goPage('dtl')">Traffic Light</span> / Pengaturan Parameter</div>
         <div class="ph-row"><h1>Pengaturan Parameter</h1><span class="pill p-v" style="margin-right:8px">Admin I-AM Talent (HCISA)</span><button class="btn-t">Batalkan Perubahan</button><button class="btn-p" onclick="toast('Parameter v1.3 disimpan, berlaku untuk generate berikutnya')">Simpan &amp; Terapkan</button></div>
       </div>
       <div class="main">
@@ -373,10 +586,43 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
       </div>
     </section>
 
+
+    <!-- ================= MONITORING PEKERJA MEP ================= -->
+    <section id="pg-mep" class="hidden">
+      <div class="main">
+        <div class="ph-row" style="margin-bottom:20px;gap:14px">
+          <h1 class="mp-title" style="white-space:nowrap">Masa Evaluasi Pekerja</h1><span class="enh">Enhancement 2027</span><span style="flex:1"></span>
+          <button class="btn-p" onclick="open('mMepDl')">⤓ Unduh Data</button>
+        </div>
+        <div class="kcs" id="mpK"></div>
+        <div class="banner" style="margin-bottom:18px"><span>ⓘ</span><span class="sp">Data MEP dari HRIS+ per 04 November 2026, 06:00 WIB. Akses Anda: HCBP Holding · seluruh entitas.</span><span class="lock" style="color:var(--text2);border-color:var(--border)">Terbatas</span></div>
+        <div class="rk3">
+          <div class="card"><div class="card-h"><h3>Rekap per Entitas</h3><span style="font-size:12px;color:var(--text2)">Klik bar untuk drill-down</span></div><div class="card-b" id="mpEnt"></div></div>
+          <div class="card"><div class="card-h"><h3>Rekap per Fungsi</h3></div><div class="tw"><table id="mpFn"></table></div></div>
+          <div class="card"><div class="card-h"><h3>Rekap per Periode</h3></div><div class="card-b"><div class="pcol" id="mpPer"></div><div class="plbl" id="mpPerL"></div><div id="mpPerT" class="help"></div></div></div>
+        </div>
+        <div class="tcard">
+          <div class="tabs" id="mpTabs"><button class="tab on" data-s="">All</button><button class="tab" data-s="P">Promotion</button><button class="tab" data-s="E">Evaluation Process</button><button class="tab" data-s="C">Completed</button></div>
+          <div class="tool" style="padding:16px 22px">
+            <select class="sel" id="mpPd"><option value="">Semua periode</option></select>
+            <select class="sel" id="mpEn"><option value="">Semua entitas</option></select>
+            <select class="sel" id="mpFu"><option value="">Semua fungsi</option></select>
+            <select class="sel" id="mpRs"><option value="">Semua result</option><option>Lulus</option><option>Tidak Lulus</option><option>Perpanjang MEP</option></select>
+            <span id="mpCnt" style="font-size:14px;color:var(--text2)"></span>
+            <button class="btn-t btn-sm" onclick="mpReset()">Reset filter</button>
+            <span style="flex:1"></span>
+            <input class="inp" id="mpQ" placeholder="⌕  Cari nama / NIP / evaluator" style="color:var(--text);min-width:240px">
+          </div>
+          <div class="tw" id="mpTw"><table id="mpTbl"><thead><tr><th>Number</th><th>Periode</th><th>Evaluee</th><th>Name</th><th>Unit</th><th>Evaluator</th><th>Start Date</th><th>End Date</th><th>Status Process</th><th>Result</th><th>Action</th></tr></thead><tbody></tbody></table></div>
+          <div class="empty hidden" id="mpNo"><b>Tidak ada pekerja MEP yang sesuai filter</b><span>Ubah atau reset filter.</span></div>
+          <div class="pag" id="mpPag"><span>Rows per page <select class="sel" id="mpPer2" style="padding:4px 6px"><option>10</option><option>25</option><option>50</option></select></span><span id="mpPgT"></span><span><button class="kebab" id="mpPrev" aria-label="Sebelumnya">‹</button><button class="kebab" id="mpNext" aria-label="Berikutnya">›</button></span></div>
+        </div>
+      </div>
+    </section>
     <!-- ================= MONITORING IMPTU & TB ================= -->
     <section id="pg-mon" class="hidden">
       <div class="ph" style="padding-bottom:20px">
-        <div class="bc">Monitoring Pekerja / IMPTU &amp; Tugas Belajar</div>
+        <div class="bc">Dashboard Monitoring / IMPTU &amp; Tugas Belajar</div>
         <div class="ph-row"><h1>Monitoring IMPTU &amp; Tugas Belajar</h1>
           <span class="pill p-v" style="margin-right:6px">Akses Anda: HCBP Holding · seluruh entitas</span>
           <button class="btn-t">Atur Penanda</button>
@@ -420,32 +666,24 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
 
 <aside class="drawer" id="dAdj" aria-label="Adjust poin">
   <div class="dh"><h3><span>Adjust Poin Talent Mobility</span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3>
-    <div style="font-size:13px;color:var(--text2)">Dimas Prasetyo · 7100103 · Analyst Asset Operation · ID Post 30331403</div>
-    <div style="margin-top:8px"><span class="lock">🔒︎ Sangat Rahasia</span></div></div>
+    <div style="font-size:13px;color:var(--text2)" id="adjSub"></div>
+    <div style="margin-top:8px;display:flex;gap:10px;align-items:center"><span class="lock">🔒︎ Sangat Rahasia</span><button class="btn-t btn-sm" id="adjLogBtn" onclick="openLog(AR.id)">Riwayat perubahan</button></div></div>
   <div class="db">
     <div class="comp hd"><span>Komponen</span><span>Nilai</span><span>Bobot</span><span>Sistem</span><span>Adjust</span></div>
-    <div class="comp"><span>Lama di Jabatan</span><span>2 th 2 bl</span><span>25%</span><span class="ro">2</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
-    <div class="comp hl"><span>Lama di Lokasi</span><span>6 th 0 bl</span><span>25%</span><span class="ro">3</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
-    <div class="comp"><span>Lama di Cost Center</span><span>2 th 2 bl</span><span>25%</span><span class="ro">2</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
-    <div class="comp"><span>Performance</span><span>SMK 6.5 × 2 th 4 bl</span><span>25%</span><span class="ro">2</span><select class="fld adjSel"><option>1</option><option selected>2</option><option>3</option></select></div>
-    <div class="cmp"><div><label>Hasil Sistem</label><b>2.25</b><span class="pill p-m">Merah P1</span></div><div style="text-align:center;color:var(--text3)">→</div><div><label>Setelah Adjust</label><b id="adjVal">2.00</b><span id="adjPill" class="pill p-k">Kuning P2</span></div></div>
-    <label style="font-size:13px;font-weight:600">Justifikasi <span style="color:var(--merah)">*</span></label>
-    <textarea id="just">Pekerja baru kembali dari Tugas Belajar 2 tahun; lama di lokasi dihitung sejak penempatan kembali sesuai kebijakan HCBP.</textarea>
+    <div id="adjComps"></div>
+    <div class="cmp"><div><label>Hasil Sistem</label><b id="adjSys"></b><span id="adjSysPill" class="pill"></span></div><div style="text-align:center;color:var(--text3)">→</div><div><label>Setelah Adjust</label><b id="adjVal"></b><span id="adjPill" class="pill"></span></div></div>
+    <label style="font-size:13px;font-weight:600" for="just">Justifikasi <span style="color:var(--merah)">*</span></label>
+    <textarea id="just" placeholder="Jelaskan dasar penyesuaian poin, misalnya kebijakan atau kondisi khusus pekerja"></textarea>
     <div class="err" id="justErr">Isi justifikasi sebelum menyimpan</div>
-    <div class="help">Poin hasil sistem tetap tersimpan sebagai pembanding.</div>
+    <div class="help">Poin hasil sistem tetap tersimpan sebagai pembanding. Justifikasi wajib bila ada poin yang berbeda dari sistem.</div>
     <div style="margin-top:16px;border:1px dashed var(--border);border-radius:6px;padding:14px;text-align:center;font-size:13px;color:var(--text2)">⤒ Dokumen pendukung (opsional)</div>
   </div>
   <div class="df"><button class="btn-t btn-sm" onclick="resetAdj()">Reset ke Sistem</button><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="saveAdj()">Simpan Adjustment</button></div>
 </aside>
 
 <aside class="drawer" id="dLog" aria-label="Riwayat perubahan">
-  <div class="dh"><h3><span>Riwayat Perubahan</span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3><div style="font-size:13px;color:var(--text2)">Dimas Prasetyo · ID Post 30331403</div></div>
-  <div class="db"><div class="tl">
-    <div class="e"><b>Hendra W.</b> <span style="color:var(--text2)">(Sr Analyst HCBP)</span><div class="help">03 Nov 2026 14:12 WIB</div>
-      <div style="margin-top:6px;font-size:13px">Poin Lama di Lokasi <s>3</s> → 2; Total Poin <s>2.25</s> → 2.00; Traffic Light <s>Merah P1</s> → Kuning P2</div>
-      <div class="q">“Pekerja baru kembali dari Tugas Belajar 2 tahun; lama di lokasi dihitung sejak penempatan kembali sesuai kebijakan HCBP.”</div></div>
-    <div class="e"><b>Sistem</b><div class="help">03 Nov 2026 06:00 WIB</div><div style="margin-top:6px;font-size:13px">Generate dari ZHRPA044: Total Poin 2.25 · Merah P1</div></div>
-  </div></div>
+  <div class="dh"><h3><span>Riwayat Perubahan</span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3><div style="font-size:13px;color:var(--text2)" id="logSub"></div></div>
+  <div class="db"><div class="tl" id="logTl"></div></div>
 </aside>
 
 <!-- Drill-down modal -->
@@ -507,95 +745,306 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
   <div class="df"><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="doDl()">Unduh</button></div>
 </div></div>
 
+
+<aside class="drawer" id="dMep" aria-label="Detail MEP">
+  <div class="dh"><h3><span id="dpName"></span><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></h3><div id="dpSub" style="font-size:13px;color:var(--text2)"></div><div id="dpTags" style="margin-top:8px;display:flex;gap:6px"></div></div>
+  <div class="db">
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Penugasan MEP</div><div class="kv" id="dpKv"></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Tahapan proses</div><div class="tl" id="dpTl"></div>
+  </div>
+  <div class="df"><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Tutup</button></div>
+</aside>
+<div class="modal-wrap" id="mMepDl"><div class="modal" style="width:600px">
+  <div class="card-h"><h3>Unduh Data Masa Evaluasi Pekerja</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <div class="card-b">
+    <div class="banner" style="margin-bottom:14px"><span>ⓘ</span><span>Cakupan unduhan mengikuti hak akses Anda: HCBP Holding · seluruh entitas. Tab, filter, dan pencarian aktif ikut diterapkan.</span></div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px">Format</div>
+    <div class="chk"><label><input type="radio" name="mfmt" checked> Excel (.xlsx)</label><label><input type="radio" name="mfmt"> CSV</label></div>
+    <div style="font-size:13px;font-weight:600;margin:8px 0">Isi file</div>
+    <div class="chk" id="mpCols"><label><input type="checkbox" checked> Daftar pekerja</label><label><input type="checkbox" checked> Rekap per entitas</label><label><input type="checkbox" checked> Rekap per fungsi</label><label><input type="checkbox"> Rekap per periode</label></div>
+    <div class="err" id="mpErr">Pilih minimal satu isi file</div>
+    <div class="help">Setiap unduhan tercatat di audit log (user, waktu, cakupan, filter).</div>
+  </div>
+  <div class="df"><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="mpDl()">Unduh</button></div>
+</div></div>
+
+<div class="modal-wrap" id="mList"><div class="modal" style="width:820px">
+  <div class="card-h"><h3>List of Setting Materi</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <table><thead><tr><th>Nama Materi</th><th>Cakupan</th><th>Disimpan</th><th>Versi</th><th></th></tr></thead><tbody id="mListB"></tbody></table>
+</div></div>
+<div class="modal-wrap" id="mAdjE"><div class="modal" style="width:480px">
+  <div class="card-h"><h3 id="aeT"></h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <div class="card-b" id="aeB"></div>
+  <div class="df"><button class="btn-t btn-sm" onclick="aeReset()">Reset</button><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="aeApply()">Terapkan</button></div>
+</div></div>
+<div class="modal-wrap" id="mFix"><div class="modal" style="width:500px">
+  <div class="card-h"><h3>Lengkapi Status Posisi</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <div class="card-b"><div class="help" id="fxSub" style="margin:0 0 12px"></div><div class="kv" id="fxKv"></div>
+    <label class="help" style="display:block;margin:0 0 6px" for="fxSel">Status yang benar</label><select class="fsel" id="fxSel"><option>Filled</option><option>Vacant</option><option>Dummy</option></select>
+    <div class="help">Perubahan tercatat di log (user, waktu, nilai lama, nilai baru). Traffic light record ini dihitung pada generate berikutnya.</div></div>
+  <div class="df"><span class="sp"></span><button class="btn-o btn-sm" onclick="closeAll()">Batal</button><button class="btn-p btn-sm" onclick="saveFix()">Simpan</button></div>
+</div></div>
 <div class="toast" id="toast"><span>✓</span><span id="toastT"></span><button id="toastB"></button></div>
 
 <script>
-const rows=[
- ['30331401','Manager Asset Operation','Asset Operation','7100101','Budi Santoso',['4 th 2 bl',3],['7 th 1 bl',3],['4 th 2 bl',3],'6',['3 th 8 bl',3],'3.00','m','Eligible'],
- ['30331402','Sr Analyst Asset Operation','Asset Operation','7100102','Rina Kartika',['3 th 1 bl',3],['5 th 0 bl',3],['3 th 1 bl',3],'5',['3 th 1 bl',2],'2.75','m','Eligible'],
- ['30331403','Analyst Asset Operation','Asset Operation','7100103','Dimas Prasetyo',['2 th 2 bl',2],['6 th 0 bl',3],['2 th 2 bl',2],'6.5',['2 th 4 bl',2],'2.25','m','Not Eligible',true],
- ['30331410','Sr Analyst Project Control','Asset Project Management Office','7100110','Sari Wulandari',['2 th 5 bl',2],['2 th 5 bl',2],['1 th 3 bl',1],'5.5',['2 th 6 bl',2],'1.75','k','Eligible'],
- ['30331411','Analyst Project Control','Asset Project Management Office','7100111','Fajar Nugroho',['1 th 8 bl',1],['2 th 1 bl',2],['1 th 8 bl',1],'6',['2 th 3 bl',2],'1.50','k','Eligible'],
- ['30331412','Analyst PMO Reporting','Asset Project Management Office','7100112','Ayu Lestari',['0 th 10 bl',1],['1 th 0 bl',1],['0 th 10 bl',1],'7',['1 th 2 bl',1],'1.00','h','Not Eligible'],
- ['30331413','Jr Analyst PMO','Asset Project Management Office','—','vacant',null,null,null,'—',null,'—','v','—'],
- ['30331404','Analyst Asset Reliability','Asset Operation','7100104','Yoga Pratama',null,null,null,'—',null,'—','u','—']
-];
-const PL={m:['p-m','Merah · P1'],k:['p-k','Kuning · P2'],h:['p-h','Hijau · P3'],v:['p-v','Vacant'],u:['p-u','Undefined']};
-const ten=t=>t?`${t[0]}<span class="sub">Poin ${t[1]} · ${(t[1]*0.25).toFixed(2)}</span>`:'<span class="muted">—</span>';
-function renderTL(){
-  document.querySelector('#tlTable tbody').innerHTML=rows.map((r,i)=>{
-    const pl=PL[r[11]];
-    const tlCell=`<span class="pill ${pl[0]}">${pl[1]}</span>${r[13]?'<span class="adj">Disesuaikan</span>':''}${r[11]==='u'?'<span class="sub miss" onclick="showTab(\'ex\')">Lengkapi status</span>':''}`;
-    const nama=r[4]==='vacant'?'<span class="muted">vacant</span>':`<span class="lnk">${r[4]}</span>`;
-    return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${nama}</td><td>${ten(r[5])}</td><td>${ten(r[6])}</td><td>${ten(r[7])}</td><td>${r[8]}</td><td>${ten(r[9])}</td><td class="num"><b>${r[10]}</b>${r[13]?'<span class="sub">Sistem 2.25</span>':''}</td><td>${tlCell}</td><td>${r[12]}</td><td>${r[11]==='v'||r[11]==='u'?'':`<button class="kebab" onclick="openDrawer('${r[13]?'dLog':'dAdj'}')" aria-label="Aksi" title="${r[13]?'Riwayat Perubahan':'Adjust Poin'}">⋮</button>`}</td></tr>`;
-  }).join('');
-}
-renderTL();
 
-const scopes={
- tl:[['Business Group','Holding'],['Company','PT Pertamina (Persero)'],['Directorate','Penunjang Bisnis'],['Function','Asset Management'],['Division','Asset Infrastructure'],['PRL','Semua PRL']],
- vr:[['Business Group','Holding & Subholding'],['Company','Semua'],['Periode','November 2026'],['PRL','10–25'],['',''],['','']],
- rk:[['Business Group','Holding'],['Company','PT Pertamina (Persero)'],['Directorate','Legal'],['Function','Semua'],['Division','Semua'],['PRL','Semua PRL']],
- fp:[['Fungsi Pembina','Internal Audit'],['Cakupan','Holding & seluruh Subholding'],['PRL','Semua PRL'],['',''],['',''],['','']]
+let _s=20261104;const rnd=()=>{_s=_s+0x6D2B79F5|0;let t=Math.imul(_s^_s>>>15,1|_s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+const pick=a=>a[Math.floor(rnd()*a.length)];
+const ORG={
+ 'Holding':{'PT Pertamina (Persero)':{'Penunjang Bisnis':{'Asset Management':['No Division','Asset Infrastructure','Asset Strategy','Asset Portfolio'],'Human Capital':['HC Operation','HC Planning'],'Internal Audit':['Audit Operation','Audit Assurance']},'Legal':{'Legal':['No Division','Compliance','Legal Advocacy','Legal Contracting','Legal Litigation']}}},
+ 'Subholding Upstream':{'PT Pertamina Hulu Energi':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Operasi':{'Production Operation':['Field Operation','Production Planning'],'Drilling':['Drilling Operation','Well Intervention']},'Keuangan':{'Finance':['Treasury','Accounting']}}},
+ 'Subholding Downstream':{'PT Kilang Pertamina Internasional':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Operasi':{'Refinery Operation':['Process Engineering','Refinery Planning']},'Keuangan':{'Finance':['Treasury','Accounting']}}},
+ 'Subholding Gas':{'PT Perusahaan Gas Negara Tbk':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Komersial':{'Gas Commercial':['Gas Marketing','Customer Management']},'Keuangan':{'Finance':['Treasury','Accounting']}}},
+ 'Subholding PNRE':{'PT Pertamina Power Indonesia':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Bisnis':{'New & Renewable Energy':['Renewable Project','Business Development']},'Keuangan':{'Finance':['Accounting']}}},
+ 'Integrated Marine & Logistic':{'PT Pertamina International Shipping':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Operasi':{'Fleet Operation':['Ship Management','Marine Safety']}}},
+ 'Anak Perusahaan Services':{'PT Pertamina Training & Consulting':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Operasi':{'Training Services':['Service Delivery','Business Support']}},'PT Patra Jasa':{'Penunjang Bisnis':{'Human Capital':['HC Operation'],'Internal Audit':['Audit Operation']},'Operasi':{'Property Services':['Hospitality','Facility Management']}}}
 };
-let cur='tl',pov='org';
-function renderScope(){const k=(cur==='rk'&&pov==='fp')?'fp':(cur==='ex'?'tl':cur);document.getElementById('scope').innerHTML=scopes[k].map(s=>s[0]?`<div><label>${s[0]}</label><div>${s[1]}</div></div>`:'<div></div>').join('');}
-function showTab(t){cur=t;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));['tl','vr','rk','ex'].forEach(x=>document.getElementById('t-'+x).classList.toggle('hidden',x!==t));renderScope();if(t==='rk')renderRk();window.scrollTo(0,0);}
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.t));
-document.querySelectorAll('#pov button').forEach(b=>b.onclick=()=>{pov=b.dataset.p;document.querySelectorAll('#pov button').forEach(x=>x.classList.toggle('on',x===b));if(cur!=='rk')showTab('rk');else{renderScope();renderRk();}});
-renderScope();
+const SHORT={'Holding':'Holding','Subholding Upstream':'SH Upstream','Subholding Downstream':'SH Downstream','Subholding Gas':'SH Gas','Subholding PNRE':'SH PNRE','Integrated Marine & Logistic':'IML','Anak Perusahaan Services':'APS'};
+const FPMAP={'Human Capital':'Human Capital','Internal Audit':'Internal Audit','Finance':'Keuangan','Production Operation':'Operasi','Drilling':'Operasi','Refinery Operation':'Operasi','Fleet Operation':'Operasi','Legal':'Legal & Compliance','Asset Management':'Asset Management','Gas Commercial':'Komersial & Layanan','New & Renewable Energy':'Komersial & Layanan','Training Services':'Komersial & Layanan','Property Services':'Komersial & Layanan'};
+const PL={m:['p-m','Merah · P1'],k:['p-k','Kuning · P2'],h:['p-h','Hijau · P3'],v:['p-v','Vacant'],u:['p-u','Undefined']};
+const catOf=t=>t>=2.1?'m':t>=1.5?'k':'h';
+const PAT={m:[[3,3,2,2],[3,3,3,2],[3,2,3,3],[3,3,3,3]],k:[[2,2,1,2],[2,1,2,2],[2,2,2,1],[2,2,2,2]],h:[[1,1,1,2],[1,1,1,1],[1,2,1,1]]};
+const TS={3:['3 th 4 bl','4 th 1 bl','5 th 2 bl','3 th 9 bl'],2:['2 th 3 bl','2 th 8 bl','2 th 1 bl','2 th 11 bl'],1:['1 th 2 bl','0 th 9 bl','1 th 7 bl','0 th 4 bl']};
+const PB={3:'3 th 7 bl',2:'2 th 6 bl',1:'1 th 9 bl'};
+const FN=['Agus','Bima','Citra','Dian','Eka','Farah','Gilang','Hana','Irfan','Joko','Kartika','Lukman','Mega','Nanda','Oki','Prita','Rangga','Salsa','Tomi','Utari','Vino','Winda','Yudha','Zahra','Bayu','Cahya','Dewa','Elsa','Fani','Galang'];
+const LN=['Saputra','Wijaya','Lestari','Hidayat','Pratiwi','Nugraha','Santoso','Permana','Kusuma','Rahayu','Siregar','Halim','Utomo','Purnomo','Simanjuntak','Wibisono','Ramadhan'];
+const EXI=[['kosong','Kolom status tidak terisi'],['FLD','Kode status tidak valid'],['Vacant','Nopek terisi tetapi status Vacant']];
+let seq=0;
+function mkRow(o,cat,pi){seq++;const r={...o,adj:0,log:[],fix:null};
+  if(cat==='v')return {...r,nopek:'—',nama:'vacant',t:null,smk:'—',pbs:null,total:'—',cat,elig:'—'};
+  if(cat==='u'){const e=EXI[seq%3];return {...r,nopek:String(7300000+seq),nama:FN[seq%30]+' '+LN[(seq*3)%17],t:null,smk:'—',pbs:null,total:'—',cat,elig:'—',src:e[0],issue:e[1]};}
+  const pt=PAT[cat][pi%PAT[cat].length];const tot=(pt.reduce((a,b)=>a+b,0)*.25).toFixed(2);
+  return {...r,nopek:String(7300000+seq),nama:FN[seq%30]+' '+LN[(seq*7)%17],t:pt.slice(0,3).map((v,k)=>[TS[v][(pi+k+seq)%4],v]),smk:'6',pbs:[PB[pt[3]],pt[3]],pts:pt.slice(),sys:{pts:pt.slice(),total:tot,cat},total:tot,cat,elig:cat==='h'?(seq%3?'Not Eligible':'Eligible'):(seq%3?'Eligible':'Not Eligible')};}
+const lvlTitle=n=>n>=20?'Manager':n>=17?'Sr Analyst':n>=14?'Analyst':'Jr Analyst';
 
-const ent=[['Subholding Downstream',122,23],['Subholding Upstream',95,22],['Anak Perusahaan Services',75,59],['Holding',78,8],['Subholding Gas',48,23],['Integrated Marine & Logistic',12,3],['Subholding PNRE',14,0]];
-const mx=Math.max(...ent.map(e=>e[1]+e[2]));
-document.getElementById('hbars').innerHTML=ent.map(e=>{const t=e[1]+e[2];return `<div class="hbar"><span>${e[0]}</span><div class="tr" style="width:${t/mx*100}%"><span style="flex:${e[1]};background:var(--pri)">${e[1]}</span>${e[2]?`<span style="flex:${e[2]};background:var(--vac);color:var(--vac-tx)">${e[2]}</span>`:''}</div><b>${(e[2]/t*100).toFixed(1)}%</b></div>`}).join('')+'<div class="lg"><span><i style="background:var(--pri)"></i>Terisi</span><span><i style="background:var(--vac)"></i>Lowong</span></div>';
-document.querySelector('#vrTable tbody').innerHTML=ent.map(e=>{const t=e[1]+e[2],v=e[2]/t*100;return `<tr><td>${e[0]}</td><td class="num">${t}</td><td class="num">${e[1]}</td><td class="num">${e[2]}</td><td class="num"><div class="inbar"><span style="width:${v*1.2}px"></span>${v.toFixed(1)}%</div></td></tr>`}).join('')+'<tr style="font-weight:600"><td>Total</td><td class="num">582</td><td class="num">444</td><td class="num">138</td><td class="num">23.7%</td></tr>';
+/* Holding: hand-crafted Asset Infrastructure rows (match prompt 1) */
+const HQ={bg:'Holding',co:'PT Pertamina (Persero)'};
+const base=[
+ ['30331401','Manager Asset Operation','Asset Operation','7100101','Budi Santoso',[['4 th 2 bl',3],['7 th 1 bl',3],['4 th 2 bl',3]],'6',['3 th 8 bl',3],'m','Eligible',19],
+ ['30331402','Sr Analyst Asset Operation','Asset Operation','7100102','Rina Kartika',[['3 th 1 bl',3],['5 th 0 bl',3],['3 th 1 bl',3]],'5',['3 th 1 bl',2],'m','Eligible',17],
+ ['30331403','Analyst Asset Operation','Asset Operation','7100103','Dimas Prasetyo',[['2 th 2 bl',2],['6 th 0 bl',3],['2 th 2 bl',2]],'6.5',['2 th 4 bl',2],'m','Not Eligible',15],
+ ['30331410','Sr Analyst Project Control','Asset Project Management Office','7100110','Sari Wulandari',[['2 th 5 bl',2],['2 th 5 bl',2],['1 th 3 bl',1]],'5.5',['2 th 6 bl',2],'k','Eligible',17],
+ ['30331411','Analyst Project Control','Asset Project Management Office','7100111','Fajar Nugroho',[['1 th 8 bl',1],['2 th 1 bl',2],['1 th 8 bl',1]],'6',['2 th 3 bl',2],'k','Eligible',15],
+ ['30331412','Analyst PMO Reporting','Asset Project Management Office','7100112','Ayu Lestari',[['0 th 10 bl',1],['1 th 0 bl',1],['0 th 10 bl',1]],'7',['1 th 2 bl',1],'h','Not Eligible',14],
+ ['30331413','Jr Analyst PMO','Asset Project Management Office','—','vacant',null,'—',null,'v','—',13],
+ ['30331404','Analyst Asset Reliability','Asset Operation','7100104','Yoga Pratama',null,'—',null,'u','—',15]
+].map(r=>{const o={id:r[0],pos:r[1],dept:r[2],nopek:r[3],nama:r[4],t:r[5],smk:r[6],pbs:r[7],cat:r[8],elig:r[9],prl:r[10],...HQ,dir:'Penunjang Bisnis',fn:'Asset Management',div:'Asset Infrastructure',fp:'Asset Management',adj:0,log:[],fix:null};
+  if(o.t){const pts=[...o.t.map(x=>x[1]),o.pbs[1]];const tot=(pts.reduce((a,b)=>a+b,0)*.25).toFixed(2);Object.assign(o,{pts:pts.slice(),sys:{pts:pts.slice(),total:tot,cat:catOf(+tot)},total:tot});}
+  else o.total='—';
+  if(o.cat==='u'){o.src='kosong';o.issue='Kolom status tidak terisi';}
+  return o;});
+const dim=base.find(r=>r.id==='30331403');
+Object.assign(dim,{pts:[2,2,2,2],total:'2.00',cat:'k',adj:1,just:'Pekerja baru kembali dari Tugas Belajar 2 tahun; lama di lokasi dihitung sejak penempatan kembali sesuai kebijakan HCBP.'});
+dim.log=[{who:'Hendra W. (Sr Analyst HCBP)',at:'03 Nov 2026 14:12 WIB',txt:'Poin Lama di Lokasi <s>3</s> → 2; Total Poin <s>2.25</s> → 2.00; Traffic Light <s>Merah P1</s> → Kuning P2',q:dim.just}];
 
-const hc=['Holding','SH Upstream','SH Downstream','SH Gas','SH PNRE','IML','APS'];
+function genFixed(div,depts,counts,dir,fn,idBase){const out=[];['h','k','m','u','v'].forEach((c,ci)=>{for(let n=0;n<counts[ci];n++){const i=out.length;const prl=[13,14,15,16,17,18,19,20][(i*3+ci)%8];
+  out.push(mkRow({id:String(idBase+i),pos:`${lvlTitle(prl)} ${div==='No Division'?fn:div}`,dept:depts[i%depts.length],prl,...HQ,dir,fn,div,fp:FPMAP[fn]},c,i));}});return out;}
+const ROWS=[...base,
+ ...genFixed('Asset Infrastructure',['No Department','Asset Operation','Asset Project Management Office'],[2,3,1,0,1],'Penunjang Bisnis','Asset Management',30331420),
+ ...genFixed('Asset Strategy',['Asset Planning','Portfolio Optimization'],[1,2,3,0,1],'Penunjang Bisnis','Asset Management',30331450),
+ ...genFixed('No Division',['No Department'],[1,1,1,0,0],'Penunjang Bisnis','Asset Management',30331470),
+ ...genFixed('Asset Portfolio',['Portfolio Analysis','Asset Valuation'],[3,4,2,0,2],'Penunjang Bisnis','Asset Management',30331480),
+ ...genFixed('No Division',['VP Legal Office'],[2,7,1,0,9],'Legal','Legal',30340100),
+ ...genFixed('Compliance',['Compliance Program','Regulatory Compliance'],[4,4,2,0,4],'Legal','Legal',30340200),
+ ...genFixed('Legal Advocacy',['Advocacy'],[4,3,0,0,2],'Legal','Legal',30340300),
+ ...genFixed('Legal Contracting',['Commercial Contract','Corporate Contract'],[11,3,3,1,4],'Legal','Legal',30340400),
+ ...genFixed('Legal Litigation',['Litigation'],[0,1,18,0,9],'Legal','Legal',30340500)];
+/* Subholding & APS: random dummy */
+let idc=40000000;
+Object.entries(ORG).forEach(([bg,cos])=>{Object.entries(cos).forEach(([co,dirs])=>Object.entries(dirs).forEach(([dir,fns])=>Object.entries(fns).forEach(([fn,divs])=>divs.forEach(div=>{
+  if(bg==='Holding'&&(fn==='Asset Management'||fn==='Legal'))return;
+  const n=8+Math.floor(rnd()*9);const hotE=bg==='Anak Perusahaan Services'||bg==='Subholding Downstream';
+  for(let i=0;i<n;i++){const prl=12+Math.floor(rnd()*11);const pv=hotE&&prl>=14&&prl<=18?.4:.13;const x=rnd();
+    const cat=x<pv?'v':x<pv+.04?'u':pick(['m','m','m','k','k','k','k','h','h','h']);
+    ROWS.push(mkRow({id:String(idc++),pos:`${lvlTitle(prl)} ${div}`,dept:`${div} Section ${1+i%2}`,prl,bg,co,dir,fn,div,fp:FPMAP[fn]},cat,i));}
+}))));});
+
+const ten=t=>t?`${t[0]}<span class="sub">Poin ${t[1]} · ${(t[1]*0.25).toFixed(2)}</span>`:'<span class="muted">—</span>';
+const DEF={bg:'Holding',co:'PT Pertamina (Persero)',dir:'Penunjang Bisnis',fn:'Asset Management',div:'Asset Infrastructure',prl:'',fp:'Internal Audit'};
+let S={...DEF},cur='tl',pov='org';
+const F={bg:fBG,co:fCO,dir:fDIR,fn:fFN,div:fDIV,prl:fPRL,fp:fFP};
+[...new Set(Object.values(FPMAP))].sort().forEach(v=>fFP.add(new Option(v,v)));
+const optSet=(el,list,allLbl,val)=>{el.innerHTML=`<option value="">${allLbl}</option>`+list.map(o=>`<option>${o}</option>`).join('');el.value=list.includes(val)?val:'';};
+function cascade(){
+  const bg=fBG.value,co=fCO.value,dir=fDIR.value,fn=fFN.value,dv=fDIV.value;
+  const cos=bg?Object.keys(ORG[bg]):[];optSet(fCO,cos,'Semua company',co);fCO.disabled=!bg;
+  const dirs=fCO.value?Object.keys(ORG[bg][fCO.value]):[];optSet(fDIR,dirs,'Semua directorate',dir);fDIR.disabled=!fCO.value;
+  const fns=fDIR.value?Object.keys(ORG[bg][fCO.value][fDIR.value]):[];optSet(fFN,fns,'Semua function',fn);fFN.disabled=!fDIR.value;
+  const divs=fFN.value?ORG[bg][fCO.value][fDIR.value][fFN.value]:[];optSet(fDIV,divs,'Semua division',dv);fDIV.disabled=!fFN.value;
+  [fCO,fDIR,fFN,fDIV].forEach(e=>e.title=e.disabled?'Pilih level di atasnya terlebih dulu':'');
+}
+function loadForm(){optSet(fBG,Object.keys(ORG),'Semua (Holding & Subholding)',S.bg);
+  ['co','dir','fn','div'].forEach(k=>{F[k].innerHTML=`<option>${S[k]}</option>`;F[k].value=S[k];});
+  cascade();cascade();cascade();cascade();['prl','fp'].forEach(k=>F[k].value=S[k]);markDirty();}
+function formState(){const o={};Object.keys(F).forEach(k=>o[k]=F[k].value);return o;}
+function markDirty(){const f=formState();let d=false;Object.keys(F).forEach(k=>{const c=(f[k]||'')!==(S[k]||'')&&F[k].offsetParent!==null;F[k].classList.toggle('chg',c);d=d||c;});dirty.classList.toggle('hidden',!d);}
+[fBG,fCO,fDIR,fFN].forEach((el,i)=>el.addEventListener('change',()=>{[fCO,fDIR,fFN,fDIV].slice(i).forEach(o=>o.value='');cascade();markDirty();}));
+[fDIV,fPRL,fFP].forEach(el=>el.addEventListener('change',markDirty));
+function applyScope(){S=formState();markDirty();page=0;renderAll();toast('Cakupan diterapkan');}
+function resetScope(){S={...DEF};loadForm();page=0;renderAll();}
+
+const inPrl=r=>{if(!S.prl)return true;const [a,b]=S.prl.split('-').map(Number);return r.prl>=a&&r.prl<=b;};
+const orgScoped=()=>ROWS.filter(r=>(!S.bg||r.bg===S.bg)&&(!S.co||r.co===S.co)&&(!S.dir||r.dir===S.dir)&&(!S.fn||r.fn===S.fn)&&(!S.div||r.div===S.div)&&inPrl(r));
+const fpScoped=()=>ROWS.filter(r=>r.fp===S.fp&&(!S.bg||r.bg===S.bg)&&inPrl(r));
+const scoped=()=>pov==='fp'?fpScoped():orgScoped();
+const LV=['bg','co','dir','fn','div','dept'],LVL={bg:'Entitas',co:'Company',dir:'Direktorat',fn:'Fungsi',div:'Divisi',dept:'Department'};
+function groupKey(d){let deep=-1;(pov==='fp'?['bg']:LV.slice(0,5)).forEach((k,i)=>{if(S[k])deep=i;});
+  for(let i=deep+1;i<LV.length;i++){if(new Set(d.map(r=>r[LV[i]])).size>1||i===LV.length-1)return LV[i];}return 'dept';}
+const gName=(k,v)=>k==='bg'?SHORT[v]:k==='div'&&v==='No Division'?'VP Legal (No Division)':v;
+function crumbTxt(){const pr=S.prl?'PRL '+S.prl.replace('-','–'):'Semua PRL';
+  if(pov==='fp')return `Menampilkan: Fungsi Pembina <b>${S.fp}</b> · <b>${S.bg||'Holding & Subholding'}</b> · ${pr}`;
+  return 'Menampilkan: <b>'+[S.bg||'Holding & Subholding',S.co,S.dir,S.fn,S.div].filter(Boolean).join(' › ')+'</b> · '+pr;}
+function renderAll(){crumb.innerHTML=crumbTxt();renderFpBanner();renderTL();renderVR();renderRk();renderEx();}
+
+/* ---- Tab Traffic Light ---- */
+let page=0;
+function deptOpts(){const d=[...new Set(scoped().map(r=>r.dept))].sort();const v=tDept.value;tDept.innerHTML='<option value="">Department: semua</option>'+d.map(x=>`<option>${x}</option>`).join('');tDept.value=d.includes(v)?v:'';}
+function toolFilt(d){const q=tQ.value.toLowerCase();return d.filter(r=>(!q||(r.nama+r.nopek+r.id+r.pos).toLowerCase().includes(q))&&(!tTL.value||r.cat===tTL.value)&&(!tDept.value||r.dept===tDept.value)&&(!tEl.value||r.elig===tEl.value)&&(!tSt.value||({F:!['v','u'].includes(r.cat),V:r.cat==='v',U:r.cat==='u'})[tSt.value])&&(!tAdj.checked||r.adj));}
+function renderTL(){
+  const d=scoped();deptOpts();const n=c=>d.filter(r=>r.cat===c).length;const pc=c=>d.length?(n(c)/d.length*100).toFixed(1)+'%':'0%';
+  const openU=d.filter(r=>r.cat==='u'&&!r.fix).length;
+  tlKpi.innerHTML=`<div class="kpi"><label>Formasi</label><div class="v">${d.length}</div><div class="s">Posisi dummy dikecualikan</div></div>
+   <div class="kpi" style="border-left-color:var(--merah)"><label>P1 · High (Merah)</label><div class="v">${n('m')}<small>${pc('m')}</small></div><div class="s">Prioritas 1 mobilitas</div></div>
+   <div class="kpi" style="border-left-color:var(--kuning)"><label>P2 · Moderate (Kuning)</label><div class="v">${n('k')}<small>${pc('k')}</small></div><div class="s">Prioritas 2 mobilitas</div></div>
+   <div class="kpi" style="border-left-color:var(--hijau)"><label>P3 · Low (Hijau)</label><div class="v">${n('h')}<small>${pc('h')}</small></div><div class="s">Prioritas 3 mobilitas</div></div>
+   <div class="kpi" style="border-left-color:var(--vac)"><label>Vacant</label><div class="v">${n('v')}<small>${pc('v')}</small></div>${openU?`<a onclick="tTL.value='u';page=0;renderTL();tlTw.scrollIntoView({behavior:'smooth'})">${openU} record Undefined belum lengkap · tampilkan</a>`:'<div class="s">Tidak ada record Undefined terbuka</div>'}</div>`;
+    const f=toolFilt(d);const per=+tPer.value;const pages=Math.max(1,Math.ceil(f.length/per));page=Math.min(page,pages-1);
+  const pg=f.slice(page*per,page*per+per);
+  tlEmpty.classList.toggle('hidden',d.length>0);tlNo.classList.toggle('hidden',!(d.length&&!f.length));tlTw.classList.toggle('hidden',!pg.length);tlPagBar.classList.toggle('hidden',!f.length);
+  tlPag.textContent=f.length?`Menampilkan ${page*per+1}–${page*per+pg.length} dari ${f.length}${f.length<d.length?' (difilter dari '+d.length+')':''}`:'';
+  pPrev.disabled=page===0;pNext.disabled=page>=pages-1;pPrev.style.opacity=page===0?.3:1;pNext.style.opacity=page>=pages-1?.3:1;
+  document.querySelector('#tlTable tbody').innerHTML=pg.map(r=>tlRow(r,pov==='fp'||!S.bg)).join('');
+}
+function tlRow(r,showEnt){
+    const pl=PL[r.cat];
+    const tlCell=`<span class="pill ${pl[0]}">${pl[1]}</span>${r.adj?`<span class="adj" style="cursor:pointer" onclick="openLog('${r.id}')">Disesuaikan</span>`:''}${r.cat==='u'?(r.fix?`<span class="sub">Menunggu generate · ${r.fix.val}</span>`:`<span class="sub miss" onclick="openFix('${r.id}')">Lengkapi status</span>`):''}`;
+    const nama=r.nama==='vacant'?'<span class="muted">vacant</span>':`<span class="lnk">${r.nama}</span>`;
+    const t=r.t||[null,null,null];const tp=r.t?r.pts:null;
+    const tc=(i)=>t[i]?`${t[i][0]}<span class="sub">Poin ${tp[i]}${tp[i]!==r.sys.pts[i]?' <s>'+r.sys.pts[i]+'</s>':''} · ${(tp[i]*.25).toFixed(2)}</span>`:'<span class="muted">—</span>';
+    const pc4=r.pbs?`${r.pbs[0]}<span class="sub">Poin ${tp[3]}${tp[3]!==r.sys.pts[3]?' <s>'+r.sys.pts[3]+'</s>':''} · ${(tp[3]*.25).toFixed(2)}</span>`:'<span class="muted">—</span>';
+    return `<tr><td>${r.id}</td><td>${r.pos}<span class="sub">${showEnt?SHORT[r.bg]+' · ':''}PRL ${r.prl}</span></td><td>${r.dept}</td><td>${r.nopek}</td><td>${nama}</td><td>${tc(0)}</td><td>${tc(1)}</td><td>${tc(2)}</td><td>${r.smk}</td><td>${pc4}</td><td class="num"><b>${r.total}</b>${r.adj?`<span class="sub">Sistem ${r.sys.total}</span>`:''}</td><td>${tlCell}</td><td>${r.elig}</td><td>${r.t?`<button class="kebab" onclick="openAdj('${r.id}')" aria-label="Adjust poin" title="Adjust poin">⋮</button>`:''}</td></tr>`;
+}
+[tQ,tTL,tDept,tEl,tSt,tAdj,tPer].forEach(e=>e.addEventListener('input',()=>{page=0;renderTL();}));
+function resetTool(){tQ.value='';tTL.value='';tDept.value='';tEl.value='';tSt.value='';tAdj.checked=false;page=0;renderTL();}
+pPrev.onclick=()=>{if(page>0){page--;renderTL();}};pNext.onclick=()=>{page++;renderTL();};
+function exportTL(){toast(`Export disiapkan · ${toolFilt(scoped()).length} baris sesuai cakupan dan filter tabel`);}
+
+/* ---- Tab Vacancy ---- */
 const band=v=>v===null?['var(--hx)','var(--text3)']:v<5?['var(--h1)','#8A3A00']:v<10?['var(--h2)','#8A3A00']:v<20?['var(--h3)','#7A2E00']:v<30?['var(--h4)','#fff']:['var(--h5)','#fff'];
-let hh='<tr><th></th>'+hc.map(c=>`<th>${c}</th>`).join('')+'</tr>';
-const prls=[];for(let p=25;p>=10;p--)prls.push('PRL '+p);prls.push('Tidak Diketahui');
-prls.forEach((p,i)=>{hh+=`<tr><td class="rl">${p}</td>`;hc.forEach((c,j)=>{
-  const n=parseInt(p.slice(4))||0;let f=Math.max(0,Math.round(((i*7+j*13)%17)+(n>=14&&n<=18?14:2)-(n>22?10:0)));
-  if(c==='SH PNRE'&&n>20)f=0;
-  let v=null;if(f>0){const hot=(n>=14&&n<=18)&&(c==='APS'||c==='SH Downstream');v=hot?30+((i*5+j)%12):((i*11+j*7)%22);}
-  const vac=v===null?0:Math.round(f*v/100);const rt=v===null?null:vac/f*100;const b=band(rt);
-  hh+=`<td style="background:${b[0]};color:${b[1]}" data-t="${p} · ${c} · Formasi ${f} · Terisi ${f-vac} · Lowong ${vac} · Vacancy ${v===null?'—':(vac/f*100).toFixed(1)+'%'}">${v===null?'—':(f?(vac/f*100).toFixed(1):'0.0')+'%'}<small>${f?'F '+f:''}</small></td>`;});hh+='</tr>';});
-const heat=document.getElementById('heat');heat.innerHTML=hh;
+function renderVR(){
+  const d=scoped();const key=groupKey(d);const label=LVL[key];
+  const cols=[...new Set(d.map(r=>r[key]))];
+  const groups=cols.map(c=>{const g=d.filter(r=>r[key]===c);const v=g.filter(r=>r.cat==='v').length;return [c,g.length-v,v];});
+  const T=groups.reduce((a,g)=>[a[0]+g[1],a[1]+g[2]],[0,0]);const tot=T[0]+T[1];
+  vrKpi.innerHTML=`<div class="kpi"><label>Total Formasi</label><div class="v">${tot}</div><div class="s">Posisi dummy dikecualikan</div></div><div class="kpi"><label>Terisi</label><div class="v">${T[0]}</div></div><div class="kpi" style="border-left-color:var(--vac)"><label>Lowong</label><div class="v">${T[1]}</div></div><div class="kpi"><label>Vacancy Rate</label><div class="v">${tot?(T[1]/tot*100).toFixed(1):'0.0'}%</div><div class="s">Fill rate ${tot?(T[0]/tot*100).toFixed(1):'0.0'}%</div></div>`;
+  vrBarT.textContent=`Formasi Terisi vs Lowong per ${label}`;vrTh.textContent=label;
+  vrLvl.textContent=`Level rekap mengikuti cakupan: per ${label.toLowerCase()}${pov==='fp'?' (posisi ter-mapping ke fungsi pembina '+S.fp+')':''}. Record Undefined dihitung sebagai terisi sampai status dilengkapi.`;
+  const mx=Math.max(1,...groups.map(g=>g[1]+g[2]));
+  hbars.innerHTML=groups.length?groups.map(g=>{const t=g[1]+g[2];return `<div class="hbar"><span>${gName(key,g[0])}</span><div class="tr" style="width:${t/mx*100}%">${g[1]?`<span style="flex:${g[1]};background:var(--pri)">${g[1]}</span>`:''}${g[2]?`<span style="flex:${g[2]};background:var(--vac);color:var(--vac-tx)">${g[2]}</span>`:''}</div><b>${t?(g[2]/t*100).toFixed(1):'0.0'}%</b></div>`}).join('')+'<div class="lg"><span><i style="background:var(--pri)"></i>Terisi</span><span><i style="background:var(--vac)"></i>Lowong</span></div>':'<div class="empty">Belum ada data pada cakupan ini</div>';
+  document.querySelector('#vrTable tbody').innerHTML=groups.map(g=>{const t=g[1]+g[2],v=t?g[2]/t*100:0;return `<tr><td>${gName(key,g[0])}</td><td class="num">${t}</td><td class="num">${g[1]}</td><td class="num">${g[2]}</td><td class="num"><div class="inbar"><span style="width:${v*1.2}px"></span>${v.toFixed(1)}%</div></td></tr>`}).join('')+`<tr style="font-weight:600"><td>Total</td><td class="num">${tot}</td><td class="num">${T[0]}</td><td class="num">${T[1]}</td><td class="num">${tot?(T[1]/tot*100).toFixed(1):'0.0'}%</td></tr>`;
+  const prls=[...new Set(d.map(r=>r.prl))].sort((a,b)=>b-a);
+  let hh='<tr><th></th>'+cols.map(c=>`<th>${gName(key,c)}</th>`).join('')+'</tr>';
+  prls.forEach(p=>{hh+=`<tr><td class="rl">PRL ${p}</td>`;cols.forEach(c=>{const g=d.filter(r=>r[key]===c&&r.prl===p);const f=g.length,vac=g.filter(r=>r.cat==='v').length;const rt=f?vac/f*100:null;const b=band(rt);
+    hh+=`<td style="background:${b[0]};color:${b[1]}" data-t="PRL ${p} · ${gName(key,c)} · Formasi ${f} · Terisi ${f-vac} · Lowong ${vac} · Vacancy ${rt===null?'—':rt.toFixed(1)+'%'}">${rt===null?'—':rt.toFixed(1)+'%'}<small>${f?'F '+f:''}</small></td>`;});hh+='</tr>';});
+  heat.innerHTML=prls.length?hh:'<tr><td class="empty">Belum ada data pada cakupan ini</td></tr>';
+}
+const heat=document.getElementById('heat');
 heat.addEventListener('mouseover',e=>{const t=e.target.closest('td[data-t]');if(t)document.getElementById('htip').textContent=t.dataset.t;});
 
-const rkOrg=[['VP Legal',2,7,1,0,9],['Compliance',4,4,2,0,4],['Legal Advocacy',4,3,0,0,2],['Legal Contracting',11,3,3,1,4],['Legal Litigation',0,1,18,0,9]];
-const rkFp=[['Holding',9,12,6,1,8],['SH Upstream',14,10,9,0,11],['SH Downstream',11,15,13,2,10],['SH Gas',6,8,3,0,7],['SH PNRE',4,3,1,0,2],['IML',3,4,2,1,3],['APS',8,10,14,0,13]];
-const segc=['var(--hijau)','var(--kuning)','var(--merah)','var(--undef)','var(--vac)'],segn=['Hijau','Kuning','Merah P1','Undefined','Vacant'];
+/* ---- Tab Rekap ---- */
+const segc=['var(--hijau)','var(--kuning)','var(--merah)','var(--undef)','var(--vac)'],segn=['Hijau','Kuning','Merah P1','Undefined','Vacant'],CATS=['h','k','m','u','v'];
+let RK=[],rkKey='div',rkM='pct';
+document.querySelectorAll('#rkMode button').forEach(b=>b.onclick=()=>{rkM=b.dataset.m;document.querySelectorAll('#rkMode button').forEach(x=>x.classList.toggle('on',x===b));renderRk();});
 function renderRk(){
-  const d=pov==='fp'?rkFp:rkOrg;
-  document.getElementById('rkTitle').textContent=pov==='fp'?'Komposisi Traffic Light · Internal Audit per Entitas':'Komposisi Traffic Light per Divisi';
-  document.getElementById('fpBanner').classList.toggle('hidden',pov!=='fp');
-  document.getElementById('cols').innerHTML=d.map((r,ri)=>{const t=r.slice(1).reduce((a,b)=>a+b,0);return `<div class="col">${r.slice(1).map((v,k)=>v?`<span style="height:${v/t*100}%;background:${segc[k]};${k===1||k===3||k===4?'color:#2a2a2a':''}" onclick="drill('${r[0]}',${k},${v})" title="${segn[k]}: ${v}">${v/t>=.06?Math.round(v/t*100)+'%':''}</span>`:'').join('')}</div>`}).join('');
-  document.getElementById('collbl').innerHTML=d.map(r=>`<div>${r[0]}</div>`).join('');
+  const s=scoped();rkKey=groupKey(s);const lbl=LVL[rkKey];
+  const d=[...new Set(s.map(r=>r[rkKey]))].map(g=>[g,...CATS.map(c=>s.filter(r=>r[rkKey]===g&&r.cat===c).length)]);
+  rkTitle.textContent=pov==='fp'?`Komposisi Traffic Light · ${S.fp} per ${lbl}`:`Komposisi Traffic Light per ${lbl}`;
+  fpBanner.classList.add('hidden');
+  RK=d;
+  if(!d.length){cols.innerHTML='<div class="empty" style="width:100%">Belum ada data traffic light untuk cakupan ini</div>';collbl.innerHTML='';pv.innerHTML='';return;}
+  cols.innerHTML=d.map((r,ri)=>{const t=r.slice(1).reduce((a,b)=>a+b,0);return `<div class="col">${r.slice(1).map((v,k)=>v?`<span style="height:${v/t*100}%;background:${segc[k]};${k===1||k===3||k===4?'color:#2a2a2a':''}" onclick="drill(${ri},${k})" title="${segn[k]}: ${v}">${v/t>=.06?(rkM==='pct'?Math.round(v/t*100)+'%':v):''}</span>`:'').join('')}</div>`}).join('');
+  collbl.innerHTML=d.map(r=>`<div>${gName(rkKey,r[0])}</div>`).join('');
   const tot=[0,0,0,0,0];d.forEach(r=>r.slice(1).forEach((v,k)=>tot[k]+=v));
-  document.getElementById('pv').innerHTML='<thead><tr><th>'+(pov==='fp'?'Entitas':'Divisi')+'</th><th>Hijau</th><th>Kuning</th><th>Merah</th><th>Undef</th><th>Vacant</th><th>Total</th></tr></thead><tbody>'+d.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td class="num">${v||''}</td>`).join('')}<td class="num"><b>${r.slice(1).reduce((a,b)=>a+b,0)}</b></td></tr>`).join('')+`<tr style="font-weight:600;background:var(--pri-soft)"><td>Grand Total</td>${tot.map(v=>`<td class="num">${v}</td>`).join('')}<td class="num">${tot.reduce((a,b)=>a+b,0)}</td></tr></tbody>`;
+  pv.innerHTML=`<thead><tr><th>${lbl}</th><th>Hijau</th><th>Kuning</th><th>Merah</th><th>Undef</th><th>Vacant</th><th>Total</th></tr></thead><tbody>`+d.map(r=>`<tr><td>${gName(rkKey,r[0])}</td>${r.slice(1).map(v=>`<td class="num">${v||''}</td>`).join('')}<td class="num"><b>${r.slice(1).reduce((a,b)=>a+b,0)}</b></td></tr>`).join('')+`<tr style="font-weight:600;background:var(--pri-soft)"><td>Grand Total</td>${tot.map(v=>`<td class="num">${v}</td>`).join('')}<td class="num">${tot.reduce((a,b)=>a+b,0)}</td></tr></tbody>`;
 }
-const nm=['Andi Saputra','Maya Putri','Teguh Wibowo','Lina Marlina','Arif Rahman'];
-function drill(dv,k,v){document.getElementById('drillT').textContent=`${dv} · ${segn[k]} · ${v} posisi`;
-  document.getElementById('drillB').innerHTML=nm.slice(0,Math.min(5,v)).map((n,i)=>`<tr><td>3034${k}${i}2${i}</td><td>${['Sr Analyst','Analyst','Jr Analyst','Analyst','Sr Analyst'][i]} ${dv}</td><td>${k===4?'<span class="muted">vacant</span>':n}</td><td class="num">${k===4?'—':[2.75,2.50,2.25,2.10,2.50][i].toFixed(2)}</td><td>${k===4?'—':(i%2?'Not Eligible':'Eligible')}</td></tr>`).join('');
+function drill(ri,k){const g=RK[ri];const list=scoped().filter(r=>r[rkKey]===g[0]&&r.cat===CATS[k]);
+  drillT.textContent=`${gName(rkKey,g[0])} · ${segn[k]} · ${list.length} posisi`;
+  drillB.innerHTML=list.slice(0,8).map(r=>`<tr><td>${r.id}</td><td>${r.pos}<span class="sub">${r.dept} · PRL ${r.prl}</span></td><td>${r.nama==='vacant'?'<span class="muted">vacant</span>':r.nama}</td><td class="num">${r.total}</td><td>${r.elig}</td></tr>`).join('');
+  drillB.closest('.modal').querySelector('.pag span:last-child').textContent=`1–${Math.min(8,list.length)} dari ${list.length}`;
   open('mDrill');}
+
+/* ---- Tab Exception ---- */
+function renderEx(){
+  const all=scoped().filter(r=>r.cat==='u');const openN=all.filter(r=>!r.fix).length;
+  exBadge.textContent=openN;exBadge.classList.toggle('hidden',!openN);
+  exBanner.innerHTML=openN?`<span>⚠</span><span>${openN} record pada cakupan ini memiliki status kosong atau tidak valid dari ZHRPA044. Perhitungan record lain tetap berjalan. Lengkapi untuk menyertakan record ini dalam traffic light.</span>`:'<span>✓</span><span>Tidak ada exception terbuka pada cakupan ini.</span>';
+  exBanner.className='banner '+(openN?'warn':'');
+  const q=eQ.value.toLowerCase();
+  const f=all.filter(r=>(!q||(r.nama+r.nopek+r.id).toLowerCase().includes(q))&&(!eSt.value||(eSt.value==='open'?!r.fix:!!r.fix))&&(!eMs.value||r.issue===eMs.value)).sort((a,b)=>(a.fix?1:0)-(b.fix?1:0));exCount.textContent=`${openN} perlu dilengkapi · ${all.length-openN} sudah dilengkapi`;
+  exTw.classList.toggle('hidden',!f.length);exNo.classList.toggle('hidden',!!f.length);
+  exNo.querySelector('b').textContent=all.length?'Tidak ada record yang sesuai filter':'Tidak ada exception pada cakupan ini';
+  exB.innerHTML=f.map(r=>`<tr style="${r.fix?'opacity:.6':''}"><td>${r.id}</td><td>${r.pos}</td><td>${SHORT[r.bg]} · ${r.div}<span class="sub">${r.dept}</span></td><td>${r.nopek}</td><td>${r.nama}</td><td class="muted">${r.src}</td><td>${r.issue}</td>
+   <td>${r.fix?`<s>${r.src}</s> → ${r.fix.val}<span class="sub">${r.fix.by}</span>`:`<select class="sel" id="ex-${r.id}"><option>Filled</option><option>Vacant</option><option>Dummy</option></select>`}</td>
+   <td>${r.fix?'<span style="color:var(--hijau);font-weight:600">✓ Sudah dilengkapi</span>':`<button class="btn-p btn-sm" onclick="saveEx('${r.id}')">Simpan</button>`}</td></tr>`).join('');
+}
+EXI.forEach(e=>eMs.add(new Option(e[1],e[1])));
+[eQ,eSt,eMs].forEach(e=>e.addEventListener('input',renderEx));
+function saveEx(id){const r=ROWS.find(x=>x.id===id);r.fix={val:document.getElementById('ex-'+id).value,by:'Anda, baru saja'};renderAll();toast('Status dilengkapi · traffic light record ini dihitung pada generate berikutnya');}
+
+/* ---- Adjust & log ---- */
+let AR=null;const CN=['Lama di Jabatan','Lama di Lokasi','Lama di Cost Center','Performance'];
+const pillTxt=c=>PL[c][1].replace(' · ',' ');
+function openAdj(id){AR=ROWS.find(r=>r.id===id);
+  adjSub.textContent=`${AR.nama} · ${AR.nopek} · ${AR.pos} · ID Post ${AR.id}`;
+  const vals=[AR.t[0][0],AR.t[1][0],AR.t[2][0],`SMK ${AR.smk} × ${AR.pbs[0]}`];
+  adjComps.innerHTML=CN.map((c,i)=>`<div class="comp"><span>${c}</span><span>${vals[i]}</span><span>25%</span><span class="ro">${AR.sys.pts[i]}</span><select class="fld adjSel" aria-label="Poin adjust ${c}">${[1,2,3].map(v=>`<option${v===AR.pts[i]?' selected':''}>${v}</option>`).join('')}</select></div>`).join('');
+  adjSys.textContent=AR.sys.total;adjSysPill.className='pill '+PL[AR.sys.cat][0];adjSysPill.textContent=pillTxt(AR.sys.cat);
+  just.value=AR.just||'';justErr.style.display='none';adjLogBtn.style.display=AR.log.length?'':'none';
+  document.querySelectorAll('.adjSel').forEach(s=>s.onchange=calcAdj);calcAdj();closeAll();open('dAdj');}
+const adjVals=()=>[...document.querySelectorAll('.adjSel')].map(s=>+s.value);
+function calcAdj(){const v=adjVals();const t=v.reduce((a,b)=>a+b,0)*.25;adjVal.textContent=t.toFixed(2);const c=catOf(t);adjPill.className='pill '+PL[c][0];adjPill.textContent=pillTxt(c);document.querySelectorAll('#adjComps .comp').forEach((r,i)=>r.classList.toggle('hl',v[i]!==AR.sys.pts[i]));}
+function resetAdj(){document.querySelectorAll('.adjSel').forEach((s,i)=>s.value=AR.sys.pts[i]);calcAdj();}
+const just=document.getElementById('just');just.oninput=()=>justErr.style.display='none';
+function saveAdj(){const v=adjVals();const same=v.every((x,i)=>x===AR.sys.pts[i]);
+  if(!same&&!just.value.trim()){justErr.style.display='block';just.focus();return;}
+  const prev={pts:AR.pts.slice(),total:AR.total,cat:AR.cat};const t=v.reduce((a,b)=>a+b,0)*.25;
+  if(v.every((x,i)=>x===prev.pts[i])){closeAll();toast('Tidak ada perubahan poin');return;}
+  AR.pts=v;AR.total=t.toFixed(2);AR.cat=catOf(t);AR.adj=same?0:1;AR.just=same?'':just.value.trim();
+  const ch=v.map((x,i)=>x!==prev.pts[i]?`Poin ${CN[i]} <s>${prev.pts[i]}</s> → ${x}`:null).filter(Boolean).join('; ');
+  AR.log.unshift({who:'Anda (Admin HCISA)',at:'04 Nov 2026 · baru saja',txt:`${ch}; Total Poin <s>${prev.total}</s> → ${AR.total}${prev.cat!==AR.cat?`; Traffic Light <s>${pillTxt(prev.cat)}</s> → ${pillTxt(AR.cat)}`:''}${same?' (dikembalikan ke hasil sistem)':''}`,q:AR.just});
+  closeAll();renderAll();toast(same?'Poin dikembalikan ke hasil sistem':'Adjustment disimpan dan tercatat di riwayat perubahan');}
+function openLog(id){const r=ROWS.find(x=>x.id===id);logSub.textContent=`${r.nama} · ID Post ${r.id}`;
+  logTl.innerHTML=r.log.map(e=>`<div class="e"><b>${e.who}</b><div class="help">${e.at}</div><div style="margin-top:6px;font-size:13px">${e.txt}</div>${e.q?`<div class="q">“${e.q}”</div>`:''}</div>`).join('')+`<div class="e"><b>Sistem</b><div class="help">03 Nov 2026 06:00 WIB</div><div style="margin-top:6px;font-size:13px">Generate dari ZHRPA044: Total Poin ${r.sys.total} · ${pillTxt(r.sys.cat)}</div></div>`;
+  closeAll();open('dLog');}
+
+function showTab(t){cur=t;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));['tl','vr','rk','ex'].forEach(x=>document.getElementById('t-'+x).classList.toggle('hidden',x!==t));crumb.innerHTML=crumbTxt();window.scrollTo(0,0);}
+function setPov(p){pov=p;document.querySelectorAll('#pov button').forEach(x=>x.classList.toggle('on',x.dataset.p===p));document.querySelectorAll('.fo').forEach(e=>e.classList.toggle('hidden',p==='fp'));document.querySelector('.ff').classList.toggle('hidden',p!=='fp');markDirty();}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.t));
+function renderFpBanner(){const on=pov==='fp';fpAll.classList.toggle('hidden',!on);if(on){const d=fpScoped();const ents=new Set(d.map(r=>r.bg)).size;fpAll.querySelector('span:last-child').textContent=`Sudut pandang Fungsi Pembina ${S.fp}: ${d.length} posisi di ${ents} entitas, berlaku untuk keempat tab. Mapping posisi ke fungsi pembina dikelola admin.`;}}
+let savedOrg=null;
+document.querySelectorAll('#pov button').forEach(b=>b.onclick=()=>{const p=b.dataset.p;if(p===pov)return;
+  if(p==='fp'){savedOrg={bg:S.bg,co:S.co,dir:S.dir,fn:S.fn,div:S.div};S.bg='';}
+  else if(savedOrg){Object.assign(S,savedOrg);}
+  setPov(p);loadForm();page=0;renderAll();});
+loadForm();renderAll();
 
 function open(id){document.getElementById('ov').classList.add('on');document.getElementById(id).classList.add('on');}
 function openDrawer(id){open(id);}
 function closeAll(){document.querySelectorAll('.overlay,.drawer,.modal-wrap').forEach(e=>e.classList.remove('on'));}
 function openIns(n){document.getElementById('insName').textContent=n;open('mIns');}
-function openGen(){open('mGen');let p=10;const b=document.getElementById('pbar');b.style.width='10%';const iv=setInterval(()=>{p+=18;b.style.width=Math.min(p,100)+'%';if(p>=100){clearInterval(iv);closeAll();toast('Traffic light diperbarui · 15 posisi, 1 exception');}},350);}
+function openGen(){open('mGen');let p=10;const b=document.getElementById('pbar');b.style.width='10%';const iv=setInterval(()=>{p+=18;b.style.width=Math.min(p,100)+'%';if(p>=100){clearInterval(iv);closeAll();toast(`Traffic light diperbarui · ${scoped().length} posisi, ${scoped().filter(r=>r.cat==='u'&&!r.fix).length} exception`);}},350);}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
 
-const sysPts=[2,3,2,2];
-function calcAdj(){const v=[...document.querySelectorAll('.adjSel')].map(s=>+s.value);const t=v.reduce((a,b)=>a+b,0)*0.25;document.getElementById('adjVal').textContent=t.toFixed(2);const p=document.getElementById('adjPill');const c=t>=2.1?['p-m','Merah P1']:t>=1.5?['p-k','Kuning P2']:['p-h','Hijau P3'];p.className='pill '+c[0];p.textContent=c[1];document.querySelectorAll('#dAdj .comp:not(.hd)').forEach((r,i)=>r.classList.toggle('hl',v[i]!==sysPts[i]));}
-document.querySelectorAll('.adjSel').forEach(s=>s.onchange=calcAdj);
-function resetAdj(){document.querySelectorAll('.adjSel').forEach((s,i)=>s.value=sysPts[i]);calcAdj();}
-const just=document.getElementById('just');just.oninput=()=>document.getElementById('justErr').style.display='none';
-function saveAdj(){if(!just.value.trim()){document.getElementById('justErr').style.display='block';return;}closeAll();toast('Adjustment disimpan dan tercatat di riwayat perubahan');}
-function saveEx(){const r=document.getElementById('exRow');r.style.opacity=.6;r.lastElementChild.innerHTML='<span style="color:var(--hijau);font-weight:600">✓ Sudah dilengkapi</span>';r.children[6].innerHTML='<s>kosong</s> → '+document.getElementById('exSel').value+'<span class="sub">Anda, baru saja</span>';document.querySelector('.tab[data-t=ex] .badge').remove();toast('Status dilengkapi · traffic light record ini dihitung pada generate berikutnya');}
-
-function goPage(p){['main','param','mon'].forEach(x=>document.getElementById('pg-'+x).classList.toggle('hidden',x!==p));document.querySelectorAll('.nav [data-nav]').forEach(a=>a.classList.toggle('act',a.dataset.nav===(p==='param'?'main':p)));window.scrollTo(0,0);}
+let dashMode='tl';
+function goPage(p){const sec=(p==='dtl'||p==='dvr')?'main':p;['trm','nr','main','param','mon','mep'].forEach(x=>document.getElementById('pg-'+x).classList.toggle('hidden',x!==sec));
+  const nv=p==='param'?'dtl':p;document.querySelectorAll('.nav [data-nav]').forEach(a=>{const on=a.dataset.nav===nv;a.classList.toggle('act',on);if(on){const g=a.closest('.grp');if(g)g.classList.remove('closed');}});
+  if(sec==='main')setDash(p==='dvr'?'vr':'tl');window.scrollTo(0,0);}
+function setDash(m){dashMode=m;dashTitle.textContent=m==='vr'?'Vacancy Rate & Heatmap':'Traffic Light';
+  const tb=document.querySelector('#pg-main .tabs');tb.classList.toggle('hidden',m==='vr');
+  document.querySelector('.tab[data-t=vr]').classList.add('hidden');
+  if(m==='vr')showTab('vr');else if(cur==='vr')showTab('tl');}
+function openFix(id){const r=ROWS.find(x=>x.id===id);fxId=id;fxSub.textContent=`${r.nama} · ${r.nopek} · ${r.pos} · ID Post ${r.id}`;fxKv.innerHTML=`<span>Status dari ZHRPA044</span><span class="muted">${r.src}</span><span>Masalah</span><span>${r.issue}</span><span>Unit</span><span>${SHORT[r.bg]} · ${r.div} · ${r.dept}</span>`;fxSel.value='Filled';open('mFix');}
+let fxId=null;function saveFix(){const r=ROWS.find(x=>x.id===fxId);r.fix={val:fxSel.value,by:'Anda, baru saja'};closeAll();renderAll();toast('Status dilengkapi · record dihitung pada generate berikutnya');}
 function vt(v){document.querySelectorAll('#vl button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));['kb','mx','at','ah','rv'].forEach(x=>document.getElementById('v-'+x).classList.toggle('hidden',x!==v));}
 document.querySelectorAll('#vl button').forEach(b=>b.onclick=()=>vt(b.dataset.v));
 
@@ -657,6 +1106,352 @@ document.querySelectorAll('#mJenis button').forEach(b=>b.onclick=()=>{mj=b.datas
 document.querySelectorAll('#dlCols input').forEach(i=>i.onchange=()=>dlErr.style.display='none');
 function doDl(){if(![...document.querySelectorAll('#dlCols input')].some(i=>i.checked)){dlErr.style.display='block';return;}closeAll();toast(`File disiapkan · ${monFilt().length} pekerja · tercatat di audit log`);}
 renderMon();
+
+/* ===== Monitoring Pekerja MEP ===== */
+let _m=7;const mr=()=>{_m=(_m*16807)%2147483647;return (_m-1)/2147483646;};const mp=a=>a[Math.floor(mr()*a.length)];
+const T0=new Date('2026-11-04');const DAY=864e5;
+const MENT=['Holding','SH Upstream','SH Downstream','SH Gas','SH PNRE','IML','APS'];
+const MFN=['Asset Management','Finance','Human Capital','Internal Audit','Legal','Operasi','Komersial','Procurement'];
+const SEED=[['72019871','Rina Aprilia Saputri','P','2026-10-23'],['71882204','Dimas Arya Pratama','E','2026-10-07'],['71650933','Lisa Tamara Zenia','E','2026-09-12'],['60101305','Nadia Kusuma','P','2026-10-24'],['60101857','Arif Setiawan','E','2026-09-05'],['60102145','Bambang Hartono','P','2026-10-30'],['60102481','Wulan Maya Sari','P','2026-10-29'],['60104406','Maya Saputra','C','2026-04-28','Tidak Lulus'],['60106607','Gilang Indah Anggraini','C','2026-03-03','Tidak Lulus'],['60106901','Dewi Kurniawan','C','2026-06-18','Perpanjang MEP'],['60107197','Galih Wibowo','C','2026-04-20','Perpanjang MEP'],['60109164','Reza Amalia','C','2026-04-17','Perpanjang MEP']];
+const EVN=['Hendra W.','Sri Mulyani R.','Taufik H.','Ratna D.','Yusuf A.','Melati P.','Agung S.'];
+const addM=(d,m)=>{const x=new Date(d);x.setMonth(x.getMonth()+m);return x;};
+const iso=d=>d.toISOString().slice(0,10);
+const perOf=d=>{const y=d.getFullYear(),h=d.getMonth()<6?'S1':'S2';return `MEP ${y} ${h}`;};
+const MEP=[];const cnt={P:47,E:95,C:62};
+SEED.forEach(r=>{cnt[r[2]]--;});
+const pool=[...SEED.map(r=>({nip:r[0],nama:r[1],st:r[2],start:r[3],res:r[4]||null}))];
+let nipc=60110000;
+['P','E','C'].forEach(st=>{for(let i=0;i<cnt[st];i++){let start;
+  if(st==='P')start=new Date(2026,9,5+Math.floor(mr()*27));
+  else if(st==='E')start=new Date(2026,6+Math.floor(mr()*4),1+Math.floor(mr()*28));
+  else start=new Date(2025,6+Math.floor(mr()*12),1+Math.floor(mr()*28));
+  if(st==='C'&&start>new Date(2026,6,15))start=new Date(2026,2+Math.floor(mr()*4),1+Math.floor(mr()*27));
+  pool.push({nip:String(nipc+=7+Math.floor(mr()*40)),nama:mp(FN)+' '+mp(LN)+(mr()<.4?' '+mp(LN):''),st,start:iso(start),res:st==='C'?mp(['Lulus','Lulus','Lulus','Lulus','Tidak Lulus','Perpanjang MEP','Perpanjang MEP']):null});}});
+pool.forEach((r,i)=>{const st=new Date(r.start);const dur=r.res==='Perpanjang MEP'?6:3;const en=addM(st,dur);
+  const sisa=Math.round((en-T0)/DAY);
+  const steps=r.st==='C'?5:r.st==='P'?(sisa>80?1:2):(Math.max(2,Math.min(4,2+Math.floor((T0-st)/DAY/30))));
+  MEP.push({...r,ent:i<SEED.length?'Holding':mp(MENT),fn:i<SEED.length?mp(['Asset Management','Finance','Internal Audit']):mp(MFN),pos:mp(['Sr Analyst','Analyst','Manager','Supervisor','Officer']),prl:13+Math.floor(mr()*8),
+    eval:mp(EVN),startD:st,endD:en,dur,sisa,steps,periode:perOf(st),over:r.st!=='C'&&sisa<0});});
+MEP.sort((a,b)=>b.startD-a.startD);
+const fmD=d=>d.toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}).replace('Agt','Agu');
+const STN={P:['t-blue','Promotion'],E:['t-amb','Evaluation Process'],C:['t-grn','Completed']};
+const RSN={'Lulus':'t-grn','Tidak Lulus':'t-red','Perpanjang MEP':'t-amb'};
+const STEP=['MEP ditetapkan','Evaluator ditetapkan','Evaluasi bulan 1','Evaluasi bulan 2','Hasil MEP ditetapkan'];
+let mpKey='',mpSt='',mpPg=0,mpDrill=null;
+[...new Set(MEP.map(m=>m.periode))].sort().reverse().forEach(v=>mpPd.add(new Option(v,v)));
+MENT.forEach(v=>mpEn.add(new Option(v,v)));MFN.forEach(v=>mpFu.add(new Option(v,v)));
+function mpBase(){const q=mpQ.value.toLowerCase();return MEP.filter(m=>(!mpPd.value||m.periode===mpPd.value)&&(!mpEn.value||m.ent===mpEn.value)&&(!mpFu.value||m.fn===mpFu.value)&&(!mpRs.value||m.res===mpRs.value)&&(!q||(m.nama+' '+m.nip+' '+m.eval).toLowerCase().includes(q)));}
+const kFilt={'':()=>true,P:m=>m.st==='P',E:m=>m.st==='E',C:m=>m.st==='C',OV:m=>m.over,S30:m=>m.st!=='C'&&m.sisa>=0&&m.sisa<=30};
+function renderMep(){
+  const b=mpBase();
+  const K=[['','Total MEP',b.length,''],['P','Promotion',b.filter(kFilt.P).length,''],['E','Evaluation Process',b.filter(kFilt.E).length,''],['C','Completed',b.filter(kFilt.C).length,''],['S30','Berakhir ≤ 30 hari',b.filter(kFilt.S30).length,'amb'],['OV','Lewat End Date',b.filter(kFilt.OV).length,'warn']];
+  document.getElementById('mpK').innerHTML=K.map(k=>`<button class="kc ${k[3]} ${mpKey===k[0]?'on':''}" onclick="mpSetK('${k[0]}')"><label>${k[1]}</label><div class="v">${k[2]}</div><div class="s">${k[0]==='OV'?'Belum completed, end date lewat':'Klik untuk memfilter daftar'}</div></button>`).join('');
+  // rekap entitas
+  const mx=Math.max(1,...MENT.map(e=>b.filter(m=>m.ent===e).length));
+  mpEnt.innerHTML=MENT.map(e=>{const g=b.filter(m=>m.ent===e);const c=s=>g.filter(m=>m.st===s).length;const t=g.length;
+    return `<div class="hbar" style="grid-template-columns:110px 1fr 34px"><span>${e}</span><div class="tr" style="width:${t/mx*100}%;min-width:${t?0:2}px">${['P','E','C'].map((s,i)=>c(s)?`<span style="flex:${c(s)};background:${['var(--pri)','#F2A71B','#3E7D2E'][i]};cursor:pointer" title="${STN[s][1]}: ${c(s)}" onclick="mpGo('${e}','${s}')">${c(s)}</span>`:'').join('')}</div><b>${t}</b></div>`}).join('')+'<div class="lg"><span><i style="background:var(--pri)"></i>Promotion</span><span><i style="background:#F2A71B"></i>Evaluation Process</span><span><i style="background:#3E7D2E"></i>Completed</span></div>';
+  // rekap fungsi
+  mpFn.innerHTML='<thead><tr><th>Fungsi</th><th style="text-align:right">Aktif</th><th style="text-align:right">Selesai</th><th style="text-align:right">Rata² durasi</th></tr></thead><tbody>'+MFN.map(f=>{const g=b.filter(m=>m.fn===f);if(!g.length)return'';const act=g.filter(m=>m.st!=='C').length;const ov=g.filter(m=>m.over).length;const avg=(g.reduce((a,m)=>a+m.dur,0)/g.length).toFixed(1);
+    return `<tr style="cursor:pointer" onclick="mpFu.value='${f}';mpPg=0;renderMep()"><td>${f}</td><td class="num">${act}${ov?` <span class="over">(${ov} lewat)</span>`:''}</td><td class="num">${g.length-act}</td><td class="num">${avg} bln</td></tr>`}).join('')+'</tbody>';
+  // rekap periode
+  const pers=[...new Set(MEP.map(m=>m.periode))].sort();const pm=Math.max(1,...pers.map(p=>b.filter(m=>m.periode===p).length));
+  mpPer.innerHTML=pers.map(p=>{const g=b.filter(m=>m.periode===p);return `<div class="c" onclick="mpPd.value='${p}';mpPg=0;renderMep()" title="${p}: ${g.length}" style="height:${g.length/pm*100}%;max-width:70px">${['C','E','P'].map((s,i)=>{const n=g.filter(m=>m.st===s).length;return n?`<span style="flex:${n};background:${['#3E7D2E','#F2A71B','var(--pri)'][i]}">${n>=4?n:''}</span>`:''}).join('')}</div>`}).join('');
+  mpPerL.innerHTML=pers.map(p=>`<div style="max-width:70px">${p.replace('MEP ','')}<br><b>${b.filter(m=>m.periode===p).length}</b></div>`).join('');
+  const lulus=b.filter(m=>m.res==='Lulus').length,comp=b.filter(m=>m.st==='C').length;
+  mpPerT.textContent=comp?`Tingkat lulus MEP completed: ${(lulus/comp*100).toFixed(0)}% (${lulus} dari ${comp}). Klik kolom untuk filter periode.`:'';
+  // table
+  const f=b.filter(kFilt[mpKey]).filter(m=>!mpSt||m.st===mpSt);
+  document.querySelectorAll('#mpTabs .tab').forEach(t=>t.classList.toggle('on',t.dataset.s===mpSt));
+  mpCnt.textContent=`${f.length} pekerja`;
+  const per=+mpPer2.value,pages=Math.max(1,Math.ceil(f.length/per));mpPg=Math.min(mpPg,pages-1);const pg=f.slice(mpPg*per,mpPg*per+per);
+  mpTw.classList.toggle('hidden',!f.length);mpNo.classList.toggle('hidden',!!f.length);mpPag.classList.toggle('hidden',!f.length);
+  mpPgT.textContent=`Menampilkan ${mpPg*per+1}–${mpPg*per+pg.length} dari ${f.length}`;
+  mpPrev.style.opacity=mpPg?1:.3;mpNext.style.opacity=mpPg<pages-1?1:.3;
+  document.querySelector('#mpTbl tbody').innerHTML=pg.map((m,i)=>`<tr><td>${mpPg*per+i+1}</td><td>${m.periode}</td><td>${m.nip}</td><td style="font-weight:500">${m.nama}<span class="sub" style="font-weight:400">${m.pos} · PRL ${m.prl}</span></td><td>${m.ent}<span class="sub">${m.fn}</span></td><td><span class="tag t-blue">${m.eval}</span></td><td>${fmD(m.startD)}</td><td>${fmD(m.endD)}<span class="sub ${m.over?'over':''}">${m.dur} bln${m.st==='C'?'':m.over?' · lewat '+(-m.sisa)+' hari':' · '+m.sisa+' hari lagi'}</span></td>
+    <td><span class="tag ${STN[m.st][0]}">${STN[m.st][1]}</span><div class="stp" title="${STEP[m.steps-1]}">${[1,2,3,4,5].map(n=>`<i class="${n<=m.steps?(m.st==='C'?'g':'b'):''}"></i>`).join('')}</div></td>
+    <td>${m.res?`<span class="tag ${RSN[m.res]}">${m.res}</span>`:'<span class="muted">—</span>'}</td><td><button class="btn-t btn-sm" onclick="mpDet('${m.nip}')">Detail</button></td></tr>`).join('');
+}
+function mpSetK(k){mpKey=k;mpSt=['P','E','C'].includes(k)?k:'';mpPg=0;renderMep();}
+function mpGo(e,s){mpEn.value=e;mpKey=s;mpSt=s;mpPg=0;renderMep();mpTw.scrollIntoView({behavior:'smooth',block:'start'});toast(`Drill-down: ${e} · ${STN[s][1]}`);}
+function mpReset(){[mpPd,mpEn,mpFu,mpRs].forEach(x=>x.value='');mpQ.value='';mpKey='';mpSt='';mpPg=0;renderMep();}
+document.querySelectorAll('#mpTabs .tab').forEach(t=>t.onclick=()=>{mpSt=t.dataset.s;mpKey=mpSt;mpPg=0;renderMep();});
+[mpPd,mpEn,mpFu,mpRs,mpQ,mpPer2].forEach(x=>x.addEventListener('input',()=>{mpPg=0;renderMep();}));
+mpPrev.onclick=()=>{if(mpPg){mpPg--;renderMep();}};mpNext.onclick=()=>{mpPg++;renderMep();};
+function mpDet(n){const m=MEP.find(x=>x.nip===n);dpName.textContent=m.nama;dpSub.textContent=`${m.nip} · ${m.pos} · ${m.ent} · ${m.fn} · PRL ${m.prl}`;
+  dpTags.innerHTML=`<span class="tag ${STN[m.st][0]}">${STN[m.st][1]}</span>${m.res?`<span class="tag ${RSN[m.res]}">${m.res}</span>`:''}${m.over?'<span class="tag t-red">Lewat end date</span>':''}`;
+  dpKv.innerHTML=`<span>Periode</span><span>${m.periode}</span><span>Evaluator</span><span>${m.eval}</span><span>Start date</span><span>${fmD(m.startD)}</span><span>End date</span><span>${fmD(m.endD)}</span><span>Durasi</span><span>${m.dur} bulan</span><span>Sisa</span><span>${m.st==='C'?'Selesai':m.over?(-m.sisa)+' hari lewat end date':m.sisa+' hari'}</span>`;
+  dpTl.innerHTML=STEP.map((t,i)=>{const d=new Date(m.startD.getTime()+(i===4?m.dur*30:i*28)*DAY);const done=i<m.steps;return `<div class="e" style="${done?'':'opacity:.45'}"><b>${t}</b><div class="help">${done?fmD(d>T0?T0:d):'Belum'}${i===m.steps-1&&m.st!=='C'?' · tahap saat ini':''}</div></div>`}).join('');
+  open('dMep');}
+document.querySelectorAll('#mpCols input').forEach(i=>i.onchange=()=>mpErr.style.display='none');
+function mpDl(){if(![...document.querySelectorAll('#mpCols input')].some(i=>i.checked)){mpErr.style.display='block';return;}closeAll();const n=mpBase().filter(kFilt[mpKey]).filter(m=>!mpSt||m.st===mpSt).length;toast(`File disiapkan · ${n} pekerja MEP · tercatat di audit log`);}
+renderMep();
+/* ===== MATERI TRM ===== */
+let _t=99;const tr=()=>{_t=(_t*48271)%2147483647;return (_t-1)/2147483646;};
+const TODAYT=new Date('2026-11-04');
+let fi=0;
+ROWS.forEach(r=>{
+  if(r.cat==='v'){r.vacDate=tr()<.5?'-':`01/${String(1+Math.floor(tr()*12)).padStart(2,'0')}/${2024+Math.floor(tr()*3)}`;return;}
+  if(r.cat==='u')return;
+  fi++;r.perf=(4+Math.floor(tr()*7)*.5);r.fit=+(0.3+tr()*4).toFixed(1);r.jab=+(0.3+tr()*5).toFixed(1);
+  if(fi%17===5){const m=1+Math.floor(tr()*22);const d=new Date(TODAYT);d.setMonth(d.getMonth()+m);r.ret={inM:m,mppk:new Date(d.getTime()-182*864e5),phk:d};}
+  if(fi%9===4){const tb=tr()<.6;const st=tb?new Date(2024,10+Math.floor(tr()*12),1+Math.floor(tr()*27)):new Date(2025,10+Math.floor(tr()*11),1+Math.floor(tr()*27));const en=new Date(st);en.setMonth(en.getMonth()+(tb?24:12));
+    r.away={j:tb?'TB':'IM',ket:tb?mp(['S2 · Universitas Indonesia (DN)','S2 · ITB (DN)','S2 · University of Melbourne (LN)','S3 · TU Delft (LN)']):'—',st,en,plan:tr()<.4?'Disiapkan':'Belum'};}
+});
+const UPL=[];let G=null,xMode='pct',xPg=0,vPg=0,xGrpF=null,xTab='sys';
+const ECRIT={pro:{perf:5,fit:1,on:false},exp:{dur:1,on:false}};
+const gF={bg:gBG,co:gCO,dir:gDIR,fn:gFN,div:gDIV};let gPRL=[];
+function gCascade(){const bg=gBG.value,co=gCO.value,dir=gDIR.value,fn=gFN.value,dv=gDIV.value;
+  const cos=bg?Object.keys(ORG[bg]):[];optSet(gCO,cos,'Company',co);gCO.disabled=!bg;
+  const dirs=gCO.value?Object.keys(ORG[bg][gCO.value]):[];optSet(gDIR,dirs,'Directorate',dir);gDIR.disabled=!gCO.value;
+  const fns=gDIR.value?Object.keys(ORG[bg][gCO.value][gDIR.value]):[];optSet(gFN,fns,'Function',fn);gFN.disabled=!gDIR.value;
+  const dvs=gFN.value?ORG[bg][gCO.value][gDIR.value][gFN.value]:[];optSet(gDIV,dvs,'Division',dv);gDIV.disabled=!gFN.value;}
+optSet(gBG,Object.keys(ORG),'Business Group','');gCascade();
+[gBG,gCO,gDIR,gFN].forEach((el,i)=>el.addEventListener('change',()=>{[gCO,gDIR,gFN,gDIV].slice(i).forEach(o=>o.value='');gCascade();gErr.style.display='none';}));
+prlPop.innerHTML='<label style="grid-column:span 4"><input type="checkbox" id="prlAll"> Pilih semua</label>'+Array.from({length:16},(_,i)=>25-i).map(n=>`<label><input type="checkbox" value="${n}"> PRL ${n}</label>`).join('');
+prlPop.addEventListener('change',e=>{if(e.target.id==='prlAll')prlPop.querySelectorAll('input[value]').forEach(c=>c.checked=e.target.checked);gPRL=[...prlPop.querySelectorAll('input[value]:checked')].map(c=>+c.value);gPRLt.textContent=`${gPRL.length} PRL has been selected`;});
+document.addEventListener('click',e=>{if(!e.target.closest('.prlbox'))prlPop.classList.add('hidden');});
+
+function trmRows(){return G?ROWS.filter(r=>r.bg===G.bg&&r.co===G.co&&(!G.dir||r.dir===G.dir)&&(!G.fn||r.fn===G.fn)&&(!G.div||r.div===G.div)&&(!G.prl.length||G.prl.includes(r.prl))):[];}
+function trmKey(d){const lv=['dir','fn','div','dept'];let deep=G.div?2:G.fn?1:G.dir?0:-1;for(let i=deep+1;i<lv.length;i++){if(new Set(d.map(r=>r[lv[i]])).size>1||i===lv.length-1)return lv[i];}return 'dept';}
+function trmGenerate(){if(!gBG.value||!gCO.value){gErr.style.display='block';return;}
+  G={bg:gBG.value,co:gCO.value,dir:gDIR.value,fn:gFN.value,div:gDIV.value,prl:gPRL.slice()};xPg=0;vPg=0;xGrpF=null;xResetTool(true);
+  if(!trmRows().length){toast('Tidak ada data posisi untuk cakupan ini');G=null;return;}
+  trmShow();toast('Materi berhasil di-generate');}
+function trmShow(){const g=!!G;xForm.classList.toggle('hidden',g);xReset.classList.toggle('hidden',!g);xSave.disabled=!g;
+  xSys.classList.toggle('hidden',!g||xTab!=='sys');xUpl.classList.toggle('hidden',!g||xTab!=='upl');xPos.classList.toggle('hidden',!g||xTab!=='pos');
+  xFormSub.innerHTML=`To display ${xTab==='pos'?'Materi Posisi':xTab==='upl'?'Manpower Strength by Upload':'Manpower Strength by System'} data,<br>please fill the information below first`;
+  if(g)renderTRM();}
+document.querySelectorAll('#xTabs .tab').forEach(t=>t.onclick=()=>{xTab=t.dataset.x;document.querySelectorAll('#xTabs .tab').forEach(x=>x.classList.toggle('on',x===t));trmShow();});
+function trmChange(){const k=G;G=null;gBG.value=k.bg;gCascade();gCO.value=k.co;gCascade();gDIR.value=k.dir;gCascade();gFN.value=k.fn;gCascade();gDIV.value=k.div;gCascade();trmShow();}
+function trmResetAll(){G=null;[gBG,gCO,gDIR,gFN,gDIV].forEach(x=>x.value='');gCascade();gPRL=[];prlPop.querySelectorAll('input').forEach(c=>c.checked=false);gPRLt.textContent='0 PRL has been selected';UPL.length=0;trmShow();}
+const scopeHtml=()=>[['Business Group',G.bg],['Company',G.co],['Directorate',G.dir||'All'],['Function',G.fn||'All'],['Division',G.div||'All'],['PRL Jab',G.prl.length?G.prl.sort((a,b)=>a-b).join(', '):'-']].map(x=>`<div><label>${x[0]}</label><div>${x[1]}</div></div>`).join('');
+function statHtml(d){const v=d.filter(r=>r.cat==='v').length,f=d.length-v;return `<div>Filled<b style="color:var(--pri)">${Math.round(f/d.length*100)}% (${f})</b></div><div>Vacant<b style="color:#D9A21B">${Math.round(v/d.length*100)}% (${v})</b></div><div>Formasi<b style="color:#D9A21B">${d.length}</b></div>`;}
+const xLbl={dir:'Direktorat',fn:'Fungsi',div:'Divisi',dept:'Department'};
+function renderTRM(){const d=trmRows();if(!d.length)return;
+  xStat.innerHTML=statHtml(d);xScope.innerHTML=scopeHtml();
+  const key=trmKey(d);const groups=[...new Set(d.map(r=>r[key]))];
+  xChT.textContent=`Komposisi Traffic Light per ${xLbl[key]}`;
+  const data=groups.map(g=>[g,...CATS.map(c=>d.filter(r=>r[key]===g&&r.cat===c).length)]);
+  xCols.innerHTML=data.map((r,ri)=>{const t=r.slice(1).reduce((a,b)=>a+b,0);return `<div class="col">${r.slice(1).map((v,k)=>v?`<span style="height:${v/t*100}%;background:${segc[k]};${k===1||k===3||k===4?'color:#2a2a2a':''}" onclick="xDrill('${key}','${r[0].replace(/'/g,"\\'")}',${k})" title="${segn[k]}: ${v}">${v/t>=.06?(xMode==='pct'?Math.round(v/t*100)+'%':v):''}</span>`:'').join('')}</div>`}).join('');
+  xColL.innerHTML=data.map(r=>`<div>${r[0]}</div>`).join('');
+  renderXTbl();renderUpl();renderPos(d,key);}
+document.querySelectorAll('#xMode button').forEach(b=>b.onclick=()=>{xMode=b.dataset.m;document.querySelectorAll('#xMode button').forEach(x=>x.classList.toggle('on',x===b));renderTRM();});
+function xDrill(key,val,k){xGrpF={key,val};xTL.value=CATS[k];xPg=0;renderXTbl();xTblCard.scrollIntoView({behavior:'smooth'});}
+function xFilt(){const q=xQ.value.toLowerCase();return trmRows().filter(r=>(!q||(r.nama+r.nopek+r.id+r.pos).toLowerCase().includes(q))&&(!xTL.value||r.cat===xTL.value)&&(!xDept.value||r.dept===xDept.value)&&(!xEl.value||r.elig===xEl.value)&&(!xAdj.checked||r.adj)&&(!xGrpF||r[xGrpF.key]===xGrpF.val));}
+function renderXTbl(){const all=trmRows();const dv=xDept.value;const ds=[...new Set(all.map(r=>r.dept))].sort();xDept.innerHTML='<option value="">Department: semua</option>'+ds.map(x=>`<option>${x}</option>`).join('');xDept.value=ds.includes(dv)?dv:'';
+  xGrp.innerHTML=xGrpF?`<span class="gchip">${xLbl[xGrpF.key]}: ${xGrpF.val}<button onclick="xGrpF=null;renderXTbl()" aria-label="Hapus">✕</button></span>`:'';
+  const f=xFilt();const per=+xPer.value,pages=Math.max(1,Math.ceil(f.length/per));xPg=Math.min(xPg,pages-1);const pg=f.slice(xPg*per,xPg*per+per);
+  document.querySelector('#xTbl tbody').innerHTML=pg.map(r=>tlRow(r,false)).join('');xNo.classList.toggle('hidden',!!f.length);
+  xPgT.textContent=f.length?`Menampilkan ${xPg*per+1}–${xPg*per+pg.length} dari ${f.length}`:'';xPrev.style.opacity=xPg?1:.3;xNext.style.opacity=xPg<pages-1?1:.3;}
+[xQ,xTL,xDept,xEl,xAdj,xPer].forEach(e=>e.addEventListener('input',()=>{xPg=0;renderXTbl();}));
+xPrev.onclick=()=>{if(xPg){xPg--;renderXTbl();}};xNext.onclick=()=>{xPg++;renderXTbl();};
+function xResetTool(silent){xQ.value='';xTL.value='';xDept.value='';xEl.value='';xAdj.checked=false;xGrpF=null;xPg=0;if(!silent)renderXTbl();}
+
+/* upload */
+function trmUpload(){if(UPL.length)return;const d=trmRows();const dv=[...new Set(d.map(r=>r.div))];
+  [['Sr Analyst Asset Data Governance',17],['Manager Asset Digitalization',19],['VP Asset Transformation Office',22],['Analyst Asset Risk',15]].forEach((x,i)=>UPL.push({pos:x[0],prl:x[1],div:G.div||dv[i%dv.length],dept:'Formasi baru (upload)',bg:G.bg,co:G.co,dir:G.dir||d[0].dir,fn:G.fn||d[0].fn,vacDate:'-',src:'Upload'}));
+  renderTRM();toast('File formasi_tambahan.xlsx berhasil diunggah · 4 posisi');}
+function renderUpl(){xDrop.classList.toggle('hidden',!!UPL.length);xUpRes.classList.toggle('hidden',!UPL.length);
+  xUpF.textContent=UPL.length?UPL.length+' posisi (vacant)':'-';
+  xUpRes.innerHTML=UPL.length?`<div class="banner"><span>✓</span><span class="sp">formasi_tambahan.xlsx · diunggah 04 Nov 2026 · ${UPL.length} posisi ditambahkan ke Materi Posisi sebagai vacant by upload</span><button class="btn-t btn-sm" onclick="UPL.length=0;renderTRM()">Hapus Upload</button></div><table><thead><tr><th>Posisi</th><th>PRL Jab</th><th>Division</th><th>Status</th></tr></thead><tbody>${UPL.map(u=>`<tr><td>${u.pos}</td><td>${u.prl}</td><td>${u.div}</td><td><span class="pill p-v">Vacant</span></td></tr>`).join('')}</tbody></table>`:'';}
+
+/* materi posisi */
+const catPRL=n=>n>=21?'VP Up Setara':n>=19?'Manager Setara':n?'Below Manager':'Others';
+const CATC={'VP Up Setara':'#E5534B','Manager Setara':'#E9A23B','Below Manager':'#4BA3F0','Others':'#777'};
+function donut(parts){let a=0;const tot=parts.reduce((s,p)=>s+p[1],0)||1;const st=parts.map(p=>{const b=a+p[1]/tot*360;const r=`${p[0]} ${a}deg ${b}deg`;a=b;return r;}).join(',');return `<div class="donut" style="background:conic-gradient(${tot===1&&!parts.some(p=>p[1])?'var(--th) 0 360deg':st})"></div>`;}
+function vcard(icon,bg,title,list){const c=['VP Up Setara','Manager Setara','Below Manager','Others'].map(k=>[k,list.filter(r=>catPRL(r.prl)===k).length]);
+  return `<div class="dcard"><div class="dtop"><div class="ico" style="background:${bg}">${icon}</div><div class="t"><label>${title}</label><b>${list.length}</b></div>${donut(c.map(x=>[CATC[x[0]],x[1]]))}</div>${c.map(x=>`<div class="lgl"><span><i style="background:${CATC[x[0]]}"></i>${x[0]}</span><span>${x[1]}</span></div>`).join('')}</div>`;}
+function renderPos(d,key){
+  const sysV=d.filter(r=>r.cat==='v').map(r=>({...r,src:'System'}));const allV=[...sysV,...UPL];
+  const tot=d.length+UPL.length,fil=d.length-sysV.length;
+  xStat2.innerHTML=`<div>Filled<b style="color:var(--pri)">${Math.round(fil/tot*100)}% (${fil})</b></div><div>Vacant<b style="color:#D9A21B">${Math.round(allV.length/tot*100)}% (${allV.length})</b></div><div>Formasi<b style="color:#D9A21B">${tot}</b></div>`;
+  xSg.innerHTML=scopeHtml().replace(/<div><label>/g,'<div><label>');
+  const ret=d.filter(r=>r.ret);
+  xTot.innerHTML=`<div class="dcard"><div class="dtop">${donut([['#2F5FA8',fil],['#E9A23B',allV.length]])}<div class="t"><label>Total Position</label><b>${tot}</b></div><div style="flex:1">${[['#2F5FA8','Filled',fil],['#E9A23B','Vacant',allV.length]].map(x=>`<div class="lgl" style="margin-top:6px"><span><i style="background:${x[0]}"></i>${x[1]}</span><span>${x[2]}</span></div>`).join('')}</div></div></div>
+   <div class="dcard"><div class="dtop">${donut([['#6CC04A',fil-ret.length],['#E5534B',ret.length]])}<div class="t"><label>Total Employee</label><b>${fil}</b></div><div style="flex:1">${[['#6CC04A','Active',fil-ret.length],['#E5534B','Will Retire (≤ 2 th)',ret.length]].map(x=>`<div class="lgl" style="margin-top:6px"><span><i style="background:${x[0]}"></i>${x[1]}</span><span>${x[2]}</span></div>`).join('')}</div></div></div>`;
+  xVac.innerHTML=vcard('☰','var(--pri-soft)','Total Vacant Positions',allV)+vcard('▦','#FDF1DC','Vacant Positions by System',sysV)+vcard('⌂','#FDE7E7','Vacant Positions by Upload',UPL);
+  // heatmap
+  const cols=[...new Set([...d,...UPL].map(r=>r[key]))];const prls=[...new Set([...d,...UPL].map(r=>r.prl))].sort((a,b)=>b-a);
+  let hh='<tr><th></th>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr>';
+  prls.forEach(p=>{hh+=`<tr><td class="rl">PRL ${p}</td>`;cols.forEach(c=>{const g=[...d,...UPL].filter(r=>r[key]===c&&r.prl===p);const f=g.length,vac=g.filter(r=>r.cat==='v'||r.src==='Upload').length;const rt=f?vac/f*100:null;const b=band(rt);
+    hh+=`<td style="background:${b[0]};color:${b[1]}" data-t="PRL ${p} · ${c} · Formasi ${f} · Terisi ${f-vac} · Lowong ${vac} · Vacancy ${rt===null?'—':rt.toFixed(1)+'%'}">${rt===null?'—':rt.toFixed(1)+'%'}<small>${f?'F '+f:''}</small></td>`;});hh+='</tr>';});
+  xHeat.innerHTML=hh;xHnote.textContent=`Kolom per ${xLbl[key].toLowerCase()} sesuai cakupan generate${UPL.length?' · termasuk formasi upload':''}`;
+  renderVac();renderElig();
+  // retired
+  rT.textContent=ret.length;const rq=rQ.value.toLowerCase();const rf=ret.filter(r=>!rq||(r.nama+r.pos).toLowerCase().includes(rq));
+  document.querySelector('#rTbl tbody').innerHTML=rf.length?rf.map(r=>`<tr><td><div class="emp"><span class="ava">${r.nama.split(' ').map(x=>x[0]).slice(0,2).join('')}</span><span><b>${r.nama}</b><small>${r.nopek}</small></span></div></td><td>${Math.floor(r.ret.inM/12)} th ${r.ret.inM%12} bl</td><td>${r.pos}</td><td>${fmD(r.ret.mppk)}</td><td>${fmD(r.ret.phk)}</td><td>${r.co}</td><td>${r.dir}</td><td>${r.fn}</td></tr>`).join(''):'<tr><td colspan="8" style="text-align:center;color:var(--text2);padding:20px">No Items</td></tr>';
+  // dummy positions
+  const aw=d.filter(r=>r.away&&(!dJ.value||r.away.j===dJ.value));dCnt.textContent=`Menampilkan ${aw.length} pekerja`;
+  dNo.classList.toggle('hidden',!!aw.length);
+  document.querySelector('#dTbl tbody').innerHTML=aw.map(r=>{const a=r.away;const sisa=Math.round((a.en-TODAYT)/864e5);const prog=Math.max(0,Math.min(100,(TODAYT-a.st)/(a.en-a.st)*100));const stt=sisa<0?'Lewat tanggal berakhir':sisa<=90?'Akan segera kembali':'Berjalan';
+    return `<tr><td>${r.nopek}</td><td class="lnk">${r.nama}<span class="sub">${r.pos} · PRL ${r.prl}</span></td><td><span class="pill ${JN[a.j][0]}">${JN[a.j][1]}</span></td><td>${SHORT[r.bg]}</td><td>${r.fn}</td><td>${a.ket}</td><td class="per">${fmtD(a.st)} – ${fmtD(a.en)}<div class="bar"><span style="width:${prog}%;background:${sisa<0?'var(--merah)':sisa<=90?'var(--kuning)':'var(--pri)'}"></span></div><span class="sub">${Math.round(prog)}% berjalan</span></td><td class="num" style="color:${sisa<0?'var(--merah)':'inherit'}">${sisa<0?'+'+(-sisa)+' hari lewat':sisa+' hari'}</td><td><span class="pill ${STP[stt]}">${stt}</span></td><td>${stt==='Berjalan'?'<span class="muted">—</span>':a.plan==='Disiapkan'?'<span class="pill p-ok">Disiapkan</span>':'<span class="pill p-m">Belum disiapkan</span>'}</td><td><button class="kebab" onclick="toast('Detail ${r.nama} dibuka di Dashboard IMPTU & Tugas Belajar')" aria-label="Aksi">⋮</button></td></tr>`;}).join('');
+}
+function renderVac(){const d=trmRows();const all=[...d.filter(r=>r.cat==='v').map(r=>({...r,src:'System'})),...UPL];const q=vQ.value.toLowerCase();
+  const f=all.filter(r=>(!q||r.pos.toLowerCase().includes(q))&&(!vCat.value||catPRL(r.prl)===vCat.value)&&(!vSrc.value||r.src===vSrc.value));
+  const pages=Math.max(1,Math.ceil(f.length/10));vPg=Math.min(vPg,pages-1);const pg=f.slice(vPg*10,vPg*10+10);
+  document.querySelector('#vTbl tbody').innerHTML=pg.map(r=>`<tr><td>${r.pos}</td><td>${r.prl}</td><td><span style="display:inline-flex;align-items:center;gap:6px"><i style="width:9px;height:9px;border-radius:50%;background:${CATC[catPRL(r.prl)]}"></i>${catPRL(r.prl)}</span></td><td>${r.vacDate||'-'}</td><td>${r.src==='Upload'?'<span class="pill p-im">Upload</span>':'<span class="pill p-v">System</span>'}</td><td>${r.co}</td><td>${r.dir}</td><td>${r.fn}</td><td>${r.div}</td></tr>`).join('')||'<tr><td colspan="9" style="text-align:center;color:var(--text2);padding:20px">No Items</td></tr>';
+  vPgT.textContent=f.length?`${vPg*10+1}–${vPg*10+pg.length} of ${f.length}`:'0–0 of 0';}
+[vQ,vCat,vSrc].forEach(e=>e.addEventListener('input',()=>{vPg=0;renderVac();}));vPrev.onclick=()=>{if(vPg){vPg--;renderVac();}};vNext.onclick=()=>{vPg++;renderVac();};
+rQ.addEventListener('input',()=>renderTRM());dJ.addEventListener('input',()=>renderTRM());
+function renderElig(){const d=trmRows().filter(r=>r.perf!==undefined&&r.prl<=18);
+  const P=ECRIT.pro,X=ECRIT.exp;
+  const pro=d.filter(r=>!P.on||(r.perf>=P.perf&&r.fit>=P.fit)),exp=d.filter(r=>!X.on||r.jab>=X.dur);
+  ePT.textContent=P.on?pro.length+' pekerja':'Adjust to View Total';eXT.textContent=X.on?exp.length+' pekerja':'Adjust to View Total';
+  ePC.textContent=`Average performance over 2 years ≥ ${P.perf} and minimum PRL fit duration = ${P.fit} year`;eXC.textContent=`Overall minimum duration = ${X.dur} year`;
+  const em=r=>`<div class="emp"><span class="ava">${r.nama.split(' ').map(x=>x[0]).slice(0,2).join('')}</span><span><b>${r.nama}</b><small>${r.nopek}</small></span></div>`;
+  const q1=eQ1.value.toLowerCase(),q2=eQ2.value.toLowerCase();
+  const p1=pro.filter(r=>!q1||r.nama.toLowerCase().includes(q1)),p2=exp.filter(r=>!q2||r.nama.toLowerCase().includes(q2));
+  eT1.innerHTML='<thead><tr><th>Promotion Employees</th><th>PRL Jab</th><th>PRL Range</th><th>PRL BS</th><th>Lama PRL Fit</th><th>Avg Perf</th></tr></thead><tbody>'+p1.slice(0,8).map(r=>`<tr><td>${em(r)}</td><td>${r.prl}</td><td>${r.prl-2}-${r.prl+1}</td><td>${r.prl}</td><td>${r.fit} th</td><td>${r.perf.toFixed(1)}</td></tr>`).join('')+'</tbody>';
+  eT2.innerHTML='<thead><tr><th>Exposure Employees</th><th>PRL Jab</th><th>PRL Range</th><th>PRL BS</th><th>Lama di Jabatan</th></tr></thead><tbody>'+p2.slice(0,8).map(r=>`<tr><td>${em(r)}</td><td>${r.prl}</td><td>${r.prl-1}-${r.prl+2}</td><td>${r.prl}</td><td>${r.jab} th</td></tr>`).join('')+'</tbody>';
+  eP1.textContent=`1–${Math.min(8,p1.length)} of ${p1.length}`;eP2.textContent=`1–${Math.min(8,p2.length)} of ${p2.length}`;}
+[eQ1,eQ2].forEach(e=>e.addEventListener('input',renderElig));
+let aeK='pro';
+function openAdjE(k){aeK=k;aeT.textContent=k==='pro'?'Adjust Kriteria Promosi':'Filter Kriteria Exposure';
+  aeB.innerHTML=k==='pro'?`<label class="help" style="display:block;margin:0 0 6px">Rata-rata performance 2 tahun minimal</label><select class="fsel" id="aeA">${[4,4.5,5,5.5,6,6.5].map(v=>`<option${v===ECRIT.pro.perf?' selected':''}>${v}</option>`).join('')}</select><label class="help" style="display:block;margin:14px 0 6px">Durasi minimal PRL fit (tahun)</label><select class="fsel" id="aeB2">${[0.5,1,1.5,2,3].map(v=>`<option${v===ECRIT.pro.fit?' selected':''}>${v}</option>`).join('')}</select>`
+  :`<label class="help" style="display:block;margin:0 0 6px">Durasi minimal di jabatan saat ini (tahun)</label><select class="fsel" id="aeA">${[0.5,1,1.5,2,3].map(v=>`<option${v===ECRIT.exp.dur?' selected':''}>${v}</option>`).join('')}</select>`;
+  open('mAdjE');}
+function aeApply(){if(aeK==='pro')Object.assign(ECRIT.pro,{perf:+aeA.value,fit:+document.getElementById('aeB2').value,on:true});else Object.assign(ECRIT.exp,{dur:+aeA.value,on:true});closeAll();renderElig();toast('Kriteria diterapkan');}
+function aeReset(){if(aeK==='pro')Object.assign(ECRIT.pro,{perf:5,fit:1,on:false});else Object.assign(ECRIT.exp,{dur:1,on:false});closeAll();renderElig();}
+
+/* save & list */
+const SAVED=[{n:'Materi Pra-TRM Legal – Nov 2026',sc:{bg:'Holding',co:'PT Pertamina (Persero)',dir:'Legal',fn:'',div:'',prl:[]},at:'02 Nov 2026 16:40',v:3},{n:'Materi Pra-TRM Internal Audit – Okt 2026',sc:{bg:'Holding',co:'PT Pertamina (Persero)',dir:'Penunjang Bisnis',fn:'Internal Audit',div:'',prl:[]},at:'18 Okt 2026 09:12',v:1}];
+function trmSave(){if(!G)return;const n=`Materi Pra-TRM ${G.div||G.fn||G.dir||G.co} – Nov 2026`;const ex=SAVED.find(x=>x.n===n);if(ex){ex.v++;ex.at='04 Nov 2026 · baru saja';}else SAVED.unshift({n,sc:JSON.parse(JSON.stringify(G)),at:'04 Nov 2026 · baru saja',v:1});toast(`${n} tersimpan (v${(ex||SAVED[0]).v})`);}
+function openList(){mListB.innerHTML=SAVED.map((x,i)=>`<tr><td><b>${x.n}</b></td><td>${[x.sc.co,x.sc.dir,x.sc.fn,x.sc.div].filter(Boolean).join(' › ')}</td><td>${x.at}</td><td>v${x.v}</td><td><button class="btn-t btn-sm" onclick="openSaved(${i})">Buka</button></td></tr>`).join('');open('mList');}
+function openSaved(i){G=JSON.parse(JSON.stringify(SAVED[i].sc));closeAll();xResetTool(true);trmShow();toast(`${SAVED[i].n} dibuka`);}
+const _ra=renderAll;renderAll=function(){_ra();if(G)renderTRM();};
+goPage('trm');
+
+/* ===== collapse interactions ===== */
+function tg(g){const el=document.querySelector(`.grp[data-g="${g}"]`);if(document.querySelector('.app').classList.contains('rail')){toggleRail();el.classList.remove('closed');return;}el.classList.toggle('closed');}
+function soon(a){toast(`Menu "${a.textContent.trim()}" di luar cakupan mockup`);}
+function toggleRail(){const ap=document.querySelector('.app');ap.classList.toggle('rail');const r=ap.classList.contains('rail');railBtn.textContent=r?'☰':'⊟';railBtn.title=r?'Expand sidebar':'Collapse sidebar';markGrp();}
+function markGrp(){document.querySelectorAll('.grp').forEach(g=>g.classList.toggle('hasact',!!g.querySelector('.act')));}
+const _gp=goPage;goPage=function(p){_gp(p);markGrp();};
+document.querySelectorAll('.card').forEach(c=>{const h=c.firstElementChild;if(!h||!h.classList.contains('card-h')||c.closest('.modal')||c.closest('.drawer'))return;
+  const b=document.createElement('button');b.className='colbtn';b.textContent='⌄';b.title='Collapse';b.setAttribute('aria-label','Collapse bagian ini');b.setAttribute('aria-expanded','true');
+  b.onclick=e=>{e.stopPropagation();const on=c.classList.toggle('cc');b.title=on?'Expand':'Collapse';b.setAttribute('aria-expanded',String(!on));};h.appendChild(b);});
+document.querySelectorAll('.sec-h').forEach(h=>{const b=document.createElement('button');b.className='colbtn';b.textContent='⌄';b.title='Collapse';b.setAttribute('aria-expanded','true');h.prepend(b);
+  b.onclick=()=>{const on=h.classList.toggle('cc');b.setAttribute('aria-expanded',String(!on));let n=h.nextElementSibling;while(n&&!n.classList.contains('sec-h')&&!n.querySelector('.sec-h')){n.classList.toggle('hidden',on);n=n.nextElementSibling;}};});
+markGrp();
+/* ===== NOTULENSI RAPAT ===== */
+let _n=4242;const nrr=()=>{_n=(_n*69621)%2147483647;return (_n-1)/2147483646;};const np=a=>a[Math.floor(nrr()*a.length)];
+const NRP={creator:[['Rizky Ananda','80010018','Sr Analyst I HC Integration System & Analytics','30329304'],['Dewi Lestari','19012301','Sr Analyst III HCBP III','30329278'],['Agus Saputra','00751679','Sr Analyst I HC Business Partner','30287701']],
+ sa:['Putri Maharani','00749270','Sr Analyst III HCBP III'],mgr:['Hendra Wijaya','00742157','Manager HCBP III'],vp:['Bambang Sutrisno','00731088','VP HC Business Partner']};
+const NRSTAT={D:['p-v','Draft'],A:['p-k','On Approval'],R:['p-m','Rejected'],C:['p-h','Completed'],X:['p-v','Canceled']};
+const LOCS=['Ruang Rapat 21A, Gedung Kantor Pusat','Huddle Room Lt 21','Ruang Rapat Co-Working Lt 19','Online (MS Teams)','Ruang Rapat Direksi Lt 12'];
+const TTL=['TRM Asset Management','TRM Legal','TRM Internal Audit','TRM Human Capital','TRM Keuangan','TRM Operasi Hulu','TRM Komersial Gas','TRM Shipping','TRM Layanan'];
+const DAYS=['Min','Sen','Sel','Rab','Kam','Jum','Sab'];
+const NR=[];const order=['C','C','A','D','C','R','A','C','D','C','A','X','C','C','A','R','C','D','A','C','C','X','A','C','D','C','R','A','C','C','D','A','C','X','C','A','R','C','C','D','A','C','C','X','A','C','R','D','C'];
+order.forEach((st,i)=>{const no=234-i;const d=new Date(2026,9,28);d.setDate(d.getDate()-i*5-Math.floor(nrr()*3));
+  const cr=np(NRP.creator);const title=`${np(TTL)} ${['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][d.getMonth()]} ${d.getFullYear()}`;
+  const step=st==='A'?Math.floor(nrr()*3):st==='R'?1+Math.floor(nrr()*2):st==='C'?3:0;
+  NR.push({id:`NR-${no}/HF-${84-i}/2026`,no,st,title,trm:`TRM - ${370-i}`,date:d,type:nrr()<.8?'Offline':'Online',loc:'',cr,step,cycle:1,trail:[],materi:st!=='D'||nrr()<.5?`Materi_${title.replace(/ /g,'_')}.pdf`:null,seed:i});
+  NR[i].loc=NR[i].type==='Online'?'Online (MS Teams)':np(LOCS.slice(0,3).concat(LOCS[4]));});
+const fmtNR=d=>`${DAYS[d.getDay()]}, ${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+const dt=(d,h)=>`${fmD(new Date(d.getTime()+h*36e5))}, ${String(9+h%8).padStart(2,'0')}:${String((h*7)%60).padStart(2,'0')} WIB`;
+const CHAIN=[{k:'sa',role:'Review & Paraf',p:NRP.sa},{k:'mgr',role:'Paraf',p:NRP.mgr},{k:'vp',role:'Approval',p:NRP.vp}];
+const NOTE={sa:['Kandidat sesuai hasil traffic light dan eligibility; dokumen materi lengkap.','Sudah dicek terhadap rencana mutasi; tidak ada konflik posisi.'],mgr:['Disetujui untuk diteruskan; prioritaskan penempatan P1.','Paraf. Catatan: pastikan TMT aktif selaras dengan siklus SK.'],vp:['Disetujui.','Approved sesuai hasil rapat.']};
+NR.forEach(n=>{const t=[];if(n.st==='X'){t.push({w:n.cr[0],r:'Creator',a:'Dibatalkan',q:'TRM dijadwalkan ulang; notulen dibatalkan.',at:dt(n.date,2),c:'x'});n.trail=t;return;}
+  if(n.st==='D'){n.trail=t;return;}
+  t.push({w:n.cr[0],r:'Creator',a:'Diajukan untuk approval',q:'Notulen rapat disusun sesuai hasil TRM.',at:dt(n.date,4),c:'s'});
+  for(let k=0;k<n.step&&k<3;k++){const s=CHAIN[k];t.push({w:s.p[0],r:s.p[2],a:k===2?'Approved':'Paraf & diteruskan',q:np(NOTE[s.k]),at:dt(n.date,24*(k+1)+3),c:'ok'});}
+  if(n.st==='R'){const s=CHAIN[n.step];t.push({w:s.p[0],r:s.p[2],a:'Rejected',q:'Kandidat shortlist belum memenuhi syarat Fit & Proper Test; mohon revisi usulan.',at:dt(n.date,24*(n.step+1)+5),c:'no'});}
+  n.trail=t;});
+let nrTab='',nrPg=0,nrCur=null,nrAs='auto';
+function nrList(){const q=nrQ.value.toLowerCase();return NR.filter(n=>(!nrTab||n.st===nrTab)&&(!q||(n.id+n.title+n.trm+n.cr[0]+n.loc).toLowerCase().includes(q)));}
+function renderNR(){const f=nrList();const per=+nrPer.value,pages=Math.max(1,Math.ceil(f.length/per));nrPg=Math.min(nrPg,pages-1);const pg=f.slice(nrPg*per,nrPg*per+per);
+  document.querySelectorAll('#nrTabs .tab').forEach(t=>t.classList.toggle('on',t.dataset.s===nrTab));
+  nrCnt.textContent=`${f.length} Notulensi Rapat(s) Found`;
+  document.querySelector('#nrTbl tbody').innerHTML=pg.map(n=>`<tr><td style="white-space:nowrap"><a class="lnk" href="#" onclick="nrOpen(${n.no});return false" style="font-weight:600;text-decoration:none">${n.id}</a><span class="sub">NR - ${n.no}</span></td><td><span class="pill ${NRSTAT[n.st][0]}">${NRSTAT[n.st][1]}</span>${n.st==='A'?`<span class="sub">di ${CHAIN[n.step].p[2]}</span>`:''}</td><td>${n.title}</td><td>${n.trm}</td><td>${fmtNR(n.date)}</td><td>${n.type}</td><td>${n.loc}</td><td><div class="emp"><span class="ava">${n.cr[0].split(' ').map(x=>x[0]).join('')}</span><span><b>${n.cr[0]}</b><small>${n.cr[1]}</small></span></div></td><td>${n.cr[2]}<span class="sub">${n.cr[3]}</span></td><td>PT Pertamina (Persero)</td></tr>`).join('');
+  nrPgT.textContent=f.length?`${nrPg*per+1}–${nrPg*per+pg.length} of ${f.length}`:'0–0 of 0';
+  [nrFirst,nrPrev].forEach(b=>b.style.opacity=nrPg?1:.3);[nrNext,nrLast].forEach(b=>b.style.opacity=nrPg<pages-1?1:.3);
+  NRK.innerHTML=[['','Semua',NR.length],['A','On Approval',NR.filter(n=>n.st==='A').length],['D','Draft',NR.filter(n=>n.st==='D').length],['R','Rejected',NR.filter(n=>n.st==='R').length]].map(()=>'').join('');}
+document.querySelectorAll('#nrTabs .tab').forEach(t=>t.onclick=()=>{nrTab=t.dataset.s;nrPg=0;renderNR();});
+[nrQ,nrPer].forEach(e=>e.addEventListener('input',()=>{nrPg=0;renderNR();}));
+nrFirst.onclick=()=>{nrPg=0;renderNR();};nrPrev.onclick=()=>{if(nrPg){nrPg--;renderNR();}};nrNext.onclick=()=>{nrPg++;renderNR();};nrLast.onclick=()=>{nrPg=99;renderNR();};
+
+/* detail */
+function nrDetailData(n){if(n.d)return n.d;_n=1000+n.no*31;
+  const pool=ROWS.filter(r=>r.cat!=='v'&&r.cat!=='u'&&r.bg==='Holding');
+  const pick=k=>Array.from({length:k},()=>pool[Math.floor(nrr()*pool.length)]);
+  const mut=pick(1+Math.floor(nrr()*2)).map(r=>({r,newPos:`${np(['Sr Analyst','Analyst','Ast Manager'])} ${np(['Asset Planning','Quality Management','Portfolio Analysis','Compliance Program','HC Operation'])}`,newId:String(30287600+Math.floor(nrr()*99)),prlNew:r.prl+(nrr()<.5?1:0),tmtA:'01/12/2026',tmtB:'01/12/2026',alasan:np(['Rotasi berdasarkan traffic light P1','Promosi berdasarkan eligibility basket','Pengisian posisi vacant prioritas'])}));
+  const chain=nrr()<.4?[mut[0].r.nama,np(pool).nama,np(pool).nama]:[];
+  const sl=pick(nrr()<.6?1:2).map(r=>({r,newPos:`${np(['Manager','Sr Analyst II'])} ${np(['Culture & Change Management','HC Planning','Asset Digitalization'])}`,newId:String(30287690+Math.floor(nrr()*9)),kin:(5+Math.floor(nrr()*4)*.5).toFixed(1)}));
+  const mem=pick(2);
+  n.d={mut,chain,sl,mem,add:nrr()<.5?['ika.pratiwi@contoh.co.id','hc.secretariat@contoh.co.id']:[],non:[{p:`Posisi ${30291650+n.no}-Manager Human Capital telah diajukan persetujuan shortlist dengan kandidat ${sl.map(x=>x.r.nama).join(', ')} untuk dilakukan persetujuan melalui FPT`,d:'Kandidat dinilai siap; perlu konfirmasi jadwal FPT.',a:'HCBP menjadwalkan FPT paling lambat 2 minggu.'}]};
+  return n.d;}
+function nrOpen(no){nrCur=NR.find(n=>n.no===no);nrAs='auto';nrL.classList.add('hidden');nrD.classList.remove('hidden');renderNRD();window.scrollTo(0,0);}
+function nrBack(){nrCur=null;nrD.classList.add('hidden');nrL.classList.remove('hidden');renderNR();}
+const curActor=n=>n.st==='D'||n.st==='R'?'creator':n.st==='A'?CHAIN[n.step].k:null;
+const person=(p,extra='')=>`<div class="mrow"><div class="emp" style="flex:1"><span class="ava">${p[0].split(' ').map(x=>x[0]).slice(0,2).join('')}</span><span><b>${p[0]}</b><small>${p[1]}${extra}</small></span></div><div style="flex:1;font-size:13px;color:var(--text2);line-height:1.9"><div>⋔ ${p[2]}</div><div>⌖ PT Pertamina (Persero)</div></div></div>`;
+function renderNRD(){const n=nrCur,d=nrDetailData(n);
+  const stp=n.st==='D'?0:n.st==='A'||n.st==='R'?1:n.st==='C'?2:-1;
+  nrH.innerHTML=`<div><button class="btn-t btn-sm" onclick="nrBack()" style="padding-left:0">‹ Notulensi Rapat</button><div style="display:flex;align-items:center;gap:10px"><b style="font-size:18px">${n.id}</b><span class="pill ${NRSTAT[n.st][0]}">${NRSTAT[n.st][1]}</span></div><div class="help" style="margin:2px 0 0">${fmD(n.date)}${n.cycle>1?` · Siklus approval ke-${n.cycle}`:''}</div></div><span style="flex:1"></span>
+    ${n.st==='D'?`<button class="btn-t" onclick="nrCancel()">Batalkan NR</button><button class="btn-p" onclick="nrSubmit()">Ajukan Approval</button>`:''}${n.st==='R'?`<button class="btn-p" onclick="nrRevise()">Revisi &amp; Ajukan Ulang</button>`:''}
+    <button class="btn-t" onclick="toast('PDF ${n.id} diunduh')">⤓ Download</button>`;
+  nrStep.innerHTML=['Draft','On Approval','Completed'].map((t,i)=>{const done=i<stp||n.st==='C';const curS=i===stp&&n.st!=='C';const red=n.st==='R'&&i===1;const x=n.st==='X';
+    return `<div class="st ${done?'done':''} ${curS?'cur':''} ${red?'red':''} ${x?'x':''}"><span class="dot">${red?'✕':done?'✓':i+1}</span><b>0${i+1}</b> ${red?'Rejected':t}</div>${i<2?`<span class="ln ${i<stp||n.st==='C'?'done':''}"></span>`:''}`;}).join('')+(n.st==='X'?'<span class="pill p-v" style="margin-left:12px">Canceled</span>':'');
+  const sec=(t,sub,body)=>`<div class="card"><div class="card-h" style="display:block"><h3 style="margin:0">${t}</h3>${sub?`<div class="help" style="margin:2px 0 0">${sub}</div>`:''}</div><div class="card-b">${body}</div></div>`;
+  const kv=(l,v)=>`<div><label>${l}</label><div>${v}</div></div>`;
+  let h=sec('TRM Details','',`<div class="trmbox"><div><b>${n.title}</b><div class="help">${n.trm}</div></div><div class="sgrid" style="grid-template-columns:repeat(4,1fr);row-gap:14px">${kv('Type',n.type)+kv('Date',fmtNR(n.date))+kv('Time','13:00 WIB')+kv('Location',n.loc)+kv('Business Group','Holding')+kv('Company','PT Pertamina (Persero)')+kv('Directorate','Penunjang Bisnis')+kv('Function','Asset Management')+kv('Link Meeting',n.type==='Online'?'<span class="lnk">teams.contoh.co.id/trm-'+n.no+'</span>':'No Link Meeting')}</div></div><h4 style="margin:18px 0 6px;font-weight:500">Description</h4><div style="font-size:14px">Pembahasan usulan mutasi, rangkaian mutasi, dan shortlist kandidat untuk posisi prioritas berdasarkan hasil traffic light dan vacancy rate.</div>`);
+  h+=sec('Materi TRM','',`<div style="text-align:center">${n.materi?`<div class="filechip">📄 ${n.materi} <span class="help" style="margin:0">· 2,4 MB</span>${n.st==='D'?`<button class="kebab" onclick="nrCur.materi=null;renderNRD()" aria-label="Hapus">✕</button>`:''}</div>`:''}
+    ${n.st==='D'?`<div style="margin-top:12px"><button class="btn-p" onclick="nrUpload()">Upload Materi TRM (max 50MB)</button> <button class="btn-o" onclick="nrAttach()">Lampirkan dari List of Setting Materi</button></div>`:''}
+    <div style="margin-top:14px"><a class="lnk" href="#" onclick="toast('List detail materi TRM diunduh');return false">📎 Download List Detail Materi TRM</a></div></div>`);
+  h+=sec('Notulensi Rapat Mutasi',`${d.mut.length} Candidates`,d.mut.map((m,i)=>{const r=m.r;return `<div class="cand"><div class="emp cw"><span class="ava">${r.nama.split(' ').map(x=>x[0]).slice(0,2).join('')}</span><span><b>${r.nama}</b><small>${r.nopek} · ${r.pos}</small><small>PRL BS ${r.prl}</small></span></div>
+      <div class="cbox">${kv('PRL BS Baru',m.prlNew)+kv('TMT Admin',m.tmtA)+kv('TMT Aktif',m.tmtB)}</div>
+      <div class="jb"><small>Jabatan Baru</small><b>${m.newPos}</b><small>${m.newId} · PRL JAB ${m.prlNew}</small></div>
+      <button class="chevbtn" onclick="this.closest('.cand').classList.toggle('open')" aria-label="Detail">⌄</button>
+      <div class="cdet"><div class="sgrid" style="grid-template-columns:repeat(4,1fr)">${kv('Jabatan Lama',r.pos)+kv('Traffic Light',`<span class="pill ${PL[r.cat][0]}">${PL[r.cat][1]}</span> <span class="help" style="margin:0">Total ${r.total}</span>`)+kv('Eligibility Promosi',r.elig)+kv('Dasar Usulan',m.alasan)}</div></div></div>`;}).join(''));
+  h+=sec('Notulensi Catatan Rangkaian Mutasi',`${d.chain.length?1:0} Rangkaian`,d.chain.length?`<div class="chain">${d.chain.map((c,i)=>`<span class="cn">${c}</span>${i<d.chain.length-1?'<span class="arr">→</span>':''}`).join('')}<span class="help" style="margin-left:12px">Rangkaian saling mengisi posisi yang ditinggalkan</span></div>`:'<div class="help" style="margin:0">Tidak ada rangkaian mutasi.</div>');
+  h+=sec('Notulensi Rapat Shortlist Usulan',`${d.sl.length} Candidates`,d.sl.map(m=>{const r=m.r;return `<div class="cand"><div class="emp cw" style="background:var(--card);padding:8px;border-radius:8px"><span class="ava">${r.nama.split(' ').map(x=>x[0]).slice(0,2).join('')}</span><span><b class="lnk">${r.nama}</b><small>${r.nopek} · ${30+(+r.nopek.slice(-2))%20}</small><small>PRL BS ${r.prl}</small></span></div>
+      <div class="cbox">${kv('TMT PRL BS','01/02/2026')+kv('TMT PRL JAB','01/05/2026')+kv('Tanggal Pensiun','01/0'+(1+r.prl%8)+'/20'+(40+r.prl))+kv('Kinerja 2 Tahun',m.kin)}</div>
+      <div class="jb dark"><small>Jabatan Baru</small><b>${m.newPos}</b><small>${m.newId} · PRL JAB ${r.prl+2}</small></div>
+      <button class="btn-o btn-sm" onclick="nrHist('${r.id}')">History</button><button class="chevbtn" onclick="this.closest('.cand').classList.toggle('open')" aria-label="Detail">⌄</button>
+      <div class="cdet"><div class="sgrid" style="grid-template-columns:repeat(4,1fr)">${kv('Jabatan Saat Ini',r.pos)+kv('Traffic Light',`<span class="pill ${PL[r.cat][0]}">${PL[r.cat][1]}</span>`)+kv('Eligibility Promosi',r.elig)+kv('Status FPT','Dijadwalkan')}</div></div></div>`;}).join(''));
+  h+=sec('Notulen Rapat Non-Mutasi','',`<table><thead><tr><th>Pembahasan</th><th>Diskusi</th><th>Action</th></tr></thead><tbody>${d.non.map(x=>`<tr><td style="font-weight:600">${x.p}</td><td>${x.d}</td><td>${x.a}</td></tr>`).join('')}</tbody></table>`);
+  h+=sec('TRM Member','List of employee that were involved in TRM as Member.',d.mem.map(r=>person([r.nama,r.nopek,r.pos],' · PRL JAB '+r.prl)).join(''));
+  h+=sec('TRM Chairman','List of employee that were involved in TRM as Chairman.',person([NRP.mgr[0],NRP.mgr[1],NRP.mgr[2]],' · PRL JAB 20'));
+  h+=sec('Additional TRM Member','List of employee emails that were involved in TRM as additional TRM Member.',d.add.length?d.add.map(e=>`<span class="cn" style="margin-right:8px">✉ ${e}</span>`).join(''):'<div style="font-size:14px">No Additional Members</div>');
+  nrBody.innerHTML=h+renderApproval(n);
+  nrBody.querySelectorAll('.card').forEach(c=>{const hh=c.firstElementChild;if(hh.querySelector('.colbtn'))return;if(c.classList.contains('apcard')){const b=document.createElement('button');b.className='colbtn';b.textContent='⌄';b.onclick=()=>c.classList.toggle('cc');hh.appendChild(b);return;}hh.style.display='flex';hh.style.alignItems='flex-start';const w=document.createElement('div');w.style.flex='1';while(hh.firstChild)w.appendChild(hh.firstChild);hh.appendChild(w);const b=document.createElement('button');b.className='colbtn';b.textContent='⌄';b.title='Collapse';b.onclick=()=>c.classList.toggle('cc');hh.appendChild(b);});}
+function renderApproval(n){
+  const doneK=n.st==='C'?3:n.st==='A'||n.st==='R'?n.step:0;
+  const nodes=[{k:'creator',role:'Creator · Penyusun',p:[n.cr[0],n.cr[1],n.cr[2]]},...CHAIN.map(c=>({k:c.k,role:c.role,p:c.p}))];
+  const stOf=(i)=>{if(n.st==='X')return i===0?'x':'grey';if(i===0)return n.st==='D'?'cur':n.st==='R'?'cur':'ok';const k=i-1;if(k<doneK)return 'ok';if(n.st==='R'&&k===n.step)return 'no';if(n.st==='A'&&k===n.step)return 'cur';return 'grey';};
+  const lastT=k=>[...n.trail].reverse().find(t=>t.w===nodes[k].p[0]);
+  const cnt=n.st==='C'?3:doneK;
+  const summary=n.st==='C'?'Approval selesai · disetujui VP':n.st==='A'?`Menunggu ${CHAIN[n.step].role.toLowerCase()} oleh ${CHAIN[n.step].p[0]} (${CHAIN[n.step].p[2]})`:n.st==='R'?`Ditolak oleh ${CHAIN[n.step].p[2]} · menunggu revisi creator`:n.st==='D'?'Belum diajukan · masih draft creator':'Notulen dibatalkan';
+  const flow=`<div class="aflow">${nodes.map((x,i)=>{const s=stOf(i);const t=lastT(i);return `<div class="an ${s}"><div class="ab">${s==='ok'?'✓':s==='no'?'✕':s==='x'?'⊘':i===0?'✎':i}</div><div class="ar">${i===0?'Pengajuan':'Tahap '+i+' · '+x.role}</div><b>${x.p[0]}</b><small>${x.p[2]}</small><div class="as">${s==='ok'?(t?t.at:''):s==='cur'?(i===0?(n.st==='R'?'Perlu revisi':'Menyusun draft'):'Sedang direview'):s==='no'?'Rejected':s==='x'?'Dibatalkan':'Menunggu'}</div>${i===3&&s==='ok'?'<div class="stamp">APPROVED</div>':''}</div>${i<3?`<div class="al ${stOf(i+1)==='ok'||(stOf(i)==='ok'&&stOf(i+1)!=='grey')?'on':''}"></div>`:''}`;}).join('')}
+    <svg class="loop" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M960 4 C960 34, 900 36, 500 36 S40 34, 40 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5"/><path d="M34 12 L40 2 L46 12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+    <div class="looptxt">Dikembalikan / ditolak → kembali ke creator untuk revisi, lalu siklus review dimulai lagi dari Tahap 1</div></div>`;
+  const trail=n.trail.length?n.trail.slice().reverse().map(t=>`<div class="e tr-${t.c}"><b>${t.w}</b> <span class="help" style="margin:0">${t.r}</span><div class="help" style="margin:0">${t.at} · <b style="color:${t.c==='no'||t.c==='ret'?'var(--merah)':t.c==='ok'?'var(--hijau)':'var(--text2)'}">${t.a}</b></div>${t.q?`<div class="q">“${t.q}”</div>`:''}</div>`).join(''):'<div class="help" style="margin:0">Belum ada aktivitas approval.</div>';
+  const actor=curActor(n);const as=nrAs==='auto'?actor:nrAs;const can=actor&&as===actor;
+  const asName={creator:n.cr[0],sa:NRP.sa[0],mgr:NRP.mgr[0],vp:NRP.vp[0]};
+  let act='';
+  if(n.st==='A'&&can){const vp=actor==='vp';act=`<label class="help" style="display:block;margin:0 0 6px" for="nrNote">Catatan / justifikasi ${vp?'(wajib bila reject)':'(wajib bila dikembalikan)'} — terlihat oleh approver berikutnya</label><textarea id="nrNote" placeholder="Tulis catatan review"></textarea><div class="err" id="nrErr">Isi justifikasi terlebih dulu</div>
+     <div style="display:flex;gap:10px;margin-top:10px;justify-content:flex-end">${vp?`<button class="btn-o btn-sm" style="color:var(--merah);border-color:var(--merah)" onclick="nrAct('reject')">Reject</button><button class="btn-o btn-sm" onclick="nrAct('return')">Kembalikan ke Creator</button><button class="btn-p btn-sm" onclick="nrAct('approve')">Approve</button>`:`<button class="btn-o btn-sm" onclick="nrAct('return')">Kembalikan ke Creator</button><button class="btn-p btn-sm" onclick="nrAct('paraf')">Paraf &amp; Teruskan</button>`}</div>`;}
+  else if(n.st==='A')act=`<div class="help" style="margin:0">Anda melihat sebagai <b>${asName[as]}</b>. Aksi hanya tersedia untuk ${asName[actor]} (tahap saat ini).</div>`;
+  else if(n.st==='D')act=`<div class="help" style="margin:0">${can?'Lengkapi notulen lalu klik <b>Ajukan Approval</b> di kanan atas untuk memulai review berjenjang.':'Notulen masih draft di creator.'}</div>`;
+  else if(n.st==='R')act=`<div class="help" style="margin:0">${can?'Perbaiki notulen sesuai justifikasi penolakan, lalu klik <b>Revisi &amp; Ajukan Ulang</b>.':'Menunggu revisi creator.'}</div>`;
+  else if(n.st==='C')act=`<div class="help" style="margin:0">Notulen final dan terkunci. Seluruh paraf dan approval tercatat.</div>`;
+  return `<div class="card apcard"><div class="card-h"><div style="flex:1"><h3 style="margin:0">Approval &amp; Review Berjenjang</h3><div class="help" style="margin:2px 0 0">${summary} · ${cnt} dari 3 tahap selesai</div></div>
+    <span class="help" style="margin:0 6px 0 0">Simulasi peran</span><select class="sel" onchange="nrAs=this.value;renderNRD()" aria-label="Simulasi peran"><option value="auto"${nrAs==='auto'?' selected':''}>Otomatis (tahap saat ini)</option>${Object.entries(asName).map(([k,v])=>`<option value="${k}"${nrAs===k?' selected':''}>${v} · ${k==='creator'?'Creator':CHAIN.find(c=>c.k===k).p[2]}</option>`).join('')}</select></div>
+    <div class="card-b">${flow}<div class="apgrid"><div><h4 class="h4">Jejak Justifikasi</h4><div class="tl">${trail}</div></div><div><h4 class="h4">Aksi</h4><div class="actbox">${act}</div></div></div></div></div>`;}
+function nrAct(a){const n=nrCur;const note=(document.getElementById('nrNote').value||'').trim();
+  if((a==='return'||a==='reject')&&!note){nrErr.style.display='block';return;}
+  const s=CHAIN[n.step];const at='04 Nov 2026, '+new Date().toTimeString().slice(0,5)+' WIB';
+  if(a==='paraf'){n.trail.push({w:s.p[0],r:s.p[2],a:'Paraf & diteruskan',q:note,at,c:'ok'});n.step++;toast(`Diparaf · diteruskan ke ${CHAIN[n.step].p[0]}`);}
+  else if(a==='approve'){n.trail.push({w:s.p[0],r:s.p[2],a:'Approved',q:note,at,c:'ok'});n.step=3;n.st='C';toast('Notulensi Rapat disetujui · status Completed');}
+  else if(a==='reject'){n.trail.push({w:s.p[0],r:s.p[2],a:'Rejected',q:note,at,c:'no'});n.st='R';toast('Notulensi Rapat ditolak');}
+  else {n.trail.push({w:s.p[0],r:s.p[2],a:'Dikembalikan ke creator',q:note,at,c:'ret'});n.st='D';n.step=0;toast('Dikembalikan ke creator untuk revisi');}
+  nrAs='auto';renderNRD();}
+function nrSubmit(){const n=nrCur;if(!n.materi){toast('Upload materi TRM terlebih dulu');return;}n.trail.push({w:n.cr[0],r:'Creator',a:n.cycle>1||n.trail.length?'Diajukan ulang':'Diajukan untuk approval',q:'',at:'04 Nov 2026 · baru saja',c:'s'});n.st='A';n.step=0;nrAs='auto';renderNRD();toast(`Diajukan · menunggu review ${NRP.sa[0]}`);}
+function nrRevise(){const n=nrCur;n.cycle++;n.st='D';n.step=0;renderNRD();toast('Status kembali ke Draft untuk revisi');}
+function nrCancel(){const n=nrCur;n.st='X';n.trail.push({w:n.cr[0],r:'Creator',a:'Dibatalkan',q:'',at:'04 Nov 2026 · baru saja',c:'x'});renderNRD();toast('Notulensi Rapat dibatalkan');}
+function nrUpload(){nrCur.materi=`Materi_${nrCur.title.replace(/ /g,'_')}.pdf`;renderNRD();toast('Materi TRM terunggah');}
+function nrAttach(){nrCur.materi=`${(SAVED[0]||{n:'Materi Pra-TRM'}).n}.pdf`;renderNRD();toast('Materi dilampirkan dari List of Setting Materi');}
+function nrHist(id){const r=ROWS.find(x=>x.id===id);drillT.textContent=`Riwayat Jabatan · ${r.nama}`;drillB.innerHTML=[[r.pos,'01/05/2026','sekarang'],['Analyst '+r.div,'01/03/2023','30/04/2026'],['Jr Analyst '+r.fn,'01/01/2020','28/02/2023']].map(x=>`<tr><td>—</td><td>${x[0]}</td><td>${x[1]} – ${x[2]}</td><td></td><td></td></tr>`).join('');drillB.closest('.modal').querySelector('.pag span:last-child').textContent='';open('mDrill');}
+renderNR();
 </script>
 </body>
 </html>
