@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Preview — i-AM Talent · Traffic Light & Vacancy</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -31,6 +31,7 @@
   }
 }
 *{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0;font-family:Inter,Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px}
 button{font-family:inherit;cursor:pointer}
 .app{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:100vh}
@@ -292,13 +293,61 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
 .apgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;border-top:1px solid var(--div);padding-top:16px}.h4{margin:0 0 12px;font-size:14px}
 .actbox{background:var(--th);border-radius:8px;padding:14px}
 .tl .e.tr-ok::before{background:#2E9E5B}.tl .e.tr-no::before,.tl .e.tr-ret::before{background:var(--merah)}.tl .e.tr-x::before{background:#9AA1AC}
+:root{--peach:#FBE4D5}
+@media (prefers-color-scheme: dark){:root{--peach:#3A2A22}}
+.vhm{border-collapse:separate;border-spacing:0;width:100%;min-width:1760px;font-size:12px}
+.vhm th{background:#2E7D4F;color:#fff;text-transform:none;letter-spacing:0;font-size:12px;font-weight:600;text-align:center;padding:11px 4px;border:1px solid var(--card);cursor:pointer;user-select:none;white-space:nowrap}
+.vhm th.l{text-align:left;cursor:default}
+.vhm th:hover,.vhm th.hot,.vhm th.srt{background:#245F3C}
+.vhm td{padding:8px 3px;border:1px solid var(--card);text-align:center;color:#1F2933;background:var(--card);font-variant-numeric:tabular-nums}
+.vhm td.no{color:var(--text);width:46px}
+.vhm td.nm{text-align:left;color:var(--text);min-width:210px;padding-left:8px}
+.vhm th:nth-child(21){white-space:normal;min-width:84px}
+#xHeat th{cursor:default}#xHeat th:hover{background:#2E7D4F}
+.xchg{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2.6fr);gap:28px}
+.xfp{border-left:1px solid var(--div);padding-left:24px;min-width:0}
+#xFpTbl th,#xFpTbl td{padding:11px 10px}
+#xFpTbl tr.cur td:first-child{font-weight:600}
+#xFpTbl tr.gt td{background:var(--pri-soft);font-weight:700;border-bottom:0}
+.pvc{cursor:pointer;color:var(--text)}.pvc:hover{color:var(--pri);text-decoration:underline}
+.xfp.cc>:not(:first-child){display:none}.xfp.cc .colbtn{transform:rotate(-90deg)}
+@media (max-width:1180px){.xchg{grid-template-columns:1fr}.xfp{border-left:0;padding-left:0}}
+.vact{display:flex;align-items:center;gap:10px;padding:4px 22px 14px}
+#vxTbl tbody tr:hover td{background:var(--pri-soft)}
+.vhm td.nm.dr{color:var(--pri);cursor:pointer;font-weight:500}
+.vhm td.nm.dr:hover{text-decoration:underline}
+.vhm tbody tr:hover td.nm,.vhm tbody tr:hover td.no{background:var(--pri-soft)}
+.vhm td.cell{cursor:pointer}
+.vhm td.cell:hover{box-shadow:inset 0 0 0 2px var(--text)}
+.vhm td.cell.hit{box-shadow:inset 0 0 0 2px #7A1F1F;font-weight:700}
+.vhm td.vc{color:var(--text);cursor:pointer;font-weight:600}
+.vhm tr.ft0 td{font-weight:700;border-top:2px solid var(--text2)}
+.vhm tr.ft0 td.nm{background:var(--pri-soft)}
+.vhm tr.ft td{background:var(--peach);color:var(--text);font-weight:600}
+.vhm tr.ft td.nm{text-align:left}
+.vleg{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text2);flex-wrap:wrap;margin-top:14px}
+.vleg .gr{width:220px;height:12px;border-radius:6px}
+.vcl{display:flex;align-items:flex-end;gap:14px;height:230px;padding:8px 6px 0;border-bottom:1px solid var(--div)}
+.vcl .b{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;cursor:pointer;text-align:center;font-size:11.5px;color:var(--text2)}
+.vcl .b i{display:block;border-radius:4px 4px 0 0;min-height:3px;margin-top:4px}
+.vcl .b:hover{outline:2px solid var(--pri);outline-offset:2px}
+.vcll{display:flex;gap:14px;padding:6px 6px 0;font-size:11.5px;color:var(--text2)}.vcll div{flex:1;text-align:center}
+.vbar{display:grid;grid-template-columns:200px 1fr 104px;gap:10px;align-items:center;margin:9px 0;font-size:13px;cursor:pointer}
+.vbar:hover>span:first-child{color:var(--pri);text-decoration:underline}
+.vbar .tr{height:18px;background:var(--th);border-radius:3px;overflow:hidden}.vbar .tr i{display:block;height:100%}
+.vbar>span:last-child{text-align:right;color:var(--text2);font-size:12px}
+.vcr{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0 22px 16px;font-size:14px}
+.vcr button{background:none;border:0;color:var(--pri);padding:2px 4px;font-size:14px}.vcr button:hover{text-decoration:underline}.vcr b{font-weight:600}.vcr .sep{color:var(--text3)}
+.vinfo{font-size:12.5px;color:var(--text2);background:var(--th);border-radius:6px;padding:8px 12px;margin:0 22px 12px;min-height:34px}
+.vtool{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:0 22px 14px}
+.vsel-l{font-size:12px;color:var(--text2)}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="side">
     <div class="logo"><b>i-AM</b><small>TALENT</small></div>
-    <nav class="nav"><a href="#" onclick="soon(this);return false" title="Home"><i>⌂</i><span class="t">Home</span></a><div class="grp closed" data-g="prof"><a class="par" href="#" onclick="tg('prof');return false" title="My Profile"><i>◉</i><span class="t">My Profile</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Data Pribadi</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Riwayat Jabatan</span></a></div></div><a href="#" onclick="soon(this);return false" title="Position"><i>⋔</i><span class="t">Position</span></a><a href="#" onclick="soon(this);return false" title="Organization Chart"><i>⊞</i><span class="t">Organization Chart</span></a><a href="#" onclick="soon(this);return false" title="Skill Group"><i>▥</i><span class="t">Skill Group</span></a><a href="#" onclick="soon(this);return false" title="Employee"><i>☺</i><span class="t">Employee</span></a><div class="grp" data-g="succ"><a class="par" href="#" onclick="tg('succ');return false" title="Succession"><i>↥</i><span class="t">Succession</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" data-nav="trm" href="#" onclick="goPage('trm');return false"><span class="t">Materi TRM</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">TRM Management</span></a><a class="sub" data-nav="nr" href="#" onclick="goPage('nr');return false"><span class="t">Notulensi Rapat</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Fit &amp; Proper Test</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Rencana Mutasi Jabatan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Surat Ket. Mutasi Jabatan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Succession Specialist</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Succession Expert</span></a></div></div><div class="grp" data-g="dash"><a class="par" href="#" onclick="tg('dash');return false" title="Dashboard Monitoring"><i>◷</i><span class="t">Dashboard Monitoring</span><span class="chip-new" style="background:var(--pri-soft)">Baru</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" data-nav="dtl" href="#" onclick="goPage('dtl');return false"><span class="t">Traffic Light</span></a><a class="sub" data-nav="dvr" href="#" onclick="goPage('dvr');return false"><span class="t">Vacancy Rate &amp; Heatmap</span></a><a class="sub" data-nav="mon" href="#" onclick="goPage('mon');return false"><span class="t">IMPTU &amp; Tugas Belajar</span></a></div></div><a data-nav="mep" href="#" onclick="goPage('mep');return false" title="Masa Evaluasi Pekerja"><i>✎</i><span class="t">Masa Evaluasi Pekerja</span><span class="chip-new" style="background:var(--pri-soft)">Baru</span></a><div class="grp closed" data-g="asp"><a class="par" href="#" onclick="tg('asp');return false" title="Aspiration"><i>★</i><span class="t">Aspiration</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Aspirasi Karier</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Aspirasi Lokasi</span></a></div></div><div class="grp closed" data-g="tm"><a class="par" href="#" onclick="tg('tm');return false" title="Talent Marketplace"><i>▣</i><span class="t">Talent Marketplace</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Project Marketplace</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Mentoring</span></a></div></div><div class="grp closed" data-g="ijp"><a class="par" href="#" onclick="tg('ijp');return false" title="Internal Job Posting"><i>▤</i><span class="t">Internal Job Posting</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Lowongan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Lamaran Saya</span></a></div></div><div class="grp closed" data-g="bc"><a class="par" href="#" onclick="tg('bc');return false" title="Background Check"><i>⌕</i><span class="t">Background Check</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Request</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Hasil</span></a></div></div></nav>
+    <nav class="nav"><a href="#" onclick="soon(this);return false" title="Home"><i>⌂</i><span class="t">Home</span></a><div class="grp closed" data-g="prof"><a class="par" href="#" onclick="tg('prof');return false" title="My Profile"><i>◉</i><span class="t">My Profile</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Data Pribadi</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Riwayat Jabatan</span></a></div></div><a href="#" onclick="soon(this);return false" title="Position"><i>⋔</i><span class="t">Position</span></a><a href="#" onclick="soon(this);return false" title="Organization Chart"><i>⊞</i><span class="t">Organization Chart</span></a><a href="#" onclick="soon(this);return false" title="Skill Group"><i>▥</i><span class="t">Skill Group</span></a><a href="#" onclick="soon(this);return false" title="Employee"><i>☺</i><span class="t">Employee</span></a><div class="grp" data-g="succ"><a class="par" href="#" onclick="tg('succ');return false" title="Succession"><i>↥</i><span class="t">Succession</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" data-nav="trm" href="#" onclick="goPage('trm');return false"><span class="t">Materi TRM</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">TRM Management</span></a><a class="sub" data-nav="nr" href="#" onclick="goPage('nr');return false"><span class="t">Notulensi Rapat</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Fit &amp; Proper Test</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Rencana Mutasi Jabatan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Surat Ket. Mutasi Jabatan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Succession Specialist</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Succession Expert</span></a></div></div><a data-nav="dvr" href="#" onclick="goPage('dvr');return false" title="Vacancy Rate &amp; Heatmap"><i>▦</i><span class="t">Vacancy Rate &amp; Heatmap</span><span class="chip-new" style="background:var(--pri-soft)">Baru</span></a><a data-nav="dm" href="#" onclick="goPage('dm');return false" title="Dashboard Monitoring"><i>◷</i><span class="t">Dashboard Monitoring</span><span class="chip-new" style="background:var(--pri-soft)">Baru</span></a><div class="grp closed" data-g="asp"><a class="par" href="#" onclick="tg('asp');return false" title="Aspiration"><i>★</i><span class="t">Aspiration</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Aspirasi Karier</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Aspirasi Lokasi</span></a></div></div><div class="grp closed" data-g="tm"><a class="par" href="#" onclick="tg('tm');return false" title="Talent Marketplace"><i>▣</i><span class="t">Talent Marketplace</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Project Marketplace</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Mentoring</span></a></div></div><div class="grp closed" data-g="ijp"><a class="par" href="#" onclick="tg('ijp');return false" title="Internal Job Posting"><i>▤</i><span class="t">Internal Job Posting</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Lowongan</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Lamaran Saya</span></a></div></div><div class="grp closed" data-g="bc"><a class="par" href="#" onclick="tg('bc');return false" title="Background Check"><i>⌕</i><span class="t">Background Check</span><span class="chev">⌄</span></a><div class="subs"><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Request</span></a><a class="sub" href="#" onclick="soon(this);return false"><span class="t">Hasil</span></a></div></div></nav>
     <div class="side-foot"><span>powered by Enterprise IT</span><span>Version 6.0.0</span></div>
   </aside>
 
@@ -340,10 +389,13 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
           </div>
           <div class="card"><div class="card-b">
             <div class="banner" style="margin-bottom:14px"><span>ⓘ</span><span>Data taken on 04 November 2026. Traffic light dihitung dari data ZHRPA044 untuk company yang disubmit saat generate.</span></div>
-            <div style="display:flex;align-items:center;margin-bottom:10px"><h3 id="xChT" style="margin:0;font-size:16px;flex:1"></h3><div class="seg" id="xMode"><button class="on" data-m="pct">Persentase</button><button data-m="n">Jumlah</button></div></div>
-            <div class="cols" id="xCols"></div><div class="collbl" id="xColL"></div>
+            <div style="display:flex;align-items:center;margin-bottom:12px;gap:10px"><span style="flex:1"></span><span class="seg-l" style="margin:0">Tampilkan</span><div class="seg" id="xMode"><button class="on" data-m="pct">Persentase</button><button data-m="n">Jumlah</button></div></div>
+            <div class="xchg">
+              <div><h3 id="xChT" style="margin:0 0 10px;font-size:16px"></h3><div class="cols" id="xCols"></div><div class="collbl" id="xColL"></div></div>
+              <div class="xfp"><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;min-height:34px"><div style="flex:1"><h3 id="xFpT" style="margin:0;font-size:16px">Rekap Pivot</h3><div class="help" id="xFpSub" style="margin:2px 0 0"></div></div><select class="sel" id="xFpSel" aria-label="Fungsi pembina" style="display:none"></select><button class="colbtn" onclick="this.closest('.xfp').classList.toggle('cc')" aria-label="Collapse" title="Collapse">⌄</button></div><div class="tw"><table id="xFpTbl"></table></div></div>
+            </div>
             <div class="lg" style="justify-content:center"><span><i style="background:var(--hijau)"></i>Hijau</span><span><i style="background:var(--kuning)"></i>Kuning</span><span><i style="background:var(--merah)"></i>Merah</span><span><i style="background:var(--undef)"></i>Undefined</span><span><i style="background:var(--vac)"></i>Vacant</span></div>
-            <div class="help" style="text-align:center">Klik segmen untuk drill-down ke tabel di bawah</div>
+            <div class="help" style="text-align:center">Klik segmen kiri untuk drill-down ke tabel di bawah · klik angka pada Rekap Pivot untuk melihat daftar posisi</div>
           </div></div>
           <div class="card" id="xTblCard">
             <div class="tool">
@@ -384,9 +436,9 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
           <div class="g2" id="xTot"></div>
           <div class="sec-h"><h3>Vacant Positions</h3></div><div class="sec-s">These positions below are based on the PRL PC category</div>
           <div class="g3" id="xVac"></div>
-          <div class="card" style="margin-top:18px"><div class="card-h"><h3>Heatmap Vacancy Rate per PRL</h3><span id="xHtip" style="font-size:12px;color:var(--text2)">Arahkan kursor ke sel untuk detail</span></div>
-            <div class="card-b tw"><table class="heat" id="xHeat"></table>
-              <div class="lg"><span><i style="background:var(--h1)"></i>0–5%</span><span><i style="background:var(--h2)"></i>5–10%</span><span><i style="background:var(--h3)"></i>10–20%</span><span><i style="background:var(--h4)"></i>20–30%</span><span><i style="background:var(--h5)"></i>≥ 30%</span><span><i style="background:var(--hx)"></i>Tidak ada formasi</span><span style="margin-left:auto" id="xHnote"></span></div></div></div>
+          <div class="card" style="margin-top:18px"><div class="card-h"><h3>Heatmap Vacancy Rate per PRL</h3><span id="xHtip" style="font-size:12px;color:var(--text2)">Arahkan kursor ke sel untuk detail · klik sel untuk daftar posisi</span><div class="seg" id="xHMode"><button class="on" data-m="pct">Vacancy %</button><button data-m="vac">Jumlah Vacant</button><button data-m="f">Formasi</button></div></div>
+            <div class="card-b tw"><table class="vhm" id="xHeat"></table>
+              <div class="vleg" id="xLeg"></div></div></div>
           <div class="card"><div class="tool"><input class="inp" id="vQ" placeholder="Search" style="color:var(--text)"><select class="sel" id="vCat"><option value="">Semua kategori</option><option>VP Up Setara</option><option>Manager Setara</option><option>Below Manager</option></select><select class="sel" id="vSrc"><option value="">Semua sumber</option><option>System</option><option>Upload</option></select></div>
             <div class="tw"><table id="vTbl"><thead><tr><th>Vacant Position</th><th>PRL Jab</th><th>Kategori</th><th>Tanggal Vacant</th><th>Sumber</th><th>Company</th><th>Directorate</th><th>Function</th><th>Division</th></tr></thead><tbody></tbody></table></div>
             <div class="pag"><span id="vPgT"></span><span><button class="kebab" id="vPrev">‹</button><button class="kebab" id="vNext">›</button></span></div></div>
@@ -426,6 +478,50 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
         <div class="main" id="nrBody"></div>
       </div>
     </section>
+    <!-- ================= VACANCY RATE & HEATMAP (BARU) ================= -->
+    <section id="pg-vr" class="hidden">
+      <div class="ph" style="padding-bottom:0">
+        <div class="ph-row"><h1>Vacancy Rate &amp; Heatmap</h1>
+          <span class="pill p-v" style="margin-right:6px">Akses Anda: HCBP Holding · seluruh entitas</span>
+          <button class="btn-o" onclick="toast('Data vacancy rate diunduh (.xlsx)')">⤓ Unduh Data</button></div>
+        <div class="tabs" role="tablist">
+          <button class="tab on" role="tab" data-vt="org">Berdasarkan Struktur Organisasi</button>
+          <button class="tab" role="tab" data-vt="fp">Berdasarkan Fungsi Pembina</button>
+        </div>
+      </div>
+      <div class="main">
+        <div class="card" id="vxScope"></div>
+        <div class="banner"><span>ⓘ</span><span class="sp">Data posisi dari HRIS+ (SAP HCM) per 04 November 2026, 06:00 WIB. Vacancy rate = posisi vacant ÷ total formasi. Posisi dummy dikecualikan.</span><span class="lock">🔒︎ Sangat Rahasia</span></div>
+        <div class="kpis" id="vxKpi"></div>
+        <div class="help" id="vxLvl" style="margin:-4px 0 14px;font-size:14px"></div>
+        <div class="grid2">
+          <div class="card"><div class="card-h"><h3 id="vxBarT">Formasi Terisi vs Lowong</h3><button class="kebab" onclick="openIns('Formasi Terisi vs Lowong')" aria-label="Menu">⋮</button><button class="colbtn" onclick="this.closest('.card').classList.toggle('cc')" aria-label="Collapse" title="Collapse">⌄</button></div><div class="card-b" id="vxBars"></div></div>
+          <div class="card"><div class="card-h"><h3>Rincian Vacancy Rate</h3><button class="kebab" onclick="openIns('Rincian Vacancy Rate')" aria-label="Menu">⋮</button><button class="colbtn" onclick="this.closest('.card').classList.toggle('cc')" aria-label="Collapse" title="Collapse">⌄</button></div>
+            <table id="vxTbl"><thead><tr><th id="vxTh">Entitas</th><th style="text-align:right">Formasi</th><th style="text-align:right">Terisi</th><th style="text-align:right">Lowong</th><th style="text-align:right">Vacancy</th></tr></thead><tbody id="vxTblB"></tbody></table>
+          </div>
+        </div>
+
+        <div class="card" id="vxHeatCard">
+          <div class="card-h"><h3>Heatmap Vacancy Rate per PRL</h3><button class="btn-o btn-sm" onclick="toast('Heatmap diunduh (.xlsx)')">Export</button><button class="kebab" onclick="openIns('Heatmap Vacancy Rate per PRL')" aria-label="Menu">⋮</button></div>
+          <div class="vtool" style="padding-top:14px">
+            <span class="vsel-l">Tampilkan</span>
+            <div class="seg" id="vxMode"><button class="on" data-m="pct">Vacancy %</button><button data-m="vac">Jumlah Vacant</button><button data-m="f">Formasi</button></div>
+            <span class="vsel-l" style="margin-left:6px">Skala warna</span>
+            <select class="sel" id="vxScale"><option value="std">Standar (merah ≥ 65%)</option><option value="ketat">Ketat (merah ≥ 40%)</option><option value="longgar">Longgar (merah 100%)</option></select>
+            <span class="vsel-l" style="margin-left:6px">Sorot</span>
+            <select class="sel" id="vxHit"><option value="0">Tanpa sorotan</option><option value="30">Vacancy ≥ 30%</option><option value="50">Vacancy ≥ 50%</option><option value="75">Vacancy ≥ 75%</option><option value="100">Vacancy 100%</option></select>
+            <span id="vxHitN" class="vsel-l"></span>
+            <span style="flex:1"></span>
+            <input class="inp" id="vxQ" placeholder="Cari nama baris" style="color:var(--text);min-width:200px">
+          </div>
+          <div class="vinfo" id="vxInfo">Arahkan kursor ke sel untuk detail. Klik sel untuk melihat daftar posisi vacant.</div>
+          <div class="card-b tw" style="padding-top:0"><table class="vhm" id="vxHeat"></table>
+            <div class="vleg" id="vxLeg"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= MAIN PAGE ================= -->
     <section id="pg-main" class="hidden">
       <div class="ph">
@@ -462,7 +558,7 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
             <div class="fo"><label for="fFN">Function</label><select class="fsel" id="fFN"></select></div>
             <div class="fo"><label for="fDIV">Division</label><select class="fsel" id="fDIV"></select></div>
             <div class="ff hidden"><label for="fFP">Fungsi Pembina</label><select class="fsel" id="fFP"></select></div>
-            <div><label for="fPRL">PRL</label><select class="fsel" id="fPRL"><option value="">Semua PRL</option><option value="10-13">PRL 10–13</option><option value="14-18">PRL 14–18</option><option value="19-25">PRL 19–25</option></select></div>
+            <div><label for="fPRL">PRL</label><select class="fsel" id="fPRL"><option value="">Semua PRL</option><option value="10-13">PRL 10–13</option><option value="14-18">PRL 14–18</option><option value="19-25">PRL 19–25</option><option value="26-27">PRL 26–27</option></select></div>
           </div>
           <div class="crumb" id="crumb"></div>
         </div>
@@ -587,11 +683,23 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
     </section>
 
 
+    <!-- ================= DASHBOARD MONITORING (header + navbar) ================= -->
+    <section id="pg-dmh" class="hidden">
+      <div class="ph" style="padding-bottom:0">
+        <div class="bc">Dashboard Monitoring / <span id="dshBc">IMPTU</span></div>
+        <div class="ph-row"><h1>Dashboard Monitoring</h1></div>
+        <div class="tabs" role="tablist">
+          <button class="tab on" role="tab" data-dt="IM">IMPTU</button>
+          <button class="tab" role="tab" data-dt="TB">Tugas Belajar</button>
+          <button class="tab" role="tab" data-dt="MEP">MEP</button>
+        </div>
+      </div>
+    </section>
     <!-- ================= MONITORING PEKERJA MEP ================= -->
     <section id="pg-mep" class="hidden">
       <div class="main">
         <div class="ph-row" style="margin-bottom:20px;gap:14px">
-          <h1 class="mp-title" style="white-space:nowrap">Masa Evaluasi Pekerja</h1><span class="enh">Enhancement 2027</span><span style="flex:1"></span>
+          <h2 style="font-size:20px;font-weight:600;margin:0;white-space:nowrap">Monitoring Masa Evaluasi Pekerja (MEP)</h2><span style="flex:1"></span>
           <button class="btn-p" onclick="open('mMepDl')">⤓ Unduh Data</button>
         </div>
         <div class="kcs" id="mpK"></div>
@@ -621,17 +729,14 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
     </section>
     <!-- ================= MONITORING IMPTU & TB ================= -->
     <section id="pg-mon" class="hidden">
-      <div class="ph" style="padding-bottom:20px">
-        <div class="bc">Dashboard Monitoring / IMPTU &amp; Tugas Belajar</div>
-        <div class="ph-row"><h1>Monitoring IMPTU &amp; Tugas Belajar</h1>
-          <span class="pill p-v" style="margin-right:6px">Akses Anda: HCBP Holding · seluruh entitas</span>
+      <div class="main">
+        <div class="ph-row" style="margin-bottom:20px;gap:14px">
+          <h2 id="monH" style="font-size:20px;font-weight:600;margin:0;white-space:nowrap">Monitoring IMPTU</h2><span style="flex:1"></span>
+          <span class="pill p-v">Akses Anda: HCBP Holding · seluruh entitas</span>
           <button class="btn-t">Atur Penanda</button>
           <button class="btn-p" onclick="open('mDl')">⤓ Unduh Data</button></div>
-      </div>
-      <div class="main">
         <div class="card">
-          <div class="card-h"><h2>Filter</h2><span class="seg-l">Jenis</span>
-            <div class="seg" id="mJenis"><button class="on" data-j="all">Semua</button><button data-j="TB">Tugas Belajar</button><button data-j="IM">IMPTU</button></div>
+          <div class="card-h"><h2>Filter</h2>
             <button class="btn-t" onclick="resetMon()">Reset Filter</button></div>
           <div class="tool" style="padding:16px 22px">
             <input class="inp" id="mQ" placeholder="Cari nama, nopek, posisi" style="color:var(--text)">
@@ -690,7 +795,21 @@ textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:10p
 <div class="modal-wrap" id="mDrill"><div class="modal">
   <div class="card-h"><h3 id="drillT">Legal Litigation · Merah P1</h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
   <table><thead><tr><th>ID Post</th><th>Posisi</th><th>Nama</th><th style="text-align:right">Total Poin</th><th>Eligibility Promosi</th></tr></thead><tbody id="drillB"></tbody></table>
-  <div class="pag" style="justify-content:space-between"><span class="lnk" style="cursor:pointer" onclick="closeAll();showTab('tl')">Buka di tab Traffic Light</span><span>1–5 · ‹ ›</span></div>
+  <div class="pag" style="justify-content:space-between"><span class="lnk" style="cursor:pointer" onclick="closeAll()">Tutup</span><span>1–5 · ‹ ›</span></div>
+</div></div>
+
+<!-- Detail vacancy modal -->
+<div class="modal-wrap" id="mVx"><div class="modal" style="width:940px">
+  <div class="card-h"><h3 id="vxmT"></h3><button class="kebab" onclick="closeAll()" aria-label="Tutup">✕</button></div>
+  <div id="vxEnt" class="hidden"><table><thead><tr><th>Entitas</th><th style="text-align:right">Formasi</th><th style="text-align:right">Terisi</th><th style="text-align:right">Vacant</th><th style="text-align:center">Vacancy</th><th></th></tr></thead><tbody id="vxEntB"></tbody></table></div>
+  <div id="vxList">
+    <div class="tool" style="padding:14px 22px"><span id="vxmS" style="font-size:13px;color:var(--text2)"></span><span style="flex:1"></span>
+      <select class="sel" id="vxmSt"><option value="">Semua status pengisian</option><option>Open IJP</option><option>Proses seleksi</option><option>Menunggu TRM</option><option>Belum ada rencana</option></select>
+      <select class="sel" id="vxmSo"><option value="d">Terlama vacant</option><option value="p">PRL tertinggi</option></select></div>
+    <div class="tw"><table><thead><tr><th>ID Post</th><th>Posisi</th><th>Entitas</th><th>Unit</th><th>PRL</th><th style="text-align:right">Lama Vacant</th><th>Status Pengisian</th></tr></thead><tbody id="vxmB"></tbody></table></div>
+    <div class="empty hidden" id="vxmNo"><b>Tidak ada posisi sesuai filter</b></div>
+    <div class="pag" style="justify-content:space-between"><span id="vxmN"></span><span><span id="vxmP"></span> <button class="kebab" id="vxmPr" aria-label="Sebelumnya">‹</button><button class="kebab" id="vxmNx" aria-label="Berikutnya">›</button></span></div>
+  </div>
 </div></div>
 
 <!-- Insert to materi modal -->
@@ -1078,9 +1197,8 @@ function renderMon(){
  const d=monFilt();
  const c=(f)=>d.filter(f).length;
  mKpi.innerHTML=[
-  ['Total pekerja',d.length,'var(--pri)','Sesuai filter'],
-  ['Tugas Belajar aktif',c(m=>m.jenis==='TB'),'#1D9E75','DN dan LN'],
-  ['IMPTU aktif',c(m=>m.jenis==='IM'),'#7F77DD',''],
+  [mj==='IM'?'Total IMPTU':mj==='TB'?'Total Tugas Belajar':'Total pekerja',d.length,'var(--pri)','Sesuai filter'],
+  ...(mj==='TB'?[['Dalam negeri (DN)',c(m=>/\(DN\)/.test(m.ket)),'#1D9E75','Kampus dalam negeri'],['Luar negeri (LN)',c(m=>/\(LN\)/.test(m.ket)),'#1D9E75','Kampus luar negeri']]:mj==='IM'?[['Berjalan',c(m=>m.status==='Berjalan'),'#7F77DD','Penugasan aktif'],['Pernah diperpanjang',c(m=>m.ext>0),'#7F77DD','Minimal 1x perpanjangan']]:[['Tugas Belajar aktif',c(m=>m.jenis==='TB'),'#1D9E75','DN dan LN'],['IMPTU aktif',c(m=>m.jenis==='IM'),'#7F77DD','']]),
   ['Akan segera kembali',c(m=>m.status==='Akan segera kembali'),'var(--kuning)','≤ 90 hari ke depan'],
   ['Lewat tanggal berakhir',c(m=>m.status==='Lewat tanggal berakhir'),'var(--merah)','Belum tercatat aktif kembali']
  ].map(k=>`<div class="kpi" style="border-left-color:${k[2]}"><label>${k[0]}</label><div class="v">${k[1]}</div><div class="s">${k[3]}</div></div>`).join('');
@@ -1088,10 +1206,10 @@ function renderMon(){
  const od=d.filter(m=>m.sisa<0);
  mRet.innerHTML=`<div class="m od"><label>Lewat tanggal berakhir</label><b>${od.length}</b><div>${od.map(m=>m.nama).join('<br>')||'—'}</div></div>`+months.map((mo,i)=>{const L=d.filter(m=>{const e=new Date(m.akhir);return m.sisa>=0&&e.getMonth()===mo.getMonth()&&e.getFullYear()===mo.getFullYear();});return `<div class="m ${i<3&&L.length?'hot':''}"><label>${mo.toLocaleDateString('id-ID',{month:'long',year:'numeric'})}</label><b>${L.length}</b><div>${L.map(m=>m.nama+' · '+(m.jenis==='TB'?'TB':'IMPTU')).join('<br>')||'—'}</div></div>`}).join('');
  const ents=[...new Set(MON.map(m=>m.ent))];const mx=Math.max(1,...ents.map(e=>d.filter(m=>m.ent===e).length));
- mEntBars.innerHTML=ents.map(e=>{const tb=d.filter(m=>m.ent===e&&m.jenis==='TB').length,im=d.filter(m=>m.ent===e&&m.jenis==='IM').length;const t=tb+im;return `<div class="hbar" style="grid-template-columns:150px 1fr 30px"><span>${e}</span><div class="tr" style="width:${t/mx*100}%;min-width:${t?0:2}px">${tb?`<span style="flex:${tb};background:#1D9E75">${tb}</span>`:''}${im?`<span style="flex:${im};background:#7F77DD">${im}</span>`:''}</div><b>${t}</b></div>`}).join('')+'<div class="lg"><span><i style="background:#1D9E75"></i>Tugas Belajar</span><span><i style="background:#7F77DD"></i>IMPTU</span></div>';
+ mEntBars.innerHTML=ents.map(e=>{const tb=d.filter(m=>m.ent===e&&m.jenis==='TB').length,im=d.filter(m=>m.ent===e&&m.jenis==='IM').length;const t=tb+im;return `<div class="hbar" style="grid-template-columns:150px 1fr 30px"><span>${e}</span><div class="tr" style="width:${t/mx*100}%;min-width:${t?0:2}px">${tb?`<span style="flex:${tb};background:#1D9E75">${tb}</span>`:''}${im?`<span style="flex:${im};background:#7F77DD">${im}</span>`:''}</div><b>${t}</b></div>`}).join('')+'<div class="lg">'+(mj!=='IM'?'<span><i style="background:#1D9E75"></i>Tugas Belajar</span>':'')+(mj!=='TB'?'<span><i style="background:#7F77DD"></i>IMPTU</span>':'')+'</div>';
  const fns=[...new Set(d.map(m=>m.fn))].sort();
- mFnTbl.innerHTML='<thead><tr><th>Fungsi</th><th style="text-align:right">TB</th><th style="text-align:right">IMPTU</th><th style="text-align:right">Akan kembali</th><th style="text-align:right">Total</th></tr></thead><tbody>'+fns.map(f=>{const r=d.filter(m=>m.fn===f);return `<tr><td>${f}</td><td class="num">${r.filter(m=>m.jenis==='TB').length}</td><td class="num">${r.filter(m=>m.jenis==='IM').length}</td><td class="num">${r.filter(m=>m.status!=='Berjalan').length||''}</td><td class="num"><b>${r.length}</b></td></tr>`}).join('')+'</tbody>';
- mCount.textContent=`Menampilkan ${d.length} dari ${MON.length} pekerja`;
+ mFnTbl.innerHTML='<thead><tr><th>Fungsi</th>'+(mj!=='IM'?'<th style="text-align:right">TB</th>':'')+(mj!=='TB'?'<th style="text-align:right">IMPTU</th>':'')+'<th style="text-align:right">Akan kembali</th><th style="text-align:right">Total</th></tr></thead><tbody>'+fns.map(f=>{const r=d.filter(m=>m.fn===f);return `<tr><td>${f}</td>${mj!=='IM'?`<td class="num">${r.filter(m=>m.jenis==='TB').length}</td>`:''}${mj!=='TB'?`<td class="num">${r.filter(m=>m.jenis==='IM').length}</td>`:''}<td class="num">${r.filter(m=>m.status!=='Berjalan').length||''}</td><td class="num"><b>${r.length}</b></td></tr>`}).join('')+'</tbody>';
+ mCount.textContent=`Menampilkan ${d.length} dari ${MON.filter(m=>mj==='all'||m.jenis===mj).length} pekerja`;
  document.querySelector('#mTbl tbody').innerHTML=d.sort((a,b)=>a.sisa-b.sisa).map(m=>`<tr><td>${m.nopek}</td><td class="lnk" style="cursor:pointer" onclick="monDet('${m.nopek}')">${m.nama}<span class="sub">${m.pos} · ${m.prl}</span></td><td><span class="pill ${JN[m.jenis][0]}">${JN[m.jenis][1]}</span></td><td>${m.ent}</td><td>${m.fn}</td><td>${m.ket}${m.ext?`<span class="sub">Diperpanjang ${m.ext}x</span>`:''}</td><td class="per">${fmtD(m.mulai)} – ${fmtD(m.akhir)}<div class="bar"><span style="width:${m.prog}%;background:${m.sisa<0?'var(--merah)':m.sisa<=90?'var(--kuning)':'var(--pri)'}"></span></div><span class="sub">${Math.round(m.prog)}% berjalan</span></td><td class="num" style="color:${m.sisa<0?'var(--merah)':'inherit'}">${m.sisa<0?'+'+(-m.sisa)+' hari lewat':m.sisa+' hari'}</td><td><span class="pill ${STP[m.status]}">${m.status}</span></td><td>${m.status==='Berjalan'?'<span class="muted">—</span>':m.plan==='Disiapkan'?'<span class="pill p-ok">Disiapkan</span>':'<span class="pill p-m">Belum disiapkan</span>'}</td><td><button class="kebab" onclick="monDet('${m.nopek}')" aria-label="Detail">⋮</button></td></tr>`).join('')||'<tr><td colspan="11" style="text-align:center;color:var(--text2);padding:30px">Tidak ada pekerja yang sesuai filter. Ubah atau reset filter.</td></tr>';
 }
 function monDet(n){const m=MON.find(x=>x.nopek===n);dmName.textContent=m.nama;dmSub.textContent=`${m.nopek} · ${m.pos} · ${m.ent} · ${m.prl}`;
@@ -1100,7 +1218,7 @@ function monDet(n){const m=MON.find(x=>x.nopek===n);dmName.textContent=m.nama;dm
  dmTl.innerHTML=(m.ext?`<div class="e"><b>Perpanjangan 1</b><div class="help">Berakhir diubah menjadi ${fmtD(m.akhir)}</div></div>`:'')+`<div class="e"><b>Penugasan awal</b><div class="help">${fmtD(m.mulai)} · SK/Surat persetujuan tercatat di HRIS+</div></div>`;
  dmPlan.innerHTML=`<span>Status</span><span>${m.plan==='Disiapkan'?'<span class="pill p-ok">Disiapkan</span>':'<span class="pill p-m">Belum disiapkan</span>'}</span><span>Posisi asal</span><span>${m.pos}</span><span>Posisi rencana</span><span>${m.plan==='Disiapkan'?'Sr '+m.pos.replace(/^Sr /,'')+' · usulan TRM Nov 2026':'<span class="muted">Belum ada usulan di Materi TRM</span>'}</span>`;
  open('dMon');}
-function resetMon(){mQ.value='';mEnt.value='';mFn.value='';mSt.value='';mEnd.value='';mj='all';document.querySelectorAll('#mJenis button').forEach(b=>b.classList.toggle('on',b.dataset.j==='all'));renderMon();}
+function resetMon(){mQ.value='';mEnt.value='';mFn.value='';mSt.value='';mEnd.value='';mj=window.dshJ||'all';renderMon();}
 document.querySelectorAll('#mJenis button').forEach(b=>b.onclick=()=>{mj=b.dataset.j;document.querySelectorAll('#mJenis button').forEach(x=>x.classList.toggle('on',x===b));renderMon();});
 [mQ,mEnt,mFn,mSt,mEnd].forEach(e=>e.addEventListener('input',renderMon));
 document.querySelectorAll('#dlCols input').forEach(i=>i.onchange=()=>dlErr.style.display='none');
@@ -1270,12 +1388,7 @@ function renderPos(d,key){
   xTot.innerHTML=`<div class="dcard"><div class="dtop">${donut([['#2F5FA8',fil],['#E9A23B',allV.length]])}<div class="t"><label>Total Position</label><b>${tot}</b></div><div style="flex:1">${[['#2F5FA8','Filled',fil],['#E9A23B','Vacant',allV.length]].map(x=>`<div class="lgl" style="margin-top:6px"><span><i style="background:${x[0]}"></i>${x[1]}</span><span>${x[2]}</span></div>`).join('')}</div></div></div>
    <div class="dcard"><div class="dtop">${donut([['#6CC04A',fil-ret.length],['#E5534B',ret.length]])}<div class="t"><label>Total Employee</label><b>${fil}</b></div><div style="flex:1">${[['#6CC04A','Active',fil-ret.length],['#E5534B','Will Retire (≤ 2 th)',ret.length]].map(x=>`<div class="lgl" style="margin-top:6px"><span><i style="background:${x[0]}"></i>${x[1]}</span><span>${x[2]}</span></div>`).join('')}</div></div></div>`;
   xVac.innerHTML=vcard('☰','var(--pri-soft)','Total Vacant Positions',allV)+vcard('▦','#FDF1DC','Vacant Positions by System',sysV)+vcard('⌂','#FDE7E7','Vacant Positions by Upload',UPL);
-  // heatmap
-  const cols=[...new Set([...d,...UPL].map(r=>r[key]))];const prls=[...new Set([...d,...UPL].map(r=>r.prl))].sort((a,b)=>b-a);
-  let hh='<tr><th></th>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr>';
-  prls.forEach(p=>{hh+=`<tr><td class="rl">PRL ${p}</td>`;cols.forEach(c=>{const g=[...d,...UPL].filter(r=>r[key]===c&&r.prl===p);const f=g.length,vac=g.filter(r=>r.cat==='v'||r.src==='Upload').length;const rt=f?vac/f*100:null;const b=band(rt);
-    hh+=`<td style="background:${b[0]};color:${b[1]}" data-t="PRL ${p} · ${c} · Formasi ${f} · Terisi ${f-vac} · Lowong ${vac} · Vacancy ${rt===null?'—':rt.toFixed(1)+'%'}">${rt===null?'—':rt.toFixed(1)+'%'}<small>${f?'F '+f:''}</small></td>`;});hh+='</tr>';});
-  xHeat.innerHTML=hh;xHnote.textContent=`Kolom per ${xLbl[key].toLowerCase()} sesuai cakupan generate${UPL.length?' · termasuk formasi upload':''}`;
+  renderTrmHeat(d,key);
   renderVac();renderElig();
   // retired
   rT.textContent=ret.length;const rq=rQ.value.toLowerCase();const rf=ret.filter(r=>!rq||(r.nama+r.pos).toLowerCase().includes(rq));
@@ -1452,6 +1565,269 @@ function nrUpload(){nrCur.materi=`Materi_${nrCur.title.replace(/ /g,'_')}.pdf`;r
 function nrAttach(){nrCur.materi=`${(SAVED[0]||{n:'Materi Pra-TRM'}).n}.pdf`;renderNRD();toast('Materi dilampirkan dari List of Setting Materi');}
 function nrHist(id){const r=ROWS.find(x=>x.id===id);drillT.textContent=`Riwayat Jabatan · ${r.nama}`;drillB.innerHTML=[[r.pos,'01/05/2026','sekarang'],['Analyst '+r.div,'01/03/2023','30/04/2026'],['Jr Analyst '+r.fn,'01/01/2020','28/02/2023']].map(x=>`<tr><td>—</td><td>${x[0]}</td><td>${x[1]} – ${x[2]}</td><td></td><td></td></tr>`).join('');drillB.closest('.modal').querySelector('.pag span:last-child').textContent='';open('mDrill');}
 renderNR();
+</script>
+<script>
+/* ===== Vacancy Rate & Heatmap (baru) ===== */
+(function(){
+const $=id=>document.getElementById(id);
+const PRLS=[];for(let n=27;n>=10;n--)PRLS.push(n);
+const BANDS=[...PRLS.map(n=>'PRL '+n),'Tidak Terdefinisi'];
+const PRLR=[...PRLS.map(n=>[n,n]),null];
+const NB=BANDS.length;
+const WGT=[.8,1,1.3,1.6,2,2.6,3,3.5,4,5,7,8.5,15,17,17,17,8,7];
+const BASEO=[...WGT,1.2],BASEF=[...WGT.map(x=>x*2.7),2];
+const RATE=[.08,.08,.09,.09,.1,.1,.11,.11,.12,.12,.13,.14,.18,.2,.21,.23,.24,.26,.7];
+const FPS=['Shared Services','Enterprise IT','Asset Management','Procurement','Technology Innovation & Implementation','Corporate Secretary','Internal Audit','Legal','HSSE','PD Hub','Logistik & Infrastruktur','SDM','Manajemen Risiko','Strategi Portofolio & Pengembangan Usaha','Transformasi & Keberlanjutan Bisnis','Keuangan'];
+const ORGV=JSON.parse(JSON.stringify(ORG));
+ORGV['Holding']['PT Pertamina (Persero)']['SDM']={'Human Capital Strategy':['HC Planning','Organization Development'],'Talent Management':['Talent Acquisition','Succession & Mobility','Career Development'],'Learning & Development':['Leadership Development','Technical Academy'],'Employee Relations':['Industrial Relations','Employee Welfare'],'HC Operation':['Payroll & Benefit','HC Service']};
+const ENT=Object.keys(ORGV);
+const LVLN=['Entitas','Company','Directorate','Function','Division'];
+const SC={std:{mid:.25,max:.65},ketat:{mid:.12,max:.4},longgar:{mid:.4,max:1}};
+const STAT=['Open IJP','Proses seleksi','Menunggu TRM','Belum ada rencana'];
+const fmt=n=>n.toLocaleString('id-ID');
+function hs(s){let x=2166136261;for(let i=0;i<s.length;i++){x^=s.charCodeAt(i);x=Math.imul(x,16777619);}x=x||1;return()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return(x>>>0)/4294967296;};}
+function gen(key,mult,bias,base){const r=hs(key);return base.map((b,i)=>{let f=Math.round(b*mult*(.4+r()*1.2));if(i===NB-1)f=r()<.55?0:Math.round(1+r()*2*mult);const rt=Math.min(1,RATE[i]*bias*(.35+r()*1.3));return{f,v:Math.min(f,Math.round(f*rt))};});}
+const zero=()=>BANDS.map(()=>({f:0,v:0}));
+const add=(a,b)=>a.map((c,i)=>({f:c.f+b[i].f,v:c.v+b[i].v}));
+const sum=cs=>cs.reduce((a,c)=>({f:a.f+c.f,v:a.v+c.v}),{f:0,v:0});
+const LEAVES=[];
+Object.entries(ORGV).forEach(([bg,cos])=>Object.entries(cos).forEach(([co,dirs])=>Object.entries(dirs).forEach(([dir,fns])=>Object.entries(fns).forEach(([fn,divs])=>divs.forEach(div=>{
+  LEAVES.push({bg,co,dir,fn,div,path:[bg,co,dir,fn,div],cells:gen([bg,co,dir,fn,div].join('|'),1,.7+hs(bg)()*.9,BASEO)});})))));
+const FPD={};FPS.forEach(fp=>{FPD[fp]={};ENT.forEach(bg=>{FPD[fp][bg]=gen(fp+'|'+bg,.5+hs(fp)()*1,.55+hs(fp+'x')()*1.15,BASEF);});});
+
+const KEYS=['bg','co','dir','fn','div'];
+let S={bg:'',co:'',dir:'',fn:'',div:'',prl:'',fp:''};
+const pathOf=()=>{const p=[];for(const k of KEYS){if(!S[k])break;p.push(S[k]);}return p;};
+const bandOn=()=>{if(!S.prl)return PRLR.map(()=>true);const [a,b]=S.prl.split('-').map(Number);return PRLR.map(r=>r?(r[1]>=a&&r[0]<=b):false);};
+const mk=cs=>{const on=bandOn();return cs.map((c,i)=>on[i]?c:{f:0,v:0});};
+let tab='org',path=[],ent='',mode='pct',scale='std',hit=0,sortC=-1,sortD=-1,q='',view=[],allRows=[];
+function rowsOrg(){const d=path.length;const L=LEAVES.filter(l=>path.every((p,i)=>l.path[i]===p));const names=[...new Set(L.map(l=>l.path[d]))];
+  return names.map(n=>{const ls=L.filter(l=>l.path[d]===n);return{name:n,cells:ls.reduce((a,l)=>add(a,mk(l.cells)),zero()),leaves:ls,drill:d<4};});}
+function rowsFp(){if(S.fp){const es=ent?[ent]:ENT;return es.map(bg=>({name:bg,label:SHORT[bg]||bg,cells:mk(FPD[S.fp][bg]),leaves:[{bg,cells:FPD[S.fp][bg]}],drill:true}));}
+  return FPS.map(fp=>{const es=ent?[ent]:ENT;const leaves=es.map(bg=>({bg,cells:FPD[fp][bg]}));return{name:fp,cells:leaves.reduce((a,l)=>add(a,mk(l.cells)),zero()),leaves,drill:true};});}
+function heatC(r){const s=SC[scale];let a,b,t;const G=[99,190,123],Y=[255,235,132],R=[248,105,107];
+  if(r<=s.mid){a=G;b=Y;t=r/s.mid;}else{a=Y;b=R;t=Math.min(1,(r-s.mid)/(s.max-s.mid));}
+  return 'rgb('+a.map((x,i)=>Math.round(x+(b[i]-x)*t)).join(',')+')';}
+const rt=c=>c.f?c.v/c.f:null;
+function txt(c){if(!c.f)return '';if(mode==='vac')return fmt(c.v);if(mode==='f')return fmt(c.f);const p=c.v/c.f*100;return (p>0&&p<.5)?'<1%':Math.round(p)+'%';}
+const val=(r,c)=>{if(c<NB){const x=rt(r.cells[c]);return x===null?-1:x;}const t=sum(r.cells);return c===NB?(t.f?t.v/t.f:-1):t.v;};
+function cellTd(c,ci,ri){if(!c.f)return `<td class="cell na" data-r="${ri}" data-c="${ci}"></td>`;const x=c.v/c.f;
+  const h=hit&&x*100>=hit-1e-9;return `<td class="cell${h?' hit':''}" data-r="${ri}" data-c="${ci}" style="background:${heatC(x)}">${txt(c)}</td>`;}
+
+const V=k=>$('vx_'+k);
+function fillSel(el,list,all,val){el.innerHTML=`<option value="">${all}</option>`+list.map(o=>`<option>${o}</option>`).join('');el.value=list.includes(val)?val:'';}
+function cascade(){const bg=V('bg').value;
+  fillSel(V('co'),bg?Object.keys(ORGV[bg]):[],'Semua company',V('co').value);V('co').disabled=!bg;
+  const co=V('co').value;fillSel(V('dir'),co?Object.keys(ORGV[bg][co]):[],'Semua directorate',V('dir').value);V('dir').disabled=!co;
+  const dir=V('dir').value;fillSel(V('fn'),dir?Object.keys(ORGV[bg][co][dir]):[],'Semua function',V('fn').value);V('fn').disabled=!dir;
+  const fn=V('fn').value;fillSel(V('div'),fn?ORGV[bg][co][dir][fn]:[],'Semua division',V('div').value);V('div').disabled=!fn;
+  ['co','dir','fn','div'].forEach(k=>V(k).title=V(k).disabled?'Pilih level di atasnya terlebih dulu':'');}
+const fields=()=>tab==='org'?['bg','co','dir','fn','div','prl']:['bg','fp','prl'];
+function formState(){const o={};fields().forEach(k=>o[k]=V(k).value);return o;}
+function markDirty(){let d=false;fields().forEach(k=>{const c=(V(k).value||'')!==(S[k]||'');V(k).classList.toggle('chg',c);d=d||c;});$('vxDirty').classList.toggle('hidden',!d);}
+function loadForm(){fillSel(V('bg'),ENT,'Semua (Holding & Subholding)',S.bg);
+  if(tab==='org'){['co','dir','fn','div'].forEach(k=>{V(k).innerHTML=`<option>${S[k]}</option>`;V(k).value=S[k];});cascade();cascade();cascade();cascade();}
+  else fillSel(V('fp'),FPS,'Semua fungsi pembina',S.fp);
+  V('prl').value=S.prl;markDirty();}
+function crumbTxt(){const pr=S.prl?'PRL '+S.prl.replace('-','–'):'Semua PRL';
+  if(tab==='fp')return `Menampilkan: Fungsi Pembina <b>${S.fp||'semua'}</b> · <b>${S.bg||'Holding & Subholding'}</b> · ${pr}`;
+  return 'Menampilkan: <b>'+[S.bg||'Holding & Subholding',S.co,S.dir,S.fn,S.div].filter(Boolean).join(' › ')+'</b> · '+pr;}
+function renderScope(){const el=$('vxScope');
+  const prl='<div><label for="vx_prl">PRL</label><select class="fsel" id="vx_prl"><option value="">Semua PRL</option><option value="10-13">PRL 10–13</option><option value="14-18">PRL 14–18</option><option value="19-25">PRL 19–25</option><option value="26-27">PRL 26–27</option></select></div>';
+  const head='';const act='<div class="vact"><span id="vxDirty" class="pill p-k hidden">Filter belum diterapkan</span><span style="flex:1"></span><button class="btn-t" data-reset="1">Reset</button><button class="btn-p btn-sm" data-apply="1">Terapkan Filter</button></div>';
+  el.innerHTML=tab==='org'
+   ?head+`<div class="fgrid">${[['bg','Business Group'],['co','Company'],['dir','Directorate'],['fn','Function'],['div','Division']].map(x=>`<div><label for="vx_${x[0]}">${x[1]}</label><select class="fsel" id="vx_${x[0]}"></select></div>`).join('')}${prl}</div>${act}<div class="crumb" id="vxCrumb"></div>`
+   :head+`<div class="fgrid" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div><label for="vx_bg">Business Group</label><select class="fsel" id="vx_bg"></select></div><div><label for="vx_fp">Fungsi Pembina</label><select class="fsel" id="vx_fp"></select></div>${prl}</div>${act}<div class="crumb" id="vxCrumb"></div>`;
+  loadForm();$('vxCrumb').innerHTML=crumbTxt()+(tab==='org'?' <span class="help" style="margin:0 0 0 8px">· klik nama baris pada heatmap untuk drill-down</span>':' <span class="help" style="margin:0 0 0 8px">· '+(S.fp?'klik nama entitas untuk daftar posisi vacant':'klik nama fungsi pembina untuk rincian per entitas')+'</span>');}
+function renderKpi(T){const t=sum(T);$('vxKpi').style.gridTemplateColumns=tab==='fp'?'repeat(4,1fr)':'';
+  if(tab==='fp'){const vr=t.f?t.v/t.f*100:0;
+    $('vxKpi').innerHTML=`<div class="kpi"><label>Total Formasi</label><div class="v">${fmt(t.f)}</div><div class="s">Posisi dummy dikecualikan</div></div>
+    <div class="kpi"><label>Terisi</label><div class="v">${fmt(t.f-t.v)}</div></div>
+    <div class="kpi" style="border-left-color:var(--vac)"><label>Lowong</label><div class="v">${fmt(t.v)}</div></div>
+    <div class="kpi"><label>Vacancy Rate</label><div class="v">${vr.toFixed(1)}%</div><div class="s">Fill rate ${t.f?(100-vr).toFixed(1):'0.0'}%</div></div>`;return;}const hi=T.slice(0,9).reduce((a,c)=>a+c.v,0);
+  $('vxKpi').innerHTML=`<div class="kpi"><label>Total Formasi</label><div class="v">${fmt(t.f)}</div><div class="s">${allRows.length} ${tab==='org'?LVLN[Math.min(path.length,4)].toLowerCase():'fungsi pembina'}</div></div>
+  <div class="kpi" style="border-left-color:var(--hijau)"><label>Terisi</label><div class="v">${fmt(t.f-t.v)}</div><div class="s">${t.f?((t.f-t.v)/t.f*100).toFixed(1):0}% dari formasi</div></div>
+  <div class="kpi" style="border-left-color:var(--merah)"><label>Vacant</label><div class="v">${fmt(t.v)}</div><div class="s">Posisi lowong</div></div>
+  <div class="kpi" style="border-left-color:var(--kuning)"><label>Vacancy Rate</label><div class="v">${t.f?(t.v/t.f*100).toFixed(1):0}<small>%</small></div><div class="s">Vacant ÷ formasi</div></div>
+  <div class="kpi" style="border-left-color:var(--adj)"><label>Vacant PRL ≥19</label><div class="v">${fmt(hi)}</div><div class="s">${t.v?(hi/t.v*100).toFixed(1):0}% dari total vacant</div></div>`;}
+function chartRows(){if(tab==='org')return allRows.map(r=>({name:r.name,label:r.name,cells:r.cells}));
+  const fps=S.fp?[S.fp]:FPS,es=S.bg?[S.bg]:ENT;
+  return es.map(bg=>({name:bg,label:SHORT[bg]||bg,cells:fps.reduce((a,fp)=>add(a,mk(FPD[fp][bg])),zero())}));}
+function renderBars(){const lvl=tab==='org'?LVLN[Math.min(path.length,4)]:'Entitas';
+  $('vxBarT').textContent='Formasi Terisi vs Lowong per '+lvl;$('vxTh').textContent=lvl;
+  $('vxLvl').textContent=`Level rekap mengikuti cakupan: per ${lvl.toLowerCase()}${tab==='fp'?(S.fp?` (posisi ter-mapping ke fungsi pembina ${S.fp})`:' (seluruh fungsi pembina)'):''}. Record Undefined dihitung sebagai terisi sampai status dilengkapi.`;
+  const rs=chartRows().map(r=>({r,t:sum(r.cells)})).filter(x=>x.t.f);
+  const mx=Math.max(1,...rs.map(x=>x.t.f)),mp=Math.max(.001,...rs.map(x=>x.t.v/x.t.f));const esc=n=>n.replace(/"/g,'&quot;');
+  $('vxBars').innerHTML=rs.length?rs.map(x=>{const t=x.t,ter=t.f-t.v;return `<div class="hbar" style="cursor:pointer" data-name="${esc(x.r.name)}" title="${tab==='fp'?'Klik untuk memfilter entitas':'Klik untuk membuka'}"><span>${x.r.label}</span><div class="tr" style="width:${t.f/mx*100}%">${ter?`<span style="flex:${ter};background:var(--pri)">${fmt(ter)}</span>`:''}${t.v?`<span style="flex:${t.v};background:var(--vac)">${fmt(t.v)}</span>`:''}</div><b style="font-weight:600;font-size:14px">${(t.v/t.f*100).toFixed(1)}%</b></div>`;}).join('')+'<div class="lg"><span><i style="background:var(--pri)"></i>Terisi</span><span><i style="background:var(--vac)"></i>Lowong</span></div>':'<div class="empty"><b>Belum ada data pada cakupan ini</b></div>';
+  const T=rs.reduce((a,x)=>({f:a.f+x.t.f,v:a.v+x.t.v}),{f:0,v:0});
+  $('vxTblB').innerHTML=rs.map(x=>{const t=x.t,p=t.v/t.f;return `<tr style="cursor:pointer" data-name="${esc(x.r.name)}"><td>${x.r.label}</td><td class="num">${fmt(t.f)}</td><td class="num">${fmt(t.f-t.v)}</td><td class="num">${fmt(t.v)}</td><td class="num"><div class="inbar">${t.v?`<span style="width:${Math.max(10,p/mp*70)}px"></span>`:''}${(p*100).toFixed(1)}%</div></td></tr>`;}).join('')
+   +(rs.length?`<tr style="font-weight:600"><td>Total</td><td class="num">${fmt(T.f)}</td><td class="num">${fmt(T.f-T.v)}</td><td class="num">${fmt(T.v)}</td><td class="num">${T.f?(T.v/T.f*100).toFixed(1):'0.0'}%</td></tr>`:'');}
+function renderLeg(){const s=SC[scale];$('vxLeg').innerHTML=`<span>0%</span><span class="gr" style="background:linear-gradient(90deg,${heatC(0)},${heatC(s.mid)} ${s.mid/s.max*100}%,${heatC(s.max)})"></span><span>≥ ${Math.round(s.max*100)}%</span><span style="margin-left:12px">Sel kosong = tidak ada formasi</span><span style="margin-left:auto">Klik judul kolom untuk mengurutkan · klik sel untuk daftar posisi</span>`;}
+function renderHeat(T){const tt=sum(T);
+  let h='<thead><tr><th style="width:46px">No</th><th class="l">'+(tab==='org'?LVLN[Math.min(path.length,4)]:(S.fp?'Entitas':'Fungsi Pembina'))+'</th>';
+  [...BANDS,'Total','Jumlah Vacant'].forEach((b,i)=>{h+=`<th data-c="${i}" class="${sortC===i?'srt':''}" title="Klik untuk mengurutkan">${b}${sortC===i?(sortD<0?' ▼':' ▲'):''}</th>`;});
+  h+='</tr></thead><tbody>';
+  view.forEach((r,ri)=>{const t=sum(r.cells);h+=`<tr><td class="no">${ri+1}</td><td class="nm${r.drill?' dr':''}" data-r="${ri}" ${r.drill?'role="button" tabindex="0"':''}>${r.label||r.name}</td>`+r.cells.map((c,ci)=>cellTd(c,ci,ri)).join('')+cellTd(t,NB,ri)+`<td class="vc" data-r="${ri}" data-c="${NB+1}">${fmt(t.v)}</td></tr>`;});
+  if(!view.length)h+='<tr><td colspan="'+(NB+3)+'" style="padding:30px;color:var(--text2)">Tidak ada baris yang sesuai pencarian</td></tr>';
+  const lbl=tab==='org'?(path.length?path[path.length-1]:'Pertamina Group'):(S.fp||ent||'Pertamina Group');
+  h+=`<tr class="ft0"><td colspan="2" class="nm"><b>Total ${lbl}</b></td>`+T.map((c,ci)=>cellTd(c,ci,-1)).join('')+cellTd(tt,NB,-1)+`<td class="vc" data-r="-1" data-c="${NB+1}">${fmt(tt.v)}</td></tr>`;
+  let cum=0;const cm=T.map(c=>(cum+=c.v));
+  h+=`<tr class="ft"><td colspan="2" class="nm">Jumlah Vacant</td>`+T.map(c=>`<td>${fmt(c.v)}</td>`).join('')+`<td>${fmt(tt.v)}</td><td></td></tr>`;
+  h+=`<tr class="ft"><td colspan="2" class="nm">Kumulatif Vacant (dari PRL 27 ke bawah)</td>`+cm.map(x=>`<td>${fmt(x)}</td>`).join('')+`<td>${fmt(tt.v)}</td><td></td></tr>`;
+  h+=`<tr class="ft"><td colspan="2" class="nm">% Kumulatif thd Total Vacant</td>`+cm.map(x=>`<td>${tt.v?(x/tt.v*100).toFixed(1):'0.0'}%</td>`).join('')+`<td>${tt.v?'100.0%':'0.0%'}</td><td></td></tr></tbody>`;
+  $('vxHeat').innerHTML=h;
+  let n=0;if(hit)view.forEach(r=>[...r.cells,sum(r.cells)].forEach(c=>{if(c.f&&c.v/c.f*100>=hit-1e-9)n++;}));
+  $('vxHitN').textContent=hit?`${n} sel di atas ambang`:'';}
+function render(keep){
+  path=tab==='org'?pathOf():[];ent=tab==='fp'?S.bg:'';
+  allRows=tab==='org'?rowsOrg():rowsFp();
+  const ql=q.toLowerCase();view=allRows.filter(r=>!ql||(r.label||r.name).toLowerCase().includes(ql));
+  if(sortC>=0)view=view.slice().sort((a,b)=>(val(a,sortC)-val(b,sortC))*sortD*-1*-1);
+  const T=allRows.reduce((a,r)=>add(a,r.cells),zero());
+  if(!keep)renderScope();renderKpi(T);renderBars();renderHeat(T);renderLeg();}
+/* sortD: -1 = desc, 1 = asc */
+function sortBy(c){if(sortC!==c){sortC=c;sortD=-1;}else if(sortD<0)sortD=1;else{sortC=-1;sortD=-1;}render(1);}
+
+/* ---- interaksi ---- */
+const heatEl=$('vxHeat');
+function rowOf(td){const ri=+td.dataset.r;return ri<0?null:view[ri];}
+heatEl.addEventListener('mouseover',e=>{
+  const th=e.target.closest('th[data-c]');if(th)return;
+  const td=e.target.closest('td[data-c]');heatEl.querySelectorAll('th.hot').forEach(x=>x.classList.remove('hot'));
+  if(!td)return;const c=+td.dataset.c;const hd=heatEl.querySelector(`th[data-c="${c}"]`);if(hd)hd.classList.add('hot');
+  if(!td.classList.contains('cell')&&!td.classList.contains('vc'))return;
+  const r=rowOf(td);const cells=r?r.cells:allRows.reduce((a,x)=>add(a,x.cells),zero());const cc=c<NB?cells[c]:sum(cells);
+  $('vxInfo').innerHTML=`<b>${r?(r.label||r.name):'Total '+(tab==='org'?(path.length?path[path.length-1]:'Pertamina Group'):(S.fp||ent||'Pertamina Group'))}</b> · ${c<NB?BANDS[c]:'Semua PRL'} · Formasi ${fmt(cc.f)} · Terisi ${fmt(cc.f-cc.v)} · Vacant ${fmt(cc.v)} · Vacancy <b>${cc.f?(cc.v/cc.f*100).toFixed(1)+'%':'—'}</b>`;});
+heatEl.addEventListener('mouseleave',()=>heatEl.querySelectorAll('th.hot').forEach(x=>x.classList.remove('hot')));
+function activate(t){const th=t.closest('th[data-c]');if(th){sortBy(+th.dataset.c);return;}
+  const nm=t.closest('td.nm.dr');if(nm){rowClick(view[+nm.dataset.r]);return;}
+  const td=t.closest('td.cell,td.vc');if(td){const c=+td.dataset.c;if(td.classList.contains('na'))return;openCell(rowOf(td),c<NB?c:-1);}}
+heatEl.addEventListener('click',e=>activate(e.target));
+heatEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('td.nm.dr'))activate(e.target);});
+function rowClick(r){if(!r)return;if(tab==='org'){if(path.length>=4){toast('Level paling bawah (Division) sudah tercapai');return;}S[KEYS[path.length]]=r.name;sortC=-1;q='';$('vxQ').value='';render();toast('Drill-down ke '+r.name);}
+  else if(S.fp)openCell(r,-1);else openEnt(r);}
+const goName=e=>{const b=e.target.closest('[data-name]');if(!b)return;if(tab==='fp'){S.bg=b.dataset.name;sortC=-1;render();toast('Entitas: '+(SHORT[S.bg]||S.bg));return;}const r=allRows.find(x=>x.name===b.dataset.name);if(r)rowClick(r);};
+$('vxBars').addEventListener('click',goName);$('vxTblB').addEventListener('click',goName);
+$('vxScope').addEventListener('click',e=>{
+  if(e.target.closest('[data-apply]')){S={...S,...formState()};sortC=-1;render();toast('Cakupan diterapkan');return;}
+  if(e.target.closest('[data-reset]')){S={bg:'',co:'',dir:'',fn:'',div:'',prl:'',fp:''};sortC=-1;q='';$('vxQ').value='';render();toast('Cakupan direset');}});
+$('vxScope').addEventListener('change',e=>{const id=e.target.id||'';if(!id.startsWith('vx_'))return;const k=id.slice(3);
+  if(tab==='org'){const i=['bg','co','dir','fn'].indexOf(k);if(i>=0){['co','dir','fn','div'].slice(i).forEach(x=>V(x).value='');cascade();}}
+  markDirty();});
+document.querySelectorAll('[data-vt]').forEach(b=>b.onclick=()=>{tab=b.dataset.vt;document.querySelectorAll('[data-vt]').forEach(x=>x.classList.toggle('on',x===b));sortC=-1;q='';$('vxQ').value='';render();});
+document.querySelectorAll('#vxMode button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('#vxMode button').forEach(x=>x.classList.toggle('on',x===b));render(1);});
+$('vxScale').onchange=e=>{scale=e.target.value;render(1);};
+$('vxHit').onchange=e=>{hit=+e.target.value;render(1);};
+$('vxQ').oninput=e=>{q=e.target.value;render(1);};
+
+/* ---- modal detail ---- */
+let VL={list:[],total:0,page:0,title:'',cap:false};
+function mkList(row,band,e){const rs=row?[row]:allRows;const out=[];let total=0;const onb=bandOn();const bs=(band>=0?[band]:BANDS.map((_,i)=>i)).filter(b=>onb[b]);
+  rs.forEach(r=>(e?r.leaves.filter(l=>l.bg===e):r.leaves).forEach(l=>bs.forEach(b=>{const n=l.cells[b].v;total+=n;
+    for(let k=0;k<n&&out.length<300;k++){const g=hs(r.name+(l.div||l.bg)+b+'|'+k);const pr=PRLR[b]?PRLR[b][0]+Math.floor(g()*(PRLR[b][1]-PRLR[b][0]+1)):null;
+      const unit=tab==='org'?(l.div==='No Division'?l.fn:l.div):(S.fp||r.name);
+      out.push({id:'3036'+String(10000+Math.floor(g()*89999)),pos:lvlTitle(pr||14)+' '+unit,ent:SHORT[l.bg],unit:tab==='org'?l.fn:(S.fp?'Fungsi Pembina':r.name),prl:pr,days:Math.round(15+g()*420),st:STAT[Math.floor(g()*4)]});}})));
+  return {list:out,total,cap:total>out.length};}
+function openCell(row,band,e){const m=mkList(row,band,e);VL={...m,page:0};
+  $('vxmT').textContent=`${row?(row.label||row.name):'Total '+(tab==='org'?(path.length?path[path.length-1]:'Pertamina Group'):(S.fp||ent||'Pertamina Group'))} · ${band>=0?BANDS[band]:'Semua PRL'}${e?' · '+SHORT[e]:''}`;
+  $('vxList').classList.remove('hidden');$('vxEnt').classList.add('hidden');$('vxmSt').value='';$('vxmSo').value='d';drawList();open('mVx');}
+function drawList(){const st=$('vxmSt').value;let L=VL.list.filter(x=>!st||x.st===st);
+  if($('vxmSo').value==='d')L=L.sort((a,b)=>b.days-a.days);else L=L.sort((a,b)=>(b.prl||0)-(a.prl||0));
+  const per=8,pages=Math.max(1,Math.ceil(L.length/per));VL.page=Math.min(VL.page,pages-1);const pg=L.slice(VL.page*per,VL.page*per+per);
+  $('vxmS').textContent=`${fmt(VL.total)} posisi vacant${VL.cap?' · daftar dibatasi 300 pertama':''}`;
+  $('vxmB').innerHTML=pg.map(x=>`<tr><td>${x.id}</td><td>${x.pos}</td><td>${x.ent}</td><td>${x.unit}</td><td>${x.prl===null?'<span class="muted">TD</span>':x.prl}</td><td class="num">${x.days} hari${x.days>180?' <span class="over">●</span>':''}</td><td><span class="tag ${x.st==='Open IJP'?'t-blue':x.st==='Proses seleksi'?'t-amb':x.st==='Menunggu TRM'?'t-grn':'t-gry'}">${x.st}</span></td></tr>`).join('');
+  $('vxmNo').classList.toggle('hidden',!!L.length);$('vxmN').textContent=L.length?`Menampilkan ${VL.page*per+1}–${VL.page*per+pg.length} dari ${L.length}`:'';
+  $('vxmP').textContent=`Hal ${VL.page+1}/${pages}`;$('vxmPr').style.opacity=VL.page?1:.3;$('vxmNx').style.opacity=VL.page<pages-1?1:.3;VL.pages=pages;}
+$('vxmSt').onchange=()=>{VL.page=0;drawList();};$('vxmSo').onchange=()=>{VL.page=0;drawList();};
+$('vxmPr').onclick=()=>{if(VL.page>0){VL.page--;drawList();}};$('vxmNx').onclick=()=>{if(VL.page<VL.pages-1){VL.page++;drawList();}};
+function openEnt(r){$('vxmT').textContent=`${r.name} · rincian per entitas`;$('vxList').classList.add('hidden');$('vxEnt').classList.remove('hidden');
+  $('vxEntB').innerHTML=ENT.map(bg=>{const t=sum(FPD[r.name][bg]);const p=t.f?t.v/t.f:null;return `<tr><td>${bg}</td><td class="num">${fmt(t.f)}</td><td class="num">${fmt(t.f-t.v)}</td><td class="num">${fmt(t.v)}</td><td style="text-align:center"><span class="tag" style="background:${p===null?'var(--th)':heatC(p)};color:#1F2933">${p===null?'—':(p*100).toFixed(1)+'%'}</span></td><td>${t.v?`<button class="btn-t btn-sm" data-be="${bg}">Lihat posisi</button>`:''}</td></tr>`;}).join('');
+  $('vxEntB').onclick=ev=>{const b=ev.target.closest('[data-be]');if(b)openCell(r,-1,b.dataset.be);};open('mVx');}
+
+/* ---- navigasi ---- */
+const _gp2=goPage;let dt='IM';
+const ALLP=['trm','nr','main','param','mon','mep','vr','dmh'];
+function setNav(k){document.querySelectorAll('.nav [data-nav]').forEach(a=>{const on=a.dataset.nav===k;a.classList.toggle('act',on);});if(typeof markGrp==='function')markGrp();window.scrollTo(0,0);}
+function showDm(){ALLP.forEach(x=>$('pg-'+x).classList.add('hidden'));$('pg-dmh').classList.remove('hidden');
+  document.querySelectorAll('[data-dt]').forEach(b=>b.classList.toggle('on',b.dataset.dt===dt));
+  $('dshBc').textContent=dt==='IM'?'IMPTU':dt==='TB'?'Tugas Belajar':'Masa Evaluasi Pekerja (MEP)';
+  if(dt==='MEP'){$('pg-mep').classList.remove('hidden');}
+  else{$('pg-mon').classList.remove('hidden');window.dshJ=dt;$('monH').textContent=dt==='IM'?'Monitoring IMPTU':'Monitoring Tugas Belajar';resetMon();}}
+document.querySelectorAll('[data-dt]').forEach(b=>b.onclick=()=>{dt=b.dataset.dt;showDm();});
+goPage=function(p){
+  if(p==='dvr'){ALLP.forEach(x=>$('pg-'+x).classList.add('hidden'));$('pg-vr').classList.remove('hidden');setNav('dvr');return;}
+  if(p==='dm'||p==='mon'||p==='mep'){if(p==='mep')dt='MEP';else if(p==='mon'&&dt==='MEP')dt='IM';showDm();setNav('dm');return;}
+  $('pg-vr').classList.add('hidden');$('pg-dmh').classList.add('hidden');_gp2(p);};
+render();goPage('dvr');
+})();
+</script>
+
+<script>
+/* ===== Materi TRM: chart traffic light fungsi pembina per entitas ===== */
+(function(){
+const $=id=>document.getElementById(id);let fpSel='';
+function fpRows(){return ROWS.filter(r=>r.fp===fpSel&&(!G.prl.length||G.prl.includes(r.prl)));}
+function renderFpChart(){if(!G)return;const d=trmRows();if(!d.length)return;
+  const cnt={};d.forEach(r=>{if(r.fp)cnt[r.fp]=(cnt[r.fp]||0)+1;});const fps=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||a.localeCompare(b));
+  if(!fps.length)return;if(!fps.includes(fpSel))fpSel=fps[0];
+  const sel=$('xFpSel');sel.style.display=fps.length>1?'':'none';sel.innerHTML=fps.map(f=>`<option${f===fpSel?' selected':''}>${f}</option>`).join('');
+  const rows=fpRows();const ents=Object.keys(ORG).filter(e=>rows.some(r=>r.bg===e));
+  $('xFpSub').textContent=`Fungsi Pembina ${fpSel} per Entitas`;
+  const data=ents.map(e=>[e,...CATS.map(c=>rows.filter(r=>r.bg===e&&r.cat===c).length)]);
+  const gt=CATS.map((_,k)=>data.reduce((a,r)=>a+r[k+1],0));const tot=r=>r.slice(1).reduce((a,b)=>a+b,0);const R='style="text-align:right"';
+  $('xFpTbl').innerHTML=`<thead><tr><th>Entitas</th><th ${R}>Hijau</th><th ${R}>Kuning</th><th ${R}>Merah</th><th ${R}>Undef</th><th ${R}>Vacant</th><th ${R}>Total</th></tr></thead><tbody>`
+   +data.map((r,ri)=>`<tr class="${r[0]===G.bg?'cur':''}"><td>${SHORT[r[0]]}${r[0]===G.bg?' <span class="help" style="margin:0 0 0 4px" title="Entitas pada cakupan saat ini">●</span>':''}</td>${r.slice(1).map((v,k)=>`<td class="num">${v?`<a class="pvc" onclick="xFpDrill(${ri},${k})" title="${segn[k]} · lihat daftar posisi">${v}</a>`:''}</td>`).join('')}<td class="num"><b>${tot(r)}</b></td></tr>`).join('')
+   +`<tr class="gt"><td>Grand Total</td>${gt.map(v=>`<td class="num">${v||''}</td>`).join('')}<td class="num">${gt.reduce((a,b)=>a+b,0)}</td></tr></tbody>`;
+  window.__fpData=data;window.__fpSel=fpSel;}
+$('xFpSel').onchange=e=>{fpSel=e.target.value;renderFpChart();};
+window.xFpDrill=function(ri,k){const e=window.__fpData[ri][0];const list=fpRows().filter(r=>r.bg===e&&r.cat===CATS[k]);
+  drillT.textContent=`${window.__fpSel} · ${SHORT[e]} · ${segn[k]} · ${list.length} posisi`;
+  drillB.innerHTML=list.slice(0,8).map(r=>`<tr><td>${r.id}</td><td>${r.pos}<span class="sub">${r.dept} · PRL ${r.prl}</span></td><td>${r.nama==='vacant'?'<span class="muted">vacant</span>':r.nama}</td><td class="num">${r.total}</td><td>${r.elig}</td></tr>`).join('');
+  drillB.closest('.modal').querySelector('.pag span:last-child').textContent=`1–${Math.min(8,list.length)} dari ${list.length}`;open('mDrill');};
+const _rt=renderTRM;renderTRM=function(){_rt.apply(this,arguments);renderFpChart();};
+})();
+</script>
+<script>
+/* ===== Materi TRM: heatmap vacancy per PRL (format sama dgn dashboard Vacancy) ===== */
+(function(){
+const fmt=n=>n.toLocaleString('id-ID');
+const PRS=[];for(let n=27;n>=10;n--)PRS.push(n);
+const LBL=[...PRS.map(n=>'PRL '+n),'Tidak Terdefinisi'],NB=PRS.length+1,MID=.25,MAX=.65;
+function heatC(r){const Gc=[99,190,123],Y=[255,235,132],R=[248,105,107];let a,b,t;if(r<=MID){a=Gc;b=Y;t=r/MID;}else{a=Y;b=R;t=Math.min(1,(r-MID)/(MAX-MID));}return 'rgb('+a.map((x,i)=>Math.round(x+(b[i]-x)*t)).join(',')+')';}
+let mode='pct',last=null,HR=[];
+const isV=r=>r.cat==='v'||r.src==='Upload';
+const sum=cs=>cs.reduce((a,c)=>({f:a.f+c.f,v:a.v+c.v}),{f:0,v:0});
+const txt=c=>{if(!c.f)return '';if(mode==='vac')return fmt(c.v);if(mode==='f')return fmt(c.f);const p=c.v/c.f*100;return(p>0&&p<.5)?'<1%':Math.round(p)+'%';};
+const tdc=(c,ri,ci)=>c.f?`<td class="cell" data-r="${ri}" data-c="${ci}" style="background:${heatC(c.v/c.f)}">${txt(c)}</td>`:`<td class="cell na" data-r="${ri}" data-c="${ci}"></td>`;
+window.renderTrmHeat=function(d,key){last={d,key};
+  const all=[...d,...UPL];const names=[...new Set(all.map(r=>r[key]))];
+  const bandOf=r=>{const i=PRS.indexOf(r.prl);return i>=0?i:NB-1;};
+  HR=names.map(n=>{const g=all.filter(r=>r[key]===n);const cells=Array.from({length:NB},()=>({f:0,v:0}));g.forEach(r=>{const c=cells[bandOf(r)];c.f++;if(isV(r))c.v++;});return{name:n,cells,items:g};});
+  const T=Array.from({length:NB},(_,i)=>HR.reduce((a,r)=>({f:a.f+r.cells[i].f,v:a.v+r.cells[i].v}),{f:0,v:0}));const tt=sum(T);
+  let h=`<thead><tr><th style="width:46px">No</th><th class="l">${xLbl[key]}</th>`+LBL.map(b=>`<th>${b}</th>`).join('')+'<th>Total</th><th>Jumlah Vacant</th></tr></thead><tbody>';
+  HR.forEach((r,ri)=>{const t=sum(r.cells);h+=`<tr><td class="no">${ri+1}</td><td class="nm">${r.name}</td>`+r.cells.map((c,ci)=>tdc(c,ri,ci)).join('')+tdc(t,ri,NB)+`<td class="vc" data-r="${ri}" data-c="${NB+1}">${fmt(t.v)}</td></tr>`;});
+  const lbl=G.div||G.fn||G.dir||G.co;
+  h+=`<tr class="ft0"><td colspan="2" class="nm"><b>Total ${lbl}</b></td>`+T.map((c,ci)=>tdc(c,-1,ci)).join('')+tdc(tt,-1,NB)+`<td class="vc" data-r="-1" data-c="${NB+1}">${fmt(tt.v)}</td></tr>`;
+  let cum=0;const cm=T.map(c=>(cum+=c.v));
+  h+=`<tr class="ft"><td colspan="2" class="nm">Jumlah Vacant</td>`+T.map(c=>`<td>${fmt(c.v)}</td>`).join('')+`<td>${fmt(tt.v)}</td><td></td></tr>`;
+  h+=`<tr class="ft"><td colspan="2" class="nm">Kumulatif Vacant (dari PRL 27 ke bawah)</td>`+cm.map(x=>`<td>${fmt(x)}</td>`).join('')+`<td>${fmt(tt.v)}</td><td></td></tr>`;
+  h+=`<tr class="ft"><td colspan="2" class="nm">% Kumulatif thd Total Vacant</td>`+cm.map(x=>`<td>${tt.v?(x/tt.v*100).toFixed(1):'0.0'}%</td>`).join('')+`<td>${tt.v?'100.0%':'0.0%'}</td><td></td></tr></tbody>`;
+  xHeat.innerHTML=h;
+  xLeg.innerHTML=`<span>0%</span><span class="gr" style="background:linear-gradient(90deg,${heatC(0)},${heatC(MID)} ${MID/MAX*100}%,${heatC(MAX)})"></span><span>≥ ${Math.round(MAX*100)}%</span><span style="margin-left:12px">Sel kosong = tidak ada formasi</span><span style="margin-left:auto" id="xHnote">Baris per ${xLbl[key].toLowerCase()} sesuai cakupan generate${UPL.length?' · termasuk formasi upload':''}</span>`;
+};
+xHeat.addEventListener('mouseover',e=>{const td=e.target.closest('td.cell,td.vc');if(!td)return;const ri=+td.dataset.r,c=+td.dataset.c;
+  const cells=ri<0?null:HR[ri].cells;const cc=c<NB?(ri<0?{f:0,v:0}:cells[c]):null;
+  let x;if(ri<0){const T=c<NB?HR.reduce((a,r)=>({f:a.f+r.cells[c].f,v:a.v+r.cells[c].v}),{f:0,v:0}):HR.reduce((a,r)=>{const t=sum(r.cells);return{f:a.f+t.f,v:a.v+t.v};},{f:0,v:0});x=T;}else x=c<NB?cells[c]:sum(cells);
+  xHtip.textContent=`${ri<0?'Total':HR[ri].name} · ${c<NB?LBL[c]:'Semua PRL'} · Formasi ${fmt(x.f)} · Terisi ${fmt(x.f-x.v)} · Vacant ${fmt(x.v)} · Vacancy ${x.f?(x.v/x.f*100).toFixed(1)+'%':'—'}`;});
+xHeat.addEventListener('click',e=>{const td=e.target.closest('td.cell,td.vc');if(!td||td.classList.contains('na'))return;const ri=+td.dataset.r,c=+td.dataset.c;
+  const bi=r=>{const i=PRS.indexOf(r.prl);return i>=0?i:NB-1;};
+  const src=ri<0?HR.flatMap(r=>r.items):HR[ri].items;const list=src.filter(r=>isV(r)&&(c>=NB||bi(r)===c));
+  if(!list.length){toast('Tidak ada posisi vacant pada sel ini');return;}
+  drillT.textContent=`${ri<0?'Total':HR[ri].name} · ${c<NB?LBL[c]:'Semua PRL'} · ${list.length} posisi vacant`;
+  drillB.innerHTML=list.slice(0,8).map(r=>`<tr><td>${r.id||'—'}</td><td>${r.pos}<span class="sub">${r.dept||r.div||''} · PRL ${r.prl}</span></td><td><span class="muted">vacant</span></td><td class="num">—</td><td>—</td></tr>`).join('');
+  drillB.closest('.modal').querySelector('.pag span:last-child').textContent=`1–${Math.min(8,list.length)} dari ${list.length}`;open('mDrill');});
+document.querySelectorAll('#xHMode button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('#xHMode button').forEach(x=>x.classList.toggle('on',x===b));if(last&&G)renderTrmHeat(last.d,last.key);});
+})();
 </script>
 </body>
 </html>
